@@ -9,8 +9,8 @@ const App = () => {
   const [isDraggingOver, setIsDraggingOver] = useState(false);
   const [uploadedImg, setUploadedImg] = useState(null);
   const [cutUploadedImg, setCutUploadedImg] = useState(null);
-  const [requestCalculation, setRequestCalculation] = useState(false);
   const [showRequestModal, setShowRequestModal] = useState(false);
+  const [aspectRatio, setAspectRatio] = useState(null);
 
   const handleDragOver = () => {
     setIsDraggingOver(true);
@@ -30,11 +30,12 @@ const App = () => {
       onClick={handleClickDefault}
       onDragOver={handleDragOver}
     >
-      {showRequestModal && uploadedImg && (
+      {showRequestModal && uploadedImg && !aspectRatio && (
         <ImageEditor
           uploadedImg={uploadedImg}
           setUploadedImg={setUploadedImg}
           setShowRequestModal={setShowRequestModal}
+          setAspectRatio={setAspectRatio}
         />
       )}
       <div className={stl.brickBg}>
@@ -72,7 +73,11 @@ const App = () => {
             setShowRequestModal={setShowRequestModal}
           />
           {uploadedImg && (
-            <RequestCalculation setShowRequestModal={setShowRequestModal} />
+            <RequestCalculation
+              setShowRequestModal={setShowRequestModal}
+              aspectRatio={aspectRatio}
+              setAspectRatio={setAspectRatio}
+            />
           )}
         </main>
       </div>

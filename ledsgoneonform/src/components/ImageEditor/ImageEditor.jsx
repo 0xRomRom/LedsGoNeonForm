@@ -11,7 +11,12 @@ import { GrTopCorner } from "react-icons/gr";
 const MIN_DIMENSION = 25;
 const ASPECT_RATIO = 0;
 
-const ImageEditor = ({ uploadedImg, setUploadedImg, setShowRequestModal }) => {
+const ImageEditor = ({
+  uploadedImg,
+  setUploadedImg,
+  setShowRequestModal,
+  setAspectRatio,
+}) => {
   const imgRef = useRef(null);
   const [imgSrc, setImgSrc] = useState("");
   const [crop, setCrop] = useState(null);
@@ -79,6 +84,7 @@ const ImageEditor = ({ uploadedImg, setUploadedImg, setShowRequestModal }) => {
     const { width, height } = cropObject;
     const aspectRatio = +(width / height).toFixed(4);
     // console.log("Aspect Ratio: ", aspectRatio);
+    setAspectRatio(aspectRatio);
   };
 
   useEffect(() => {

@@ -11,7 +11,7 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  pointer-events: none;
+
   z-index: 20;
 }
 
@@ -83,4 +83,42 @@
 }
 .cta2:hover {
   background-color: var(--red);
+}
+
+.opgeslagen {
+  color: rgb(0, 255, 0);
+  font-size: 30px;
+}
+
+.aspectFlex {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding-bottom: 2rem;
+}
+
+.berekenOpnieuw {
+  position: relative;
+  font-size: 14px;
+  top: 2rem;
+  color: gray;
+  cursor: pointer;
+  transition: all 0.3s ease-in-out;
+  user-select: none;
+}
+
+.berekenOpnieuw:hover {
+  color: white;
+}
+
+.verhoudingenSpan {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.aspectIcon {
+  color: gray;
 }
