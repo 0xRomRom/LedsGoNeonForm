@@ -13,7 +13,6 @@ const App = () => {
   const [cutUploadedImg, setCutUploadedImg] = useState(null);
   const [aspectRatio, setAspectRatio] = useState(null);
   const [longestSide, setLongestSide] = useState(null);
-  const [wantsCalculation, setWantsCalculation] = useState(null);
   const [progressState, setProgressState] = useState(0);
   const [toggleIconBool, setToggleIconBool] = useState(false);
 
@@ -83,10 +82,7 @@ const App = () => {
             <RequestCalculation
               aspectRatio={aspectRatio}
               setAspectRatio={setAspectRatio}
-              wantsCalculation={wantsCalculation}
-              setWantsCalculation={setWantsCalculation}
               setProgressState={setProgressState}
-              progressState={progressState}
               toggleIconBool={toggleIconBool}
               setToggleIconBool={setToggleIconBool}
             />

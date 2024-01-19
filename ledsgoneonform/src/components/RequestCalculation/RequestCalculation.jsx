@@ -6,9 +6,7 @@ import { useState } from "react";
 const RequestCalculation = ({
   aspectRatio,
   setAspectRatio,
-  wantsCalculation,
   setProgressState,
-  progressState,
   toggleIconBool,
   setToggleIconBool,
 }) => {
@@ -20,7 +18,7 @@ const RequestCalculation = ({
     <div
       className={`${stl.requestcalculation} ${
         toggleIconBool ? stl.folded : ""
-      } ${aspectRatio > 0 ? stl.checked : ""}`}
+      } ${aspectRatio > 0 || toggleIconBool ? stl.checked : ""}`}
     >
       {toggleIconBool && (
         <CgExpand
@@ -48,7 +46,7 @@ const RequestCalculation = ({
               className={stl.berekenOpnieuw}
               onClick={() => {
                 setAspectRatio(null);
-                setProgressState(3);
+                setProgressState(2);
               }}
             >
               Bereken opnieuw
