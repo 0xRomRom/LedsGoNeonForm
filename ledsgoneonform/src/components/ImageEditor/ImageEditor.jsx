@@ -11,7 +11,7 @@ import { GrTopCorner } from "react-icons/gr";
 const MIN_DIMENSION = 25;
 const ASPECT_RATIO = 0;
 
-const ImageEditor = ({ uploadedImg }) => {
+const ImageEditor = ({ uploadedImg, setUploadedImg }) => {
   const imgRef = useRef(null);
   const [imgSrc, setImgSrc] = useState("");
   const [crop, setCrop] = useState(null);
@@ -76,12 +76,16 @@ const ImageEditor = ({ uploadedImg }) => {
     );
     const { width, height } = cropObject;
     const aspectRatio = +(width / height).toFixed(4);
-    console.log("Aspect Ratio: ", aspectRatio);
+    // console.log("Aspect Ratio: ", aspectRatio);
   };
 
   useEffect(() => {
     console.log(crop);
   }, [crop]);
+
+  const handleCancel = () => {
+    setUploadedImg(null);
+  };
 
   return (
     <div className={stl.imageEditor}>
@@ -114,7 +118,9 @@ const ImageEditor = ({ uploadedImg }) => {
             </ReactCrop>
           </div>
           <div className={stl.btnsWrapper}>
-            <button className={stl.annuleer}>Annuleer</button>
+            <button className={stl.annuleer} onClick={handleCancel}>
+              Annuleer
+            </button>
             <button
               className={`${stl.bevestigenCta} ${
                 crop?.width > 0 && crop?.height > 0 ? "" : stl.disabledBtn

@@ -25,7 +25,7 @@
 }
 
 .uploadFileCta {
-  width: 12rem;
+  width: 13rem;
   height: 3rem;
   border-radius: 0.4rem;
   background-color: var(--pink);
@@ -48,6 +48,16 @@
   margin: 5px 0px;
   pointer-events: initial;
 }
+
+.uploadSpan {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.uploadSpan svg {
+  margin-left: 0.5rem;
+}
 .uploadFileCta:hover .uploadIcon {
   color: rgb(0, 255, 0);
 }
@@ -68,7 +78,7 @@
 
 .btnBackground {
   position: relative;
-  width: 12rem;
+  width: 13rem;
   height: 3rem;
   background-color: rgb(0, 255, 0);
   border-radius: 0.4rem;

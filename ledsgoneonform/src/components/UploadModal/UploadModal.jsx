@@ -2,14 +2,15 @@ import stl from "./UploadModal.module.css";
 import { HiOutlineUpload } from "react-icons/hi";
 import VideoPlayer from "../videoplayer/VideoPlayer";
 import { useDropzone } from "react-dropzone";
-import { useEffect, useCallback } from "react";
+import { useCallback } from "react";
 import { FiPlusSquare } from "react-icons/fi";
+import { FaCheck } from "react-icons/fa";
 
 const UploadModal = ({
   handleDragLeave,
   isDraggingOver,
-  uploadedImg,
   setUploadedImg,
+  uploadedImg,
 }) => {
   const onDrop = useCallback(
     (acceptedFiles) => {
@@ -52,12 +53,6 @@ const UploadModal = ({
     accept: { "image/*": [] },
   });
 
-  useEffect(() => {
-    if (uploadedImg) {
-      console.log(uploadedImg.file);
-    }
-  }, [uploadedImg]);
-
   return (
     <>
       <div className={stl.modal}>
@@ -68,7 +63,16 @@ const UploadModal = ({
           <div className={stl.btnWrapper}>
             <div className={stl.btnBackground}>
               <button className={stl.uploadFileCta} {...getRootProps()}>
-                Upload bestand <HiOutlineUpload className={stl.uploadIcon} />
+                {uploadedImg ? (
+                  <span className={stl.uploadSpan}>
+                    Bestand Geupload <FaCheck />
+                  </span>
+                ) : (
+                  <span className={stl.uploadSpan}>
+                    Upload bestand
+                    <HiOutlineUpload className={stl.uploadIcon} />
+                  </span>
+                )}
                 <input {...getInputProps()} name="Fileinput" accept="image/*" />
               </button>
             </div>

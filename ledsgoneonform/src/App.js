@@ -7,6 +7,8 @@ import ImageEditor from "./components/ImageEditor/ImageEditor";
 const App = () => {
   const [isDraggingOver, setIsDraggingOver] = useState(false);
   const [uploadedImg, setUploadedImg] = useState(null);
+  const [cutUploadedImg, setCutUploadedImg] = useState(null);
+  const [calculatingRatio, setCalculatingRatio] = useState(false);
 
   const handleDragOver = () => {
     setIsDraggingOver(true);
@@ -26,7 +28,12 @@ const App = () => {
       onClick={handleClickDefault}
       onDragOver={handleDragOver}
     >
-      {uploadedImg && <ImageEditor uploadedImg={uploadedImg} />}
+      {calculatingRatio && (
+        <ImageEditor
+          uploadedImg={uploadedImg}
+          setUploadedImg={setUploadedImg}
+        />
+      )}
       <div className={stl.brickBg}></div>
       <div className={stl.paddWrapper}>
         <button className={stl.burgerCta}>
@@ -55,8 +62,8 @@ const App = () => {
           <UploadModal
             handleDragLeave={handleDragLeave}
             isDraggingOver={isDraggingOver}
-            uploadedImg={uploadedImg}
             setUploadedImg={setUploadedImg}
+            uploadedImg={uploadedImg}
           />
         </main>
       </div>
