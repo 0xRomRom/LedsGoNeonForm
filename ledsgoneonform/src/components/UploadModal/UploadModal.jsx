@@ -43,17 +43,6 @@ const UploadModal = ({ handleDragLeave, isDraggingOver }) => {
 
   return (
     <>
-      {!isDraggingOver && (
-        <div
-          className={stl.largedropbox}
-          {...getRootProps()}
-          onDragLeave={handleDragLeave}
-        >
-          <span className={stl.filedrop}>
-            <FiPlusSquare /> Drop bestand
-          </span>
-        </div>
-      )}
       <div className={stl.modal}>
         <div className={stl.videoWrapper}>
           <VideoPlayer videoID={"KSAwVuqlAT4"} />
@@ -61,7 +50,7 @@ const UploadModal = ({ handleDragLeave, isDraggingOver }) => {
         <div className={stl.bottomBox}>
           <div className={stl.btnWrapper}>
             <div className={stl.btnBackground}>
-              <button className={stl.uploadFileCta}>
+              <button className={stl.uploadFileCta} {...getRootProps()}>
                 Upload bestand <HiOutlineUpload className={stl.uploadIcon} />
                 <input {...getInputProps()} name="Fileinput" />
               </button>
@@ -72,6 +61,20 @@ const UploadModal = ({ handleDragLeave, isDraggingOver }) => {
           </div>
         </div>
       </div>
+      {isDraggingOver && (
+        <div
+          className={stl.largedropbox}
+          {...getRootProps()}
+          onDragLeave={handleDragLeave}
+        >
+          <div className={stl.sphere}></div>
+          <div className={stl.cornerBox}>
+            <span className={stl.filedrop}>
+              <FiPlusSquare /> Drop bestand
+            </span>
+          </div>
+        </div>
+      )}
     </>
   );
 };
