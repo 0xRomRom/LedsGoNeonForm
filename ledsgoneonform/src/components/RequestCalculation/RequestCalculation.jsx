@@ -8,20 +8,24 @@ const RequestCalculation = ({
   setAspectRatio,
   wantsCalculation,
   setProgressState,
+  progressState,
+  toggleIconBool,
+  setToggleIconBool,
 }) => {
   const handleNoThanks = () => {
     setProgressState(2);
+    setToggleIconBool(true);
   };
   return (
     <div
       className={`${stl.requestcalculation} ${
-        wantsCalculation ? stl.folded : ""
-      } ${aspectRatio !== null || wantsCalculation ? stl.checked : ""}`}
+        toggleIconBool ? stl.folded : ""
+      } ${aspectRatio !== null || toggleIconBool ? stl.checked : ""}`}
     >
-      {wantsCalculation && (
+      {toggleIconBool && (
         <CgExpand
           className={stl.expander}
-          onClick={() => setProgressState(2)}
+          onClick={() => setToggleIconBool(false)}
         />
       )}
       <h3 className={stl.hero}>
@@ -30,7 +34,7 @@ const RequestCalculation = ({
             Wilt u een <span className={stl.green}>prijsschatting</span> maken?
           </>
         )}
-        {aspectRatio && !wantsCalculation && (
+        {aspectRatio && !toggleIconBool && (
           <div className={stl.aspectFlex}>
             <span className={stl.opgeslagen}>Afmetingen opgeslagen</span>
             <span className={stl.verhoudingenSpan}>
@@ -46,7 +50,7 @@ const RequestCalculation = ({
           </div>
         )}
       </h3>
-      {!aspectRatio && !wantsCalculation && (
+      {!aspectRatio && !toggleIconBool && (
         <div className={stl.ctaWrap}>
           <div className={stl.btnBackground}>
             <button

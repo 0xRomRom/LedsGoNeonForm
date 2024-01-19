@@ -15,6 +15,7 @@ const App = () => {
   const [longestSide, setLongestSide] = useState(null);
   const [wantsCalculation, setWantsCalculation] = useState(null);
   const [progressState, setProgressState] = useState(0);
+  const [toggleIconBool, setToggleIconBool] = useState(false);
 
   const handleDragOver = () => {
     setIsDraggingOver(true);
@@ -84,6 +85,9 @@ const App = () => {
               wantsCalculation={wantsCalculation}
               setWantsCalculation={setWantsCalculation}
               setProgressState={setProgressState}
+              progressState={progressState}
+              toggleIconBool={toggleIconBool}
+              setToggleIconBool={setToggleIconBool}
             />
           )}
           {progressState === 2 && (
