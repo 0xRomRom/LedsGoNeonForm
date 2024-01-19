@@ -44,3 +44,7 @@
 .green {
   color: rgb(0, 255, 0);
 }
+
+.checked {
+  box-shadow: 0px 0px 20px var(--green);
+}

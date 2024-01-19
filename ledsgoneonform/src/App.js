@@ -1,7 +1,7 @@
 import stl from "./App.module.css";
 import UploadModal from "./components/UploadModal/UploadModal";
 
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import ImageEditor from "./components/ImageEditor/ImageEditor";
 import RequestCalculation from "./components/RequestCalculation/RequestCalculation";
 import LongestRow from "./components/LongestRow/LongestRow";
@@ -77,6 +77,10 @@ const App = () => {
             setUploadedImg={setUploadedImg}
             uploadedImg={uploadedImg}
             setProgressState={setProgressState}
+            progressState={progressState}
+            setAspectRatio={setAspectRatio}
+            setLongestSide={setLongestSide}
+            setToggleIconBool={setToggleIconBool}
           />
           {uploadedImg && progressState >= 1 && (
             <RequestCalculation
@@ -85,12 +89,17 @@ const App = () => {
               setProgressState={setProgressState}
               toggleIconBool={toggleIconBool}
               setToggleIconBool={setToggleIconBool}
+              setLongestSide={setLongestSide}
             />
           )}
-          {progressState === 3 && (
-            <LongestRow setLongestSide={setLongestSide} />
+          {progressState >= 3 && (
+            <LongestRow
+              setLongestSide={setLongestSide}
+              setProgressState={setProgressState}
+              longestSide={longestSide}
+            />
           )}
-          {longestSide && <LedKind />}
+          {progressState === 4 && longestSide && <LedKind />}
         </main>
       </div>
     </div>

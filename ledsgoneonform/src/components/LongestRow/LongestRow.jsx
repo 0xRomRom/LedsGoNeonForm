@@ -1,23 +1,24 @@
 import React, { useState } from "react";
-import { useEffect } from "react";
 import stl from "./LongestRow.module.css";
 
-const LongestRow = ({ setLongestSide }) => {
+const LongestRow = ({ setLongestSide, setProgressState, longestSide }) => {
   // State to manage the selected value
   const [selectedValue, setSelectedValue] = useState("");
 
   // Function to handle select value change
   const handleSelectChange = (event) => {
+    console.log(event.target.value);
     setSelectedValue(event.target.value);
+    setLongestSide(event.target.value);
+    setProgressState(4);
   };
-  useEffect(() => {
-    if (selectedValue) {
-      setLongestSide(selectedValue);
-    }
-  }, [selectedValue]);
 
   return (
-    <div className={stl.longestRow}>
+    <div
+      className={`${stl.longestRow} ${
+        selectedValue || longestSide ? stl.checked : ""
+      }`}
+    >
       <h3 className={stl.hero}>
         Lengte <span className={stl.green}>langste</span> zijde
       </h3>

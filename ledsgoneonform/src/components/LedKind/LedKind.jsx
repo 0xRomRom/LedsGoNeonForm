@@ -6,9 +6,9 @@ const LedKind = () => {
   const [selectedValue, setSelectedValue] = useState("");
 
   // Function to handle select value change
-  const handleSelectChange = (event) => {
-    setSelectedValue(event.target.value);
-  };
+  // const handleSelectChange = (event) => {
+  //   setSelectedValue(event.target.value);
+  // };
 
   return (
     <div className={stl.longestRow}>
@@ -17,8 +17,8 @@ const LedKind = () => {
       </h3>
       <select
         className={stl.longestSelect}
-        value={selectedValue}
-        onChange={handleSelectChange}
+        // value={selectedValue}
+        // onChange={handleSelectChange}
       >
         <option value="" disabled>
           Kies een waarde

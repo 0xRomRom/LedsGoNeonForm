@@ -1,7 +1,6 @@
 import stl from "./RequestCalculation.module.css";
 import { BsAspectRatio } from "react-icons/bs";
 import { CgExpand } from "react-icons/cg";
-import { useState } from "react";
 
 const RequestCalculation = ({
   aspectRatio,
@@ -9,6 +8,7 @@ const RequestCalculation = ({
   setProgressState,
   toggleIconBool,
   setToggleIconBool,
+  setLongestSide,
 }) => {
   const handleNoThanks = () => {
     setProgressState(3);
@@ -26,6 +26,7 @@ const RequestCalculation = ({
           onClick={() => {
             setToggleIconBool(false);
             setProgressState(2);
+            setLongestSide(null);
           }}
         />
       )}

@@ -12,6 +12,10 @@ const UploadModal = ({
   setUploadedImg,
   uploadedImg,
   setProgressState,
+  progressState,
+  setAspectRatio,
+  setLongestSide,
+  setToggleIconBool,
 }) => {
   const [isHovered, setIsHovered] = useState(false);
 
@@ -47,9 +51,24 @@ const UploadModal = ({
 
       setUploadedImg(newFiles[0]);
       handleDragLeave(false);
-      setProgressState(1);
+      setAspectRatio(null);
+      setLongestSide(null);
+      setToggleIconBool(false);
+      if (progressState === 0) {
+        setProgressState(1);
+        return;
+      }
+      setProgressState(2);
     },
-    [handleDragLeave, setUploadedImg]
+    [
+      handleDragLeave,
+      setUploadedImg,
+      progressState,
+      setAspectRatio,
+      setLongestSide,
+      setProgressState,
+      setToggleIconBool,
+    ]
   );
 
   const { getRootProps, getInputProps } = useDropzone({
