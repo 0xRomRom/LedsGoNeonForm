@@ -1,17 +1,20 @@
 import stl from "./App.module.css";
 import UploadModal from "./components/UploadModal/UploadModal";
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import ImageEditor from "./components/ImageEditor/ImageEditor";
 import RequestCalculation from "./components/RequestCalculation/RequestCalculation";
 import LongestRow from "./components/LongestRow/LongestRow";
+import LedKind from "./components/LedKind/LedKind";
 
 const App = () => {
   const [isDraggingOver, setIsDraggingOver] = useState(false);
   const [uploadedImg, setUploadedImg] = useState(null);
   const [cutUploadedImg, setCutUploadedImg] = useState(null);
-  const [showRequestModal, setShowRequestModal] = useState(false);
+  const [showRequestModal, setShowRequestModal] = useState(null);
   const [aspectRatio, setAspectRatio] = useState(null);
+  const [longestSide, setLongestSide] = useState(null);
+  const [wantsCalculation, setWantsCalculation] = useState(null);
 
   const handleDragOver = () => {
     setIsDraggingOver(true);
@@ -24,6 +27,10 @@ const App = () => {
   const handleClickDefault = (e) => {
     e.preventDefault();
   };
+
+  useEffect(() => {
+    console.log(showRequestModal);
+  }, [showRequestModal]);
 
   return (
     <div
@@ -78,9 +85,14 @@ const App = () => {
               setShowRequestModal={setShowRequestModal}
               aspectRatio={aspectRatio}
               setAspectRatio={setAspectRatio}
+              wantsCalculation={wantsCalculation}
+              setWantsCalculation={setWantsCalculation}
             />
           )}
-          <LongestRow />
+          {wantsCalculation !== null && (
+            <LongestRow setLongestSide={setLongestSide} />
+          )}
+          {longestSide && <LedKind />}
         </main>
       </div>
     </div>

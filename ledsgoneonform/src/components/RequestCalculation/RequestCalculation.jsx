@@ -7,16 +7,23 @@ const RequestCalculation = ({
   setShowRequestModal,
   aspectRatio,
   setAspectRatio,
+  wantsCalculation,
+  setWantsCalculation,
 }) => {
-  const [noThanks, setNoThanks] = useState(false);
-
   const handleNoThanks = () => {
-    setNoThanks(true);
+    setWantsCalculation(true);
   };
   return (
-    <div className={`${stl.requestcalculation} ${noThanks ? stl.folded : ""}`}>
-      {noThanks && (
-        <CgExpand className={stl.expander} onClick={() => setNoThanks(false)} />
+    <div
+      className={`${stl.requestcalculation} ${
+        wantsCalculation ? stl.folded : ""
+      }`}
+    >
+      {wantsCalculation && (
+        <CgExpand
+          className={stl.expander}
+          onClick={() => setWantsCalculation(false)}
+        />
       )}
       <h3 className={stl.hero}>
         {!aspectRatio && (
@@ -24,7 +31,7 @@ const RequestCalculation = ({
             Wilt u een <span className={stl.green}>prijsschatting</span> maken?
           </>
         )}
-        {aspectRatio && !noThanks && (
+        {aspectRatio && !wantsCalculation && (
           <div className={stl.aspectFlex}>
             <span className={stl.opgeslagen}>Afmetingen opgeslagen</span>
             <span className={stl.verhoudingenSpan}>
@@ -40,7 +47,7 @@ const RequestCalculation = ({
           </div>
         )}
       </h3>
-      {!aspectRatio && !noThanks && (
+      {!aspectRatio && !wantsCalculation && (
         <div className={stl.ctaWrap}>
           <div className={stl.btnBackground}>
             <button

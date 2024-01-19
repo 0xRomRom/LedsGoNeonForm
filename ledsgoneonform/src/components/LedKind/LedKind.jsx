@@ -1,8 +1,7 @@
-import React, { useState } from "react";
-import { useEffect } from "react";
-import stl from "./LongestRow.module.css";
+import stl from "./LedKind.module.css";
+import { useState } from "react";
 
-const LongestRow = ({ setLongestSide }) => {
+const LedKind = () => {
   // State to manage the selected value
   const [selectedValue, setSelectedValue] = useState("");
 
@@ -10,11 +9,6 @@ const LongestRow = ({ setLongestSide }) => {
   const handleSelectChange = (event) => {
     setSelectedValue(event.target.value);
   };
-  useEffect(() => {
-    if (selectedValue) {
-      setLongestSide(selectedValue);
-    }
-  }, [selectedValue]);
 
   return (
     <div className={stl.longestRow}>
@@ -48,5 +42,4 @@ const LongestRow = ({ setLongestSide }) => {
     </div>
   );
 };
-
-export default LongestRow;
+export default LedKind;
