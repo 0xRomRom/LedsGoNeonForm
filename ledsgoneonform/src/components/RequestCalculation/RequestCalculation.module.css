@@ -25,7 +25,7 @@
 
 .green {
   font-size: 24px;
-  color: var(--green);
+  color: rgb(0, 255, 0);
 }
 
 .ctaWrap {
@@ -78,7 +78,7 @@
 }
 
 .cta1:hover {
-  background-color: var(--green);
+  background-color: green;
 }
 .cta2:hover {
   background-color: var(--red);
