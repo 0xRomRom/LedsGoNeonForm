@@ -1,4 +1,5 @@
 import stl from "./App.module.css";
+import UploadModal from "./components/UploadModal/UploadModal";
 
 const App = () => {
   return (
@@ -27,6 +28,9 @@ const App = () => {
             Stel hier vrijblijvend je eigen LED's Go Neon lamp samen
           </h2>
         </header>
+        <main className={stl.mainApp}>
+          <UploadModal />
+        </main>
       </div>
     </div>
   );
