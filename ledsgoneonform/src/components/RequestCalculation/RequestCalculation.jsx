@@ -1,6 +1,6 @@
 import stl from "./RequestCalculation.module.css";
 
-const RequestCalculation = () => {
+const RequestCalculation = ({ setShowRequestModal }) => {
   return (
     <div className={stl.requestcalculation}>
       <h3 className={stl.hero}>
@@ -11,7 +11,12 @@ const RequestCalculation = () => {
           <button className={`${stl.cta} ${stl.cta2}`}>Nee bedankt</button>
         </div>
         <div className={stl.btnBackground}>
-          <button className={`${stl.cta} ${stl.cta1}`}>Graag</button>
+          <button
+            className={`${stl.cta} ${stl.cta1}`}
+            onClick={() => setShowRequestModal(true)}
+          >
+            Graag
+          </button>
         </div>
       </div>
     </div>

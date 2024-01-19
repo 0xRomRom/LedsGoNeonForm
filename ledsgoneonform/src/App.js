@@ -10,6 +10,7 @@ const App = () => {
   const [uploadedImg, setUploadedImg] = useState(null);
   const [cutUploadedImg, setCutUploadedImg] = useState(null);
   const [requestCalculation, setRequestCalculation] = useState(false);
+  const [showRequestModal, setShowRequestModal] = useState(false);
 
   const handleDragOver = () => {
     setIsDraggingOver(true);
@@ -29,10 +30,11 @@ const App = () => {
       onClick={handleClickDefault}
       onDragOver={handleDragOver}
     >
-      {requestCalculation && (
+      {showRequestModal && uploadedImg && (
         <ImageEditor
           uploadedImg={uploadedImg}
           setUploadedImg={setUploadedImg}
+          setShowRequestModal={setShowRequestModal}
         />
       )}
       <div className={stl.brickBg}>
@@ -67,8 +69,11 @@ const App = () => {
             isDraggingOver={isDraggingOver}
             setUploadedImg={setUploadedImg}
             uploadedImg={uploadedImg}
+            setShowRequestModal={setShowRequestModal}
           />
-          <RequestCalculation />
+          {uploadedImg && (
+            <RequestCalculation setShowRequestModal={setShowRequestModal} />
+          )}
         </main>
       </div>
     </div>

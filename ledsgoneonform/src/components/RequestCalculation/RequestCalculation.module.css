@@ -78,7 +78,8 @@
 }
 
 .cta1:hover {
-  background-color: green;
+  background-color: rgb(0, 255, 0);
+  color: black;
 }
 .cta2:hover {
   background-color: var(--red);

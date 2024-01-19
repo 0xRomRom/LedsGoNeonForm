@@ -11,7 +11,7 @@ import { GrTopCorner } from "react-icons/gr";
 const MIN_DIMENSION = 25;
 const ASPECT_RATIO = 0;
 
-const ImageEditor = ({ uploadedImg, setUploadedImg }) => {
+const ImageEditor = ({ uploadedImg, setUploadedImg, setShowRequestModal }) => {
   const imgRef = useRef(null);
   const [imgSrc, setImgSrc] = useState("");
   const [crop, setCrop] = useState(null);
@@ -23,12 +23,12 @@ const ImageEditor = ({ uploadedImg, setUploadedImg }) => {
 
     const crop = makeAspectCrop(
       {
-        unit: "px",
+        unit: "%",
         width: cropWidthInPercent,
       },
-      ASPECT_RATIO,
-      width,
-      height
+      2,
+      width * 3,
+      height * 3
     );
     const centeredCrop = centerCrop(crop, width, height);
     setCrop(centeredCrop);
@@ -37,6 +37,10 @@ const ImageEditor = ({ uploadedImg, setUploadedImg }) => {
   useEffect(() => {
     const handleFileChange = () => {
       const file = uploadedImg.file;
+      console.log(file);
+      if (!file) {
+        return;
+      }
       const reader = new FileReader();
 
       reader.addEventListener("load", () => {
@@ -78,11 +82,11 @@ const ImageEditor = ({ uploadedImg, setUploadedImg }) => {
   };
 
   useEffect(() => {
-    console.log(crop);
-  }, [crop]);
+    console.log(uploadedImg);
+  }, [uploadedImg]);
 
   const handleCancel = () => {
-    setUploadedImg(null);
+    setShowRequestModal(false);
   };
 
   return (
@@ -92,6 +96,7 @@ const ImageEditor = ({ uploadedImg, setUploadedImg }) => {
           <h2 className={stl.logoBijSnijden}>Oppervlakte Berekenen</h2>
           <span className={stl.subSpan}>Selecteer de gewenste omtrek</span>
           <div className={stl.workSpaceInner}>
+            <span>{}</span>
             <GrTopCorner className={stl.cornerLeftTop} />
             <GrTopCorner className={stl.cornerRightTop} />
             <GrTopCorner className={stl.cornerBottomLeft} />
@@ -117,7 +122,7 @@ const ImageEditor = ({ uploadedImg, setUploadedImg }) => {
           </div>
           <div className={stl.btnsWrapper}>
             <button className={stl.annuleer} onClick={handleCancel}>
-              Annuleer
+              Annuleren
             </button>
             <button
               className={`${stl.bevestigenCta} ${
