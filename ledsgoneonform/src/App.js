@@ -41,6 +41,7 @@ const App = () => {
           setUploadedImg={setUploadedImg}
           setAspectRatio={setAspectRatio}
           setProgressState={setProgressState}
+          setToggleIconBool={setToggleIconBool}
         />
       )}
       <div className={stl.brickBg}>
@@ -90,7 +91,7 @@ const App = () => {
               setToggleIconBool={setToggleIconBool}
             />
           )}
-          {progressState === 2 && (
+          {progressState === 3 && (
             <LongestRow setLongestSide={setLongestSide} />
           )}
           {longestSide && <LedKind />}

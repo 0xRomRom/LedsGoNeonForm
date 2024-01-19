@@ -16,6 +16,7 @@ const ImageEditor = ({
   setUploadedImg,
   setAspectRatio,
   setProgressState,
+  setToggleIconBool,
 }) => {
   const imgRef = useRef(null);
   const [imgSrc, setImgSrc] = useState("");
@@ -84,11 +85,13 @@ const ImageEditor = ({
     const aspectRatio = +(width / height).toFixed(4);
     // console.log("Aspect Ratio: ", aspectRatio);
     setAspectRatio(aspectRatio);
-    setProgressState(2);
+    setProgressState(3);
+    setToggleIconBool(false);
   };
 
   const handleCancel = () => {
     setProgressState(2);
+    setToggleIconBool(false);
   };
 
   return (

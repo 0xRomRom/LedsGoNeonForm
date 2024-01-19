@@ -13,19 +13,22 @@ const RequestCalculation = ({
   setToggleIconBool,
 }) => {
   const handleNoThanks = () => {
-    setProgressState(2);
+    setProgressState(3);
     setToggleIconBool(true);
   };
   return (
     <div
       className={`${stl.requestcalculation} ${
         toggleIconBool ? stl.folded : ""
-      } ${aspectRatio !== null || toggleIconBool ? stl.checked : ""}`}
+      } ${aspectRatio > 0 ? stl.checked : ""}`}
     >
       {toggleIconBool && (
         <CgExpand
           className={stl.expander}
-          onClick={() => setToggleIconBool(false)}
+          onClick={() => {
+            setToggleIconBool(false);
+            setProgressState(2);
+          }}
         />
       )}
       <h3 className={stl.hero}>
@@ -43,7 +46,10 @@ const RequestCalculation = ({
             </span>
             <span
               className={stl.berekenOpnieuw}
-              onClick={() => setAspectRatio(null)}
+              onClick={() => {
+                setAspectRatio(null);
+                setProgressState(3);
+              }}
             >
               Bereken opnieuw
             </span>
