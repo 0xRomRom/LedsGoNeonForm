@@ -101,10 +101,13 @@ const App = () => {
               longestSide={longestSide}
             />
           )}
-          {progressState === 4 && longestSide && (
-            <LedKind setLedType={setLedType} />
+          {progressState >= 4 && longestSide && (
+            <LedKind
+              setLedType={setLedType}
+              setProgressState={setProgressState}
+            />
           )}
-          <BackplateType />
+          {progressState === 5 && <BackplateType />}
         </main>
       </div>
     </div>

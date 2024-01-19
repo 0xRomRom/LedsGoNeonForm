@@ -56,12 +56,13 @@
 .rgb {
   background: linear-gradient(
     90deg,
-    rgb(255, 0, 0),
-    rgb(0, 255, 0),
-    rgb(0, 0, 255)
+    rgb(9, 61, 158),
+    rgb(71, 15, 144),
+    rgb(34, 34, 159)
   );
   -webkit-background-clip: text;
   color: transparent;
+  /* text-shadow: 0px 0px 5px rgb(0, 87, 134); */
 }
 
 .checked {

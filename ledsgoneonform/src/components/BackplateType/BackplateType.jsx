@@ -14,12 +14,8 @@ const BackplateType = () => {
         Soort
         <span
           className={`${stl.green} ${
-            selectedValue === "Transparant"
-              ? "Gekleurd"
-                ? stl.greenTransparent
-                : ""
-              : stl.rgb
-          }`}
+            selectedValue === "Transparant" ? stl.greenTransparent : ""
+          }  ${selectedValue === "Gekleurd" ? stl.rgb : ""}`}
         >
           {" "}
           achterplaat

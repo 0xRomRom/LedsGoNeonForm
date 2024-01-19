@@ -1,12 +1,13 @@
 import stl from "./LedKind.module.css";
 import { useState } from "react";
 
-const LedKind = ({ setLedType }) => {
+const LedKind = ({ setLedType, setProgressState }) => {
   const [selectedValue, setSelectedValue] = useState("");
 
   const handleSelectChange = (event) => {
     setSelectedValue(event.target.value);
     setLedType(selectedValue);
+    setProgressState(5);
   };
 
   return (
