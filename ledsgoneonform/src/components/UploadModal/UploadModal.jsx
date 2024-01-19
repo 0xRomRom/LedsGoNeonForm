@@ -2,7 +2,7 @@ import stl from "./UploadModal.module.css";
 import { HiOutlineUpload } from "react-icons/hi";
 import VideoPlayer from "../videoplayer/VideoPlayer";
 import { useDropzone } from "react-dropzone";
-import { useCallback } from "react";
+import { useCallback, useState } from "react";
 import { FiPlusSquare } from "react-icons/fi";
 import { FaCheck } from "react-icons/fa";
 
@@ -12,6 +12,8 @@ const UploadModal = ({
   setUploadedImg,
   uploadedImg,
 }) => {
+  const [isHovered, setIsHovered] = useState(false);
+
   const onDrop = useCallback(
     (acceptedFiles) => {
       let newFiles = [];
@@ -61,11 +63,27 @@ const UploadModal = ({
         </div>
         <div className={stl.bottomBox}>
           <div className={stl.btnWrapper}>
-            <div className={stl.btnBackground}>
-              <button className={stl.uploadFileCta} {...getRootProps()}>
+            <div
+              className={`${stl.btnBackground} ${
+                uploadedImg ? stl.activeBackground : ""
+              }`}
+            >
+              <button
+                className={`${stl.uploadFileCta} ${
+                  uploadedImg ? stl.activeCta : ""
+                }`}
+                {...getRootProps()}
+                onMouseEnter={() => setIsHovered(true)}
+                onMouseLeave={() => setIsHovered(false)}
+              >
                 {uploadedImg ? (
                   <span className={stl.uploadSpan}>
-                    Bestand Geupload <FaCheck />
+                    {/* {isHovered ? "Upload bestand" : "Bestand Geupload"}{" "} */}
+                    {isHovered ? "Upload bestand" : "Bestand Geupload"}{" "}
+                    {isHovered && (
+                      <HiOutlineUpload className={stl.uploadIcon} />
+                    )}
+                    {!isHovered && <FaCheck />}
                   </span>
                 ) : (
                   <span className={stl.uploadSpan}>
