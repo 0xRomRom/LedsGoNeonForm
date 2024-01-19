@@ -42,34 +42,37 @@ const UploadModal = ({ handleDragLeave, isDraggingOver }) => {
   }, [uploaded]);
 
   return (
-    <div className={stl.modal}>
-      {isDraggingOver && (
+    <>
+      {!isDraggingOver && (
         <div
           className={stl.largedropbox}
           {...getRootProps()}
           onDragLeave={handleDragLeave}
         >
           <span className={stl.filedrop}>
-            <FiPlusSquare /> Drop Files
+            <FiPlusSquare /> Drop bestand
           </span>
         </div>
       )}
-
-      <div className={stl.videoWrapper}>
-        <VideoPlayer videoID={"KSAwVuqlAT4"} />
-      </div>
-      <div className={stl.bottomBox}>
-        <div className={stl.btnWrapper}>
-          <div className={stl.btnBackground}>
-            <button className={stl.uploadFileCta}>
-              Upload bestand <HiOutlineUpload className={stl.uploadIcon} />
-              <input {...getInputProps()} name="Fileinput" />
-            </button>
+      <div className={stl.modal}>
+        <div className={stl.videoWrapper}>
+          <VideoPlayer videoID={"KSAwVuqlAT4"} />
+        </div>
+        <div className={stl.bottomBox}>
+          <div className={stl.btnWrapper}>
+            <div className={stl.btnBackground}>
+              <button className={stl.uploadFileCta}>
+                Upload bestand <HiOutlineUpload className={stl.uploadIcon} />
+                <input {...getInputProps()} name="Fileinput" />
+              </button>
+            </div>
+            <span className={stl.sleepBestanden}>
+              Sleep je bestand hierheen
+            </span>
           </div>
-          <span className={stl.sleepBestanden}>Sleep je bestand hierheen</span>
         </div>
       </div>
-    </div>
+    </>
   );
 };
 
