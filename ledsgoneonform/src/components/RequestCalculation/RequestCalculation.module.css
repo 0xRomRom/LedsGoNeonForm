@@ -19,12 +19,13 @@
   color: white;
   position: relative;
   top: 0;
-  font-size: 24px;
+  font-size: 30px;
   padding-top: 1rem;
+  user-select: none;
 }
 
 .green {
-  font-size: 24px;
+  font-size: 30px;
   color: rgb(0, 255, 0);
 }
 
@@ -101,7 +102,7 @@
 .berekenOpnieuw {
   position: relative;
   font-size: 14px;
-  top: 2rem;
+  top: 1rem;
   color: gray;
   cursor: pointer;
   transition: all 0.3s ease-in-out;
@@ -117,8 +118,30 @@
   justify-content: center;
   align-items: center;
   gap: 0.5rem;
+  font-size: 34px;
 }
 
 .aspectIcon {
   color: gray;
+  font-size: 30px;
+}
+
+.folded {
+  height: 5rem;
+  padding-bottom: 2rem;
+  position: relative;
+}
+
+.expander {
+  position: absolute;
+  bottom: -9px;
+  font-size: 19px;
+  transform: rotate(135deg);
+  color: rgba(177, 177, 177, 0.6);
+  cursor: pointer;
+  transition: all 0.3s ease-in-out;
+}
+
+.expander:hover {
+  color: white;
 }

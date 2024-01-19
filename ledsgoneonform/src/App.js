@@ -4,6 +4,7 @@ import UploadModal from "./components/UploadModal/UploadModal";
 import { useState } from "react";
 import ImageEditor from "./components/ImageEditor/ImageEditor";
 import RequestCalculation from "./components/RequestCalculation/RequestCalculation";
+import LongestRow from "./components/LongestRow/LongestRow";
 
 const App = () => {
   const [isDraggingOver, setIsDraggingOver] = useState(false);
@@ -79,6 +80,7 @@ const App = () => {
               setAspectRatio={setAspectRatio}
             />
           )}
+          <LongestRow />
         </main>
       </div>
     </div>

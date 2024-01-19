@@ -1,20 +1,30 @@
 import stl from "./RequestCalculation.module.css";
 import { BsAspectRatio } from "react-icons/bs";
+import { CgExpand } from "react-icons/cg";
+import { useState } from "react";
 
 const RequestCalculation = ({
   setShowRequestModal,
   aspectRatio,
   setAspectRatio,
 }) => {
+  const [noThanks, setNoThanks] = useState(false);
+
+  const handleNoThanks = () => {
+    setNoThanks(true);
+  };
   return (
-    <div className={stl.requestcalculation}>
+    <div className={`${stl.requestcalculation} ${noThanks ? stl.folded : ""}`}>
+      {noThanks && (
+        <CgExpand className={stl.expander} onClick={() => setNoThanks(false)} />
+      )}
       <h3 className={stl.hero}>
         {!aspectRatio && (
           <>
             Wilt u een <span className={stl.green}>prijsschatting</span> maken?
           </>
         )}
-        {aspectRatio && (
+        {aspectRatio && !noThanks && (
           <div className={stl.aspectFlex}>
             <span className={stl.opgeslagen}>Afmetingen opgeslagen</span>
             <span className={stl.verhoudingenSpan}>
@@ -30,10 +40,15 @@ const RequestCalculation = ({
           </div>
         )}
       </h3>
-      {!aspectRatio && (
+      {!aspectRatio && !noThanks && (
         <div className={stl.ctaWrap}>
           <div className={stl.btnBackground}>
-            <button className={`${stl.cta} ${stl.cta2}`}>Nee bedankt</button>
+            <button
+              className={`${stl.cta} ${stl.cta2}`}
+              onClick={handleNoThanks}
+            >
+              Nee bedankt
+            </button>
           </div>
           <div className={stl.btnBackground}>
             <button
