@@ -4,25 +4,24 @@ import { CgExpand } from "react-icons/cg";
 import { useState } from "react";
 
 const RequestCalculation = ({
-  setShowRequestModal,
   aspectRatio,
   setAspectRatio,
   wantsCalculation,
-  setWantsCalculation,
+  setProgressState,
 }) => {
   const handleNoThanks = () => {
-    setWantsCalculation(true);
+    setProgressState(2);
   };
   return (
     <div
       className={`${stl.requestcalculation} ${
         wantsCalculation ? stl.folded : ""
-      }`}
+      } ${aspectRatio !== null || wantsCalculation ? stl.checked : ""}`}
     >
       {wantsCalculation && (
         <CgExpand
           className={stl.expander}
-          onClick={() => setWantsCalculation(false)}
+          onClick={() => setProgressState(2)}
         />
       )}
       <h3 className={stl.hero}>
@@ -60,7 +59,7 @@ const RequestCalculation = ({
           <div className={stl.btnBackground}>
             <button
               className={`${stl.cta} ${stl.cta1}`}
-              onClick={() => setShowRequestModal(true)}
+              onClick={() => setProgressState(0)}
             >
               Graag
             </button>

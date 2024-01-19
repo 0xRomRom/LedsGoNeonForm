@@ -11,10 +11,10 @@ const App = () => {
   const [isDraggingOver, setIsDraggingOver] = useState(false);
   const [uploadedImg, setUploadedImg] = useState(null);
   const [cutUploadedImg, setCutUploadedImg] = useState(null);
-  const [showRequestModal, setShowRequestModal] = useState(null);
   const [aspectRatio, setAspectRatio] = useState(null);
   const [longestSide, setLongestSide] = useState(null);
   const [wantsCalculation, setWantsCalculation] = useState(null);
+  const [progressState, setProgressState] = useState(0);
 
   const handleDragOver = () => {
     setIsDraggingOver(true);
@@ -34,12 +34,12 @@ const App = () => {
       onClick={handleClickDefault}
       onDragOver={handleDragOver}
     >
-      {showRequestModal && uploadedImg && !aspectRatio && (
+      {uploadedImg && !aspectRatio && progressState === 0 && (
         <ImageEditor
           uploadedImg={uploadedImg}
           setUploadedImg={setUploadedImg}
-          setShowRequestModal={setShowRequestModal}
           setAspectRatio={setAspectRatio}
+          setProgressState={setProgressState}
         />
       )}
       <div className={stl.brickBg}>
@@ -75,18 +75,18 @@ const App = () => {
             isDraggingOver={isDraggingOver}
             setUploadedImg={setUploadedImg}
             uploadedImg={uploadedImg}
-            setShowRequestModal={setShowRequestModal}
+            setProgressState={setProgressState}
           />
-          {uploadedImg && (
+          {uploadedImg && progressState >= 1 && (
             <RequestCalculation
-              setShowRequestModal={setShowRequestModal}
               aspectRatio={aspectRatio}
               setAspectRatio={setAspectRatio}
               wantsCalculation={wantsCalculation}
               setWantsCalculation={setWantsCalculation}
+              setProgressState={setProgressState}
             />
           )}
-          {wantsCalculation !== null && (
+          {progressState === 2 && (
             <LongestRow setLongestSide={setLongestSide} />
           )}
           {longestSide && <LedKind />}

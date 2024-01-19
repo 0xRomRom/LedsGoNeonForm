@@ -11,6 +11,7 @@ const UploadModal = ({
   isDraggingOver,
   setUploadedImg,
   uploadedImg,
+  setProgressState,
 }) => {
   const [isHovered, setIsHovered] = useState(false);
 
@@ -46,6 +47,7 @@ const UploadModal = ({
 
       setUploadedImg(newFiles[0]);
       handleDragLeave(false);
+      setProgressState(1);
     },
     [handleDragLeave, setUploadedImg]
   );

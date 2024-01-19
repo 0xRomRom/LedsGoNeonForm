@@ -14,8 +14,8 @@ const ASPECT_RATIO = 0;
 const ImageEditor = ({
   uploadedImg,
   setUploadedImg,
-  setShowRequestModal,
   setAspectRatio,
+  setProgressState,
 }) => {
   const imgRef = useRef(null);
   const [imgSrc, setImgSrc] = useState("");
@@ -84,10 +84,11 @@ const ImageEditor = ({
     const aspectRatio = +(width / height).toFixed(4);
     // console.log("Aspect Ratio: ", aspectRatio);
     setAspectRatio(aspectRatio);
+    setProgressState(2);
   };
 
   const handleCancel = () => {
-    setShowRequestModal(false);
+    setProgressState(2);
   };
 
   return (
