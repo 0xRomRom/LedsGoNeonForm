@@ -6,6 +6,7 @@ import ReactCrop, {
   convertToPixelCrop,
   makeAspectCrop,
 } from "react-image-crop";
+import "react-image-crop/dist/ReactCrop.css";
 
 const MIN_DIMENSION = 150;
 
