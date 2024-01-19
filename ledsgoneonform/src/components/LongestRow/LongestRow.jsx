@@ -7,7 +7,6 @@ const LongestRow = ({ setLongestSide, setProgressState, longestSide }) => {
 
   // Function to handle select value change
   const handleSelectChange = (event) => {
-    console.log(event.target.value);
     setSelectedValue(event.target.value);
     setLongestSide(event.target.value);
     setProgressState(4);
@@ -24,10 +23,10 @@ const LongestRow = ({ setLongestSide, setProgressState, longestSide }) => {
       </h3>
       <select
         className={stl.longestSelect}
-        value={selectedValue}
+        value={selectedValue || "Kies een waarde"}
         onChange={handleSelectChange}
       >
-        <option value="" disabled>
+        <option value="Empty" default>
           Kies een waarde
         </option>
         <option value="60cm">60cm</option>

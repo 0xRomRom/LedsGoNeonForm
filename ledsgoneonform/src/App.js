@@ -15,6 +15,7 @@ const App = () => {
   const [longestSide, setLongestSide] = useState(null);
   const [progressState, setProgressState] = useState(0);
   const [toggleIconBool, setToggleIconBool] = useState(false);
+  const [ledType, setLedType] = useState(null);
 
   const handleDragOver = () => {
     setIsDraggingOver(true);
@@ -99,7 +100,9 @@ const App = () => {
               longestSide={longestSide}
             />
           )}
-          {progressState === 4 && longestSide && <LedKind />}
+          {progressState === 4 && longestSide && (
+            <LedKind setLedType={setLedType} />
+          )}
         </main>
       </div>
     </div>

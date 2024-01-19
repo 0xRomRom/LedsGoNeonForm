@@ -1,43 +1,35 @@
 import stl from "./LedKind.module.css";
 import { useState } from "react";
 
-const LedKind = () => {
-  // State to manage the selected value
+const LedKind = ({ setLedType }) => {
   const [selectedValue, setSelectedValue] = useState("");
 
-  // Function to handle select value change
-  // const handleSelectChange = (event) => {
-  //   setSelectedValue(event.target.value);
-  // };
+  const handleSelectChange = (event) => {
+    setSelectedValue(event.target.value);
+    setLedType(selectedValue);
+  };
 
   return (
-    <div className={stl.longestRow}>
+    <div className={`${stl.longestRow} ${selectedValue ? stl.checked : ""}`}>
       <h3 className={stl.hero}>
-        Lengte <span className={stl.green}>langste</span> zijde
+        Led
+        <span
+          className={`${stl.green} ${selectedValue === "RGB" ? stl.rgb : ""}`}
+        >
+          {" "}
+          type
+        </span>
       </h3>
       <select
         className={stl.longestSelect}
-        // value={selectedValue}
-        // onChange={handleSelectChange}
+        value={selectedValue}
+        onChange={handleSelectChange}
       >
-        <option value="" disabled>
-          Kies een waarde
+        <option value="" default disabled>
+          Kies kleurtype
         </option>
-        <option value="60cm">60cm</option>
-        <option value="70cm">70cm</option>
-        <option value="80cm">80cm</option>
-        <option value="90cm">90cm</option>
-        <option value="100cm">100cm</option>
-        <option value="120cm">120cm</option>
-        <option value="140cm">140cm</option>
-        <option value="160cm">160cm</option>
-        <option value="180cm">180cm</option>
-        <option value="200cm">200cm</option>
-        <option value="220cm">220cm</option>
-        <option value="240cm">240cm</option>
-        <option value="" disabled>
-          Groter? Geef aan bij opmerkingen
-        </option>
+        <option value="Single color">Single color</option>
+        <option value="RGB">RGB (€ +40%) </option>
       </select>
     </div>
   );
