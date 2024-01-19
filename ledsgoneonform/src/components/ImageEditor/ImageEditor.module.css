@@ -11,17 +11,136 @@
 }
 
 .workSpace {
-  width: 1000px;
-  height: 1300px;
-  background-color: rgb(177, 177, 177);
+  background-color: black;
+  box-shadow: 0px 0px 20px purple;
+  padding: 0.5rem 5rem;
+  border-radius: 0.8rem;
+  padding-bottom: 0rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
 }
 
 .workSpaceInner {
-  height: 100%;
-  width: 100%;
+  /* height: 100%; */
+  /* width: 100%; */
   position: relative;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  /* border: 1px solid rgb(23, 23, 23); */
+}
+
+.logoBijSnijden {
+  color: white;
+  font-size: 40px;
+  user-select: none;
+  text-align: center;
+}
+
+.cornerLeftTop {
+  color: white;
+  position: absolute;
+  left: -5px;
+  top: -5px;
+}
+.cornerRightTop {
+  color: white;
+  position: absolute;
+  right: -5px;
+  top: -5px;
+  transform: rotate(90deg);
+}
+
+.cornerBottomLeft {
+  color: white;
+  position: absolute;
+  left: -5px;
+  bottom: -5px;
+  transform: rotate(270deg);
+}
+.cornerBottomRight {
+  color: white;
+  position: absolute;
+  right: -5px;
+  bottom: -5px;
+  transform: rotate(180deg);
+}
+
+.subSpan {
+  color: white;
+  padding-bottom: 1rem;
+  user-select: none;
+}
+
+.bevestigenCta {
+  width: 12rem;
+  height: 3rem;
+  border-radius: 0.4rem;
+  background-color: var(--pink);
+  color: white;
+  outline: none;
+  border: none;
+  font-size: 18px;
+  font-weight: bold;
+  cursor: pointer;
+  position: relative;
+  transition: all 0.3s ease-in-out;
+  -webkit-user-select: none;
+  user-select: none;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 5px;
+  padding: 0px 10px;
+  pointer-events: initial;
+}
+
+.bevestigenCta:hover {
+  background-color: rgb(111, 1, 110);
+  box-shadow: 0px 0px 5px var(--pink);
+  transition: all 0.3s ease-in-out;
+}
+
+.disabledBtn {
+  pointer-events: none;
+  background-color: rgb(99, 38, 99);
+}
+
+.btnsWrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 1rem;
+  padding: 1rem 0rem;
+}
+
+.annuleer {
+  width: 12rem;
+  height: 3rem;
+  border-radius: 0.4rem;
+  background-color: red;
+  background-color: transparent;
+  color: white;
+  outline: none;
+  border: 2px solid rgb(99, 38, 99);
+  font-size: 18px;
+  font-weight: bold;
+  cursor: pointer;
+  position: relative;
+  transition: all 0.3s ease-in-out;
+  -webkit-user-select: none;
+  user-select: none;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 5px;
+  padding: 0px 10px;
+  pointer-events: initial;
+}
+
+.annuleer:hover {
+  background-color: rgb(99, 38, 99);
 }

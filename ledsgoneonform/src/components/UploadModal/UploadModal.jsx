@@ -8,13 +8,28 @@ import { FiPlusSquare } from "react-icons/fi";
 const UploadModal = ({
   handleDragLeave,
   isDraggingOver,
-  uploaded,
-  setUploaded,
+  uploadedImg,
+  setUploadedImg,
 }) => {
   const onDrop = useCallback(
     (acceptedFiles) => {
       let newFiles = [];
-      const filetypes = ["png", "jpg", "jpeg", "webp", "bmp", "tiff", "gif"];
+      const filetypes = [
+        "png",
+        "jpg",
+        "jpeg",
+        "webp",
+        "bmp",
+        "tiff",
+        "gif",
+        "PNG",
+        "JPG",
+        "JPEG",
+        "WEBP",
+        "BMP",
+        "TIFF",
+        "GIF",
+      ];
       acceptedFiles.forEach((file) => {
         const newFile = {
           file,
@@ -26,10 +41,10 @@ const UploadModal = ({
         });
       });
 
-      setUploaded(newFiles[0]);
+      setUploadedImg(newFiles[0]);
       handleDragLeave(false);
     },
-    [handleDragLeave, setUploaded]
+    [handleDragLeave, setUploadedImg]
   );
 
   const { getRootProps, getInputProps } = useDropzone({
@@ -38,10 +53,10 @@ const UploadModal = ({
   });
 
   useEffect(() => {
-    if (uploaded) {
-      console.log(uploaded.file);
+    if (uploadedImg) {
+      console.log(uploadedImg.file);
     }
-  }, [uploaded]);
+  }, [uploadedImg]);
 
   return (
     <>

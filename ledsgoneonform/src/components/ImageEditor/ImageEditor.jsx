@@ -1,5 +1,4 @@
 import stl from "./ImageEditor.module.css";
-import setCanvasPreview from "./setCanvasPreview";
 import { useRef, useState, useEffect } from "react";
 import ReactCrop, {
   centerCrop,
@@ -7,16 +6,16 @@ import ReactCrop, {
   makeAspectCrop,
 } from "react-image-crop";
 import "react-image-crop/dist/ReactCrop.css";
+import { GrTopCorner } from "react-icons/gr";
 
-const MIN_DIMENSION = 150;
+const MIN_DIMENSION = 25;
+const ASPECT_RATIO = 0;
 
-const ImageEditor = ({ uploaded }) => {
+const ImageEditor = ({ uploadedImg }) => {
   const imgRef = useRef(null);
-  const previewCanvasRef = useRef(null);
   const [imgSrc, setImgSrc] = useState("");
-  const [crop, setCrop] = useState();
+  const [crop, setCrop] = useState(null);
   const [error, setError] = useState("");
-  const [ASPECT_RATIO, SET_ASPECT_RAIO] = useState(16 / 9);
 
   const onImageLoad = (e) => {
     const { width, height } = e.currentTarget;
@@ -24,7 +23,7 @@ const ImageEditor = ({ uploaded }) => {
 
     const crop = makeAspectCrop(
       {
-        unit: "%",
+        unit: "px",
         width: cropWidthInPercent,
       },
       ASPECT_RATIO,
@@ -37,8 +36,7 @@ const ImageEditor = ({ uploaded }) => {
 
   useEffect(() => {
     const handleFileChange = () => {
-      const file = uploaded.file;
-      console.log(file);
+      const file = uploadedImg.file;
       const reader = new FileReader();
 
       reader.addEventListener("load", () => {
@@ -65,25 +63,41 @@ const ImageEditor = ({ uploaded }) => {
 
     // Assuming uploaded is coming from some external source or a prop
     // and you need to watch for changes to it
-    handleFileChange({ target: { files: [uploaded] } });
+    handleFileChange({ target: { files: [uploadedImg] } });
 
     // Add any dependencies if needed
-  }, [uploaded, error, setImgSrc]);
+  }, [uploadedImg, error, setImgSrc]);
+
+  const handleCropSave = () => {
+    const cropObject = convertToPixelCrop(
+      crop,
+      imgRef.current.width,
+      imgRef.current.height
+    );
+    const { width, height } = cropObject;
+    const aspectRatio = +(width / height).toFixed(4);
+    console.log("Aspect Ratio: ", aspectRatio);
+  };
+
+  useEffect(() => {
+    console.log(crop);
+  }, [crop]);
 
   return (
     <div className={stl.imageEditor}>
-      <div className={stl.workSpace}>
-        {imgSrc && (
+      {imgSrc && (
+        <div className={stl.workSpace}>
+          <h2 className={stl.logoBijSnijden}>Oppervlakte Berekenen</h2>
+          <span className={stl.subSpan}>Selecteer de gewenste omtrek</span>
           <div className={stl.workSpaceInner}>
-            <div className={stl.cropDimensions}>
-              <span>Hoogte: {Math.floor(crop?.height)} cm</span>
-              <span>Lengte: {Math.floor(crop?.width)} cm</span>
-            </div>
+            <GrTopCorner className={stl.cornerLeftTop} />
+            <GrTopCorner className={stl.cornerRightTop} />
+            <GrTopCorner className={stl.cornerBottomLeft} />
+            <GrTopCorner className={stl.cornerBottomRight} />
             <ReactCrop
               crop={crop}
               onChange={(pixelCrop, percentCrop) => {
                 setCrop(percentCrop);
-                console.log(percentCrop);
               }}
               // keepSelection
               aspect={ASPECT_RATIO}
@@ -98,29 +112,20 @@ const ImageEditor = ({ uploaded }) => {
                 onLoad={onImageLoad}
               />
             </ReactCrop>
-
+          </div>
+          <div className={stl.btnsWrapper}>
+            <button className={stl.annuleer}>Annuleer</button>
             <button
-              className={`${"text-white font-mono text-xs py-2 px-4 rounded-2xl mt-4 bg-sky-500 hover:bg-sky-600 hi"} ${
-                stl.hi
+              className={`${stl.bevestigenCta} ${
+                crop?.width > 0 && crop?.height > 0 ? "" : stl.disabledBtn
               }`}
-              onClick={() => {
-                setCanvasPreview(
-                  imgRef.current, // HTMLImageElement
-                  previewCanvasRef.current, // HTMLCanvasElement
-                  convertToPixelCrop(
-                    crop,
-                    imgRef.current.width,
-                    imgRef.current.height
-                  )
-                );
-                const dataUrl = previewCanvasRef.current.toDataURL();
-              }}
+              onClick={handleCropSave}
             >
-              Crop Image
+              Bevestigen
             </button>
           </div>
-        )}
-      </div>
+        </div>
+      )}
     </div>
   );
 };
