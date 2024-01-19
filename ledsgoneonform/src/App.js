@@ -28,10 +28,6 @@ const App = () => {
     e.preventDefault();
   };
 
-  useEffect(() => {
-    console.log(showRequestModal);
-  }, [showRequestModal]);
-
   return (
     <div
       className={stl.app}
@@ -69,7 +65,8 @@ const App = () => {
             <span className={stl.pink}>Logo</span> samenstellen
           </h1>
           <h2 className={stl.subHero}>
-            Stel hier vrijblijvend je eigen LED's Go Neon lamp samen
+            Stel hier <span className={stl.green}>vrijblijvend</span> je eigen
+            LED's Go Neon lamp samen
           </h2>
         </header>
         <main className={stl.mainApp}>

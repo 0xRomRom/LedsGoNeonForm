@@ -42,7 +42,6 @@ const ImageEditor = ({
   useEffect(() => {
     const handleFileChange = () => {
       const file = uploadedImg.file;
-      console.log(file);
       if (!file) {
         return;
       }
@@ -86,10 +85,6 @@ const ImageEditor = ({
     // console.log("Aspect Ratio: ", aspectRatio);
     setAspectRatio(aspectRatio);
   };
-
-  useEffect(() => {
-    console.log(uploadedImg);
-  }, [uploadedImg]);
 
   const handleCancel = () => {
     setShowRequestModal(false);
