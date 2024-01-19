@@ -19,4 +19,6 @@ body {
   --hero-font: "Outfit", sans-serif;
   --pink: rgb(255, 0, 184);
   --purple: rgb(179, 0, 255);
+  --green: rgb(0, 183, 0);
+  --red: red;
 }

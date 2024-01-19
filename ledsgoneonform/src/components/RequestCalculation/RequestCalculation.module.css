@@ -1,0 +1,85 @@
+.requestcalculation {
+  background-color: rgba(0, 0, 0, 0.6);
+  width: 700px;
+  margin-top: 4rem;
+  height: 10rem;
+  border-radius: 0.8rem;
+  padding: 15px;
+  box-shadow: 0px 0px 20px var(--purple);
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  pointer-events: none;
+  z-index: 20;
+}
+
+.hero {
+  color: white;
+  position: relative;
+  top: 0;
+  font-size: 24px;
+  padding-top: 1rem;
+}
+
+.green {
+  font-size: 24px;
+  color: var(--green);
+}
+
+.ctaWrap {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 1rem;
+  padding: 2rem 0rem;
+  position: relative;
+}
+
+.cta {
+  width: 13rem;
+  height: 3rem;
+  border-radius: 0.4rem;
+  background-color: var(--pink);
+  color: white;
+  outline: none;
+  border: none;
+  font-size: 18px;
+  font-weight: bold;
+  cursor: pointer;
+  position: relative;
+  top: -10px;
+  right: -5px;
+  transition: all 0.3s ease-in-out;
+  user-select: none;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 5px;
+  padding: 0px 10px;
+  margin: 5px 0px;
+  pointer-events: initial;
+}
+
+.cta:hover {
+  top: -5px;
+  right: 0px;
+  background-color: rgb(111, 1, 110);
+  box-shadow: 0px 0px 10px var(--pink);
+}
+
+.btnBackground {
+  position: relative;
+  width: 13rem;
+  height: 3rem;
+  background-color: rgb(0, 255, 0);
+  border-radius: 0.4rem;
+}
+
+.cta1:hover {
+  background-color: var(--green);
+}
+.cta2:hover {
+  background-color: var(--red);
+}

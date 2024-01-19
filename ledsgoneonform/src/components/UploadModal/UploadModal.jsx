@@ -78,7 +78,6 @@ const UploadModal = ({
               >
                 {uploadedImg ? (
                   <span className={stl.uploadSpan}>
-                    {/* {isHovered ? "Upload bestand" : "Bestand Geupload"}{" "} */}
                     {isHovered ? "Upload bestand" : "Bestand Geupload"}{" "}
                     {isHovered && (
                       <HiOutlineUpload className={stl.uploadIcon} />
@@ -95,7 +94,7 @@ const UploadModal = ({
               </button>
             </div>
             <span className={stl.sleepBestanden}>
-              Sleep je bestand hierheen
+              Sleep uw bestand hierheen
             </span>
           </div>
         </div>

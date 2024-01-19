@@ -3,12 +3,13 @@ import UploadModal from "./components/UploadModal/UploadModal";
 
 import { useState } from "react";
 import ImageEditor from "./components/ImageEditor/ImageEditor";
+import RequestCalculation from "./components/RequestCalculation/RequestCalculation";
 
 const App = () => {
   const [isDraggingOver, setIsDraggingOver] = useState(false);
   const [uploadedImg, setUploadedImg] = useState(null);
   const [cutUploadedImg, setCutUploadedImg] = useState(null);
-  const [calculatingRatio, setCalculatingRatio] = useState(false);
+  const [requestCalculation, setRequestCalculation] = useState(false);
 
   const handleDragOver = () => {
     setIsDraggingOver(true);
@@ -28,13 +29,15 @@ const App = () => {
       onClick={handleClickDefault}
       onDragOver={handleDragOver}
     >
-      {calculatingRatio && (
+      {requestCalculation && (
         <ImageEditor
           uploadedImg={uploadedImg}
           setUploadedImg={setUploadedImg}
         />
       )}
-      <div className={stl.brickBg}></div>
+      <div className={stl.brickBg}>
+        <div className={stl.transition}></div>
+      </div>
       <div className={stl.paddWrapper}>
         <button className={stl.burgerCta}>
           <img
@@ -65,6 +68,7 @@ const App = () => {
             setUploadedImg={setUploadedImg}
             uploadedImg={uploadedImg}
           />
+          <RequestCalculation />
         </main>
       </div>
     </div>

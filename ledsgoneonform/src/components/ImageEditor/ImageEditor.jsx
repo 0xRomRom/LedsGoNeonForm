@@ -61,8 +61,6 @@ const ImageEditor = ({ uploadedImg, setUploadedImg }) => {
       }
     };
 
-    // Assuming uploaded is coming from some external source or a prop
-    // and you need to watch for changes to it
     handleFileChange({ target: { files: [uploadedImg] } });
 
     // Add any dependencies if needed
