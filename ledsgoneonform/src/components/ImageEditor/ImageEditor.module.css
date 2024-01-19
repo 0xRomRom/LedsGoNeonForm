@@ -2,7 +2,26 @@
   position: fixed;
   inset: 0;
   background-color: rgba(0, 0, 0, 0.931);
-  width: 100vw;
-  height: 100vh;
+  width: 100%;
+  height: 100%;
   z-index: 100;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.workSpace {
+  width: 750px;
+  height: 750px;
+  background-color: rgb(177, 177, 177);
+}
+
+.workSpaceInner {
+  height: 100%;
+  width: 100%;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 }

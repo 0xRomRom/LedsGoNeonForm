@@ -2,7 +2,7 @@ import stl from "./UploadModal.module.css";
 import { HiOutlineUpload } from "react-icons/hi";
 import VideoPlayer from "../videoplayer/VideoPlayer";
 import { useDropzone } from "react-dropzone";
-import { useEffect, useState, useCallback } from "react";
+import { useEffect, useCallback } from "react";
 import { FiPlusSquare } from "react-icons/fi";
 
 const UploadModal = ({
@@ -29,17 +29,17 @@ const UploadModal = ({
       setUploaded(newFiles[0]);
       handleDragLeave(false);
     },
-    [handleDragLeave]
+    [handleDragLeave, setUploaded]
   );
 
   const { getRootProps, getInputProps } = useDropzone({
     onDrop,
-    accept: { "image/": [] },
+    accept: { "image/*": [] },
   });
 
   useEffect(() => {
     if (uploaded) {
-      console.log(uploaded);
+      console.log(uploaded.file);
     }
   }, [uploaded]);
 
@@ -54,7 +54,7 @@ const UploadModal = ({
             <div className={stl.btnBackground}>
               <button className={stl.uploadFileCta} {...getRootProps()}>
                 Upload bestand <HiOutlineUpload className={stl.uploadIcon} />
-                <input {...getInputProps()} name="Fileinput" />
+                <input {...getInputProps()} name="Fileinput" accept="image/*" />
               </button>
             </div>
             <span className={stl.sleepBestanden}>

@@ -26,7 +26,7 @@ const App = () => {
       onClick={handleClickDefault}
       onDragOver={handleDragOver}
     >
-      {uploaded && <ImageEditor />}
+      {uploaded && <ImageEditor uploaded={uploaded} />}
       <div className={stl.brickBg}></div>
       <div className={stl.paddWrapper}>
         <button className={stl.burgerCta}>
