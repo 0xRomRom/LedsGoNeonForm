@@ -6,6 +6,7 @@ import ImageEditor from "./components/ImageEditor/ImageEditor";
 import RequestCalculation from "./components/RequestCalculation/RequestCalculation";
 import LongestRow from "./components/LongestRow/LongestRow";
 import LedKind from "./components/LedKind/LedKind";
+import BackplateType from "./components/BackplateType/BackplateType";
 
 const App = () => {
   const [isDraggingOver, setIsDraggingOver] = useState(false);
@@ -103,6 +104,7 @@ const App = () => {
           {progressState === 4 && longestSide && (
             <LedKind setLedType={setLedType} />
           )}
+          <BackplateType />
         </main>
       </div>
     </div>
