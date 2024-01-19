@@ -5,19 +5,19 @@ import { useDropzone } from "react-dropzone";
 import { useEffect, useState, useCallback } from "react";
 import { FiPlusSquare } from "react-icons/fi";
 
-const UploadModal = ({ handleDragLeave, isDraggingOver }) => {
-  const [uploaded, setUploaded] = useState(null);
-
+const UploadModal = ({
+  handleDragLeave,
+  isDraggingOver,
+  uploaded,
+  setUploaded,
+}) => {
   const onDrop = useCallback(
     (acceptedFiles) => {
       let newFiles = [];
       const filetypes = ["png", "jpg", "jpeg", "webp", "bmp", "tiff", "gif"];
       acceptedFiles.forEach((file) => {
-        const newName = file.name;
         const newFile = {
           file,
-          randomNum: Math.random(),
-          newname: newName,
         };
         filetypes.forEach((type) => {
           if (type === newFile.file.name.split(".")[1].toLowerCase()) {
@@ -38,7 +38,9 @@ const UploadModal = ({ handleDragLeave, isDraggingOver }) => {
   });
 
   useEffect(() => {
-    console.log(uploaded);
+    if (uploaded) {
+      console.log(uploaded);
+    }
   }, [uploaded]);
 
   return (

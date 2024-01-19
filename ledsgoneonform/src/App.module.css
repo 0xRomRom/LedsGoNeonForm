@@ -38,7 +38,6 @@
 }
 
 .hamburger {
-  z-index: 100;
   width: 4.4rem;
   height: 4.4rem;
   object-fit: contain;
@@ -86,4 +85,5 @@
   align-items: center;
   flex-direction: column;
   padding-top: 5rem;
+  z-index: 30;
 }

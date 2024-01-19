@@ -2,9 +2,11 @@ import stl from "./App.module.css";
 import UploadModal from "./components/UploadModal/UploadModal";
 
 import { useState } from "react";
+import ImageEditor from "./components/ImageEditor/ImageEditor";
 
 const App = () => {
   const [isDraggingOver, setIsDraggingOver] = useState(false);
+  const [uploaded, setUploaded] = useState(null);
 
   const handleDragOver = () => {
     setIsDraggingOver(true);
@@ -24,6 +26,7 @@ const App = () => {
       onClick={handleClickDefault}
       onDragOver={handleDragOver}
     >
+      {uploaded && <ImageEditor />}
       <div className={stl.brickBg}></div>
       <div className={stl.paddWrapper}>
         <button className={stl.burgerCta}>
@@ -52,6 +55,8 @@ const App = () => {
           <UploadModal
             handleDragLeave={handleDragLeave}
             isDraggingOver={isDraggingOver}
+            uploaded={uploaded}
+            setUploaded={setUploaded}
           />
         </main>
       </div>
