@@ -1,9 +1,29 @@
 import stl from "./App.module.css";
 import UploadModal from "./components/UploadModal/UploadModal";
 
+import { useState } from "react";
+
 const App = () => {
+  const [isDraggingOver, setIsDraggingOver] = useState(false);
+
+  const handleDragOver = () => {
+    setIsDraggingOver(true);
+  };
+
+  const handleDragLeave = () => {
+    setIsDraggingOver(false);
+  };
+
+  const handleClickDefault = (e) => {
+    e.preventDefault();
+  };
+
   return (
-    <div className={stl.app}>
+    <div
+      className={stl.app}
+      onClick={handleClickDefault}
+      onDragOver={handleDragOver}
+    >
       <div className={stl.brickBg}></div>
       <div className={stl.paddWrapper}>
         <button className={stl.burgerCta}>
@@ -29,7 +49,10 @@ const App = () => {
           </h2>
         </header>
         <main className={stl.mainApp}>
-          <UploadModal />
+          <UploadModal
+            handleDragLeave={handleDragLeave}
+            isDraggingOver={isDraggingOver}
+          />
         </main>
       </div>
     </div>
