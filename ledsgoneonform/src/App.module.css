@@ -1,0 +1,82 @@
+.app {
+  background-color: #030e26;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+}
+
+.brickBg {
+  background-image: url("../public/images/Brickbg.webp");
+  background-position-x: 50%;
+  background-position-y: 50%;
+  background-repeat: no-repeat;
+  position: absolute;
+  inset: 0;
+  height: 1000px;
+}
+
+.header {
+  width: 100%;
+  position: relative;
+  padding-top: 6rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.paddWrapper {
+  position: relative;
+  margin: 0px 20px;
+}
+
+.mainLogo {
+  position: fixed;
+  left: 0rem;
+  top: 0rem;
+  max-width: 325px;
+}
+
+.hamburger {
+  z-index: 100;
+  width: 4.4rem;
+  height: 4.4rem;
+  object-fit: contain;
+  position: absolute;
+  position: fixed;
+  top: 25px;
+}
+
+.burgerCta {
+  padding: 2.2rem;
+  position: absolute;
+  right: 24px;
+  top: 25px;
+  background-color: transparent;
+  outline: none;
+  border: none;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+}
+
+.pageHero {
+  color: white;
+  text-align: center;
+  text-transform: uppercase;
+  font-size: 48.4px;
+  font-family: var(--hero-font);
+}
+
+.pink {
+  color: var(--pink);
+}
+
+.subHero {
+  color: white;
+}
+
+.subHero {
+  padding-top: 0.5rem;
+}
