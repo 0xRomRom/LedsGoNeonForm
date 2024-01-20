@@ -10,7 +10,6 @@ const SmallForm = ({
   notice,
   setNotice,
 }) => {
-  const [selectedValue, setSelectedValue] = useState("");
   const [nameEntered, setNameEntered] = useState(false);
   const [emailEntered, setEmailEntered] = useState(false);
 
@@ -33,23 +32,14 @@ const SmallForm = ({
 
   useEffect(() => {
     if (!name) {
-      setNameEntered(false);
+      return;
     } else {
       setTimeout(() => {
         setNameEntered(true);
+        window.scrollTo(0, document.body.scrollHeight);
+        return;
       }, 1000);
     }
-
-    if (!name || !emailEntered) {
-      setEmailEntered(false);
-    } else {
-      window.scrollTo(0, document.body.scrollHeight);
-      setTimeout(() => {
-        setEmailEntered(true);
-      }, 1000);
-    }
-
-    console.log(emailEntered);
   }, [name, setEmailEntered, emailEntered]);
 
   return (
