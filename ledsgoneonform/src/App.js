@@ -12,6 +12,7 @@ import BackplateShape from "./components/BackplateShape/BackplateShape";
 import Mounting from "./components/Mounting/Mounting";
 import IndoorOutdoor from "./components/IndoorOutdoor/IndoorOutdoor";
 import SmallForm from "./components/SmallForm/SmallForm";
+import CurrentOverview from "./CurrentOverview/CurrentOverview";
 
 const App = () => {
   const [isDraggingOver, setIsDraggingOver] = useState(false);
@@ -29,6 +30,7 @@ const App = () => {
   const [name, setName] = useState(null);
   const [email, setEmail] = useState(null);
   const [notice, setNotice] = useState(null);
+  const [priceEstimate, setPriceEstimate] = useState(null);
 
   const handleDragOver = () => {
     setIsDraggingOver(true);
@@ -49,12 +51,22 @@ const App = () => {
     }
   }, [progressState]);
 
+  useEffect(() => {
+    const length = longestSide?.slice(0, -2);
+    if (length) {
+      const priceCalculation = 0.425 * length * aspectRatio + 200;
+      console.log(priceCalculation);
+      setPriceEstimate(Math.floor(priceCalculation));
+    }
+  });
+
   return (
     <div
       className={stl.app}
       onClick={handleClickDefault}
       onDragOver={handleDragOver}
     >
+      {priceEstimate && <CurrentOverview priceEstimate={priceEstimate} />}
       {uploadedImg && !aspectRatio && progressState === 0 && (
         <ImageEditor
           uploadedImg={uploadedImg}
@@ -114,6 +126,7 @@ const App = () => {
               toggleIconBool={toggleIconBool}
               setToggleIconBool={setToggleIconBool}
               setLongestSide={setLongestSide}
+              setPriceEstimate={setPriceEstimate}
             />
           )}
           {progressState === 1 ||
@@ -125,6 +138,7 @@ const App = () => {
               setLongestSide={setLongestSide}
               setProgressState={setProgressState}
               longestSide={longestSide}
+              aspectRatio={aspectRatio}
             />
           )}
           {progressState >= 4 && (
@@ -175,7 +189,7 @@ const App = () => {
           {progressState >= 9 && (
             <TiArrowLeftThick className={stl.activeArrow} />
           )}
-          {progressState === 0 && (
+          {progressState === 9 && (
             <SmallForm
               setName={setName}
               name={name}
@@ -184,6 +198,14 @@ const App = () => {
               setProgressState={setProgressState}
               setNotice={setNotice}
               notice={notice}
+              ledType={ledType}
+              backplateType={backplateType}
+              backplateShape={backplateShape}
+              mountType={mountType}
+              indoorOutdoor={indoorOutdoor}
+              uploadedImg={uploadedImg}
+              cutUploadedImg={cutUploadedImg}
+              longestSide={longestSide}
             />
           )}
         </main>

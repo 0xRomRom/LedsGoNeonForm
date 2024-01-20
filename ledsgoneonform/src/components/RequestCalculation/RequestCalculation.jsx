@@ -9,6 +9,7 @@ const RequestCalculation = ({
   toggleIconBool,
   setToggleIconBool,
   setLongestSide,
+  setPriceEstimate,
 }) => {
   const handleNoThanks = () => {
     setProgressState(3);
@@ -48,6 +49,7 @@ const RequestCalculation = ({
               onClick={() => {
                 setAspectRatio(null);
                 setProgressState(2);
+                setPriceEstimate(null);
               }}
             >
               Bereken opnieuw

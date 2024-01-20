@@ -2,13 +2,20 @@ import stl from "./SmallForm.module.css";
 import { useEffect, useState } from "react";
 
 const SmallForm = ({
-  setProgressState,
   setName,
   setEmail,
   name,
   email,
   notice,
   setNotice,
+  longestSide,
+  ledType,
+  backplateType,
+  backplateShape,
+  mountType,
+  indoorOutdoor,
+  uploadedImg,
+  cutUploadedImg,
 }) => {
   const [nameEntered, setNameEntered] = useState(false);
   const [emailEntered, setEmailEntered] = useState(false);
@@ -40,7 +47,32 @@ const SmallForm = ({
         return;
       }, 1000);
     }
+    if (email) {
+      window.scrollTo(0, document.body.scrollHeight);
+      setTimeout(() => {
+        return;
+      }, 1000);
+    }
   }, [name, setEmailEntered, emailEntered]);
+
+  const submitForm = () => {
+    let postObject = {
+      originalImg: uploadedImg,
+      cutImg: cutUploadedImg,
+      prijsSchatting: 0,
+      langsteZijde: longestSide,
+      soortLed: ledType,
+      achterplaat: backplateType,
+      plaatVorm: backplateShape,
+      montage: mountType,
+      indoorOutdoor: indoorOutdoor,
+      naam: name,
+      emai: email,
+      beschrijving: notice,
+    };
+
+    window.location.href = "https://ledsgoneon.nl/bedankt-pagina/";
+  };
 
   return (
     <div className={`${stl.longestRow} ${emailEntered ? stl.checked : ""}`}>
@@ -74,7 +106,9 @@ const SmallForm = ({
           ></textarea>
 
           <div className={stl.btnBackground}>
-            <button className={stl.ledsgo}>LED's Go!</button>
+            <button className={stl.ledsgo} onClick={submitForm}>
+              LED's Go!
+            </button>
           </div>
         </>
       )}

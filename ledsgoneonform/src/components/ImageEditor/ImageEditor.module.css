@@ -39,6 +39,7 @@
   font-size: 40px;
   user-select: none;
   text-align: center;
+  color: var(--green);
 }
 
 .cornerLeftTop {

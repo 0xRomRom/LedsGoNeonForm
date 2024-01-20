@@ -19,6 +19,11 @@
   user-select: none;
 }
 
+.green {
+  font-size: 30px;
+  color: var(--green);
+}
+
 .longestSelect {
   outline: none;
   width: 15rem;

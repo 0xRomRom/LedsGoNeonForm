@@ -83,7 +83,7 @@ const ImageEditor = ({
     );
     const { width, height } = cropObject;
     const aspectRatio = +(width / height).toFixed(4);
-    // console.log("Aspect Ratio: ", aspectRatio);
+
     setAspectRatio(aspectRatio);
     setProgressState(3);
     setToggleIconBool(false);

@@ -1,0 +1,21 @@
+.currentOveriew {
+  position: fixed;
+  bottom: 0rem;
+  height: 4rem;
+  width: 100%;
+  background-color: black;
+  z-index: 200;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.estPrice {
+  color: var(--green);
+  font-weight: bold;
+}
+
+.price {
+  color: white;
+  font-size: 18px;
+}

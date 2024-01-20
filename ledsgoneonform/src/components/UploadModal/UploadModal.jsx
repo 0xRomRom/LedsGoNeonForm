@@ -82,14 +82,7 @@ const UploadModal = ({
     <>
       <div className={`${stl.modal} ${uploadedImg ? stl.checked : ""}`}>
         <div className={stl.videoWrapper}>
-          {loading && (
-            <div className={stl.spinnerWrapper}>
-              <Spinner />
-            </div>
-          )}
-          {!loading && (
-            <VideoPlayer videoID={"KSAwVuqlAT4"} setLoading={setLoading} />
-          )}
+          <VideoPlayer videoID={"KSAwVuqlAT4"} setLoading={setLoading} />
         </div>
         <div className={stl.bottomBox}>
           <div className={stl.btnWrapper}>

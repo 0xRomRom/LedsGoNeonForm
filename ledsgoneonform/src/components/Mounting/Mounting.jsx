@@ -16,7 +16,9 @@ const Mounting = ({ setMountType, setProgressState }) => {
       <div className={stl.videoWrapper}>
         <VideoPlayer videoID={"KSAwVuqlAT4"} />
       </div>
-      <h3 className={stl.hero}>Montage systeem</h3>
+      <h3 className={stl.hero}>
+        <span className={stl.green}>Montage</span> systeem
+      </h3>
       <select
         className={stl.longestSelect}
         value={selectedValue}
