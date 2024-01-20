@@ -1,5 +1,6 @@
 import stl from "./BackplateType.module.css";
 import { useState } from "react";
+import VideoPlayer from "../videoplayer/VideoPlayer";
 
 const BackplateType = ({ setProgressState, setBackplateType }) => {
   const [selectedValue, setSelectedValue] = useState("");
@@ -12,6 +13,9 @@ const BackplateType = ({ setProgressState, setBackplateType }) => {
 
   return (
     <div className={`${stl.longestRow} ${selectedValue ? stl.checked : ""}`}>
+      <div className={stl.videoWrapper}>
+        <VideoPlayer videoID={"KSAwVuqlAT4"} />
+      </div>
       <h3 className={stl.hero}>
         Soort
         <span

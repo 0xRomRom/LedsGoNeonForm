@@ -16,25 +16,20 @@ const BackplateShape = ({ setProgressState, setBackplateShape }) => {
       <div className={stl.videoWrapper}>
         <VideoPlayer videoID={"KSAwVuqlAT4"} />
       </div>
-      <h3 className={stl.hero}>
-        Achterplaat
-        <span
-          className={`${stl.green} ${selectedValue === "RGB" ? stl.rgb : ""}`}
-        >
-          {" "}
-          vorm
-        </span>
-      </h3>
+      <h3 className={stl.hero}>Achterplaat vorm</h3>
       <select
         className={stl.longestSelect}
         value={selectedValue}
         onChange={handleSelectChange}
       >
         <option value="" default disabled>
-          Kies kleurtype
+          Kies vorm
         </option>
-        <option value="Single color">Single color</option>
-        <option value="RGB">RGB (€ +40%) </option>
+        <option value="Afstandhouders">Afstandhouders</option>
+        <option value="Ketting">Ketting</option>
+        <option value="Rails (alleen bij gekleurde plaat)">
+          Rails (alleen bij gekleurde plaat)
+        </option>
       </select>
     </div>
   );

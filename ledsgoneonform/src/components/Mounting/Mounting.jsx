@@ -1,14 +1,14 @@
-import stl from "./LedKind.module.css";
+import stl from "./Mounting.module.css";
 import { useState } from "react";
 import VideoPlayer from "../videoplayer/VideoPlayer";
 
-const LedKind = ({ setLedType, setProgressState }) => {
+const Mounting = ({ setMountType, setProgressState }) => {
   const [selectedValue, setSelectedValue] = useState("");
 
   const handleSelectChange = (event) => {
     setSelectedValue(event.target.value);
-    setLedType(selectedValue);
-    setProgressState(5);
+    setProgressState(7);
+    setMountType(selectedValue);
   };
 
   return (
@@ -16,27 +16,20 @@ const LedKind = ({ setLedType, setProgressState }) => {
       <div className={stl.videoWrapper}>
         <VideoPlayer videoID={"KSAwVuqlAT4"} />
       </div>
-      <h3 className={stl.hero}>
-        Soort
-        <span
-          className={`${stl.green} ${selectedValue === "RGB" ? stl.rgb : ""}`}
-        >
-          {" "}
-          LED
-        </span>
-      </h3>
+      <h3 className={stl.hero}>Montage systeem</h3>
       <select
         className={stl.longestSelect}
         value={selectedValue}
         onChange={handleSelectChange}
       >
         <option value="" default disabled>
-          Kies kleurtype
+          Kies systeemsoort
         </option>
-        <option value="Single color">Single color</option>
-        <option value="RGB">RGB (€ +40%) </option>
+        <option value="Transparant">Transparant</option>
+        <option value="Gekleurd">Gekleurd (€ +25%) </option>
       </select>
     </div>
   );
 };
-export default LedKind;
+
+export default Mounting;

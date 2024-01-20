@@ -8,6 +8,7 @@ import LongestRow from "./components/LongestRow/LongestRow";
 import LedKind from "./components/LedKind/LedKind";
 import BackplateType from "./components/BackplateType/BackplateType";
 import BackplateShape from "./components/BackplateShape/BackplateShape";
+import Mounting from "./components/Mounting/Mounting";
 
 const App = () => {
   const [isDraggingOver, setIsDraggingOver] = useState(false);
@@ -20,6 +21,7 @@ const App = () => {
   const [ledType, setLedType] = useState(null);
   const [backplateType, setBackplateType] = useState(null);
   const [backplateShape, setBackplateShape] = useState(null);
+  const [mountType, setMountType] = useState(null);
 
   const handleDragOver = () => {
     setIsDraggingOver(true);
@@ -120,6 +122,12 @@ const App = () => {
             <BackplateShape
               setBackplateShape={setBackplateShape}
               setProgressState={setProgressState}
+            />
+          )}
+          {progressState >= 7 && (
+            <Mounting
+              setProgressState={setProgressState}
+              setMountType={setMountType}
             />
           )}
         </main>
