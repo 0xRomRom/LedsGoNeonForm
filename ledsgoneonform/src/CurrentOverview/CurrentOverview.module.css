@@ -19,11 +19,14 @@
 .price {
   color: white;
   font-size: 18px;
+  padding-left: 5px;
 }
 
 .boldWhite {
   color: white;
   font-weight: bold;
+  font-size: 18px;
+  padding-left: 27px;
 }
 
 .rgbExtra {
@@ -37,4 +40,14 @@
   color: transparent;
   font-size: 18px;
   padding-left: 3rem;
+}
+
+.rgbFlex {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.white {
+  color: white;
 }

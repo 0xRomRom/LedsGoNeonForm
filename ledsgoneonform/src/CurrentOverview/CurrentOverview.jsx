@@ -8,9 +8,11 @@ const CurrentOverview = ({ priceEstimate, ledType, RGBPrice }) => {
         <span className={stl.price}> €{Math.floor(priceEstimate)},-</span>
       </span>
       {ledType === "RGB" && (
-        <span className={stl.rgbExtra}>
-          RGB: <span className={stl.boldWhite}>+€{Math.ceil(RGBPrice)},-</span>
-        </span>
+        <div className={stl.rgbFlex}>
+          <span className={stl.rgbExtra}>RGB</span>
+          <span className={stl.white}>:</span>
+          <span className={stl.boldWhite}>+€{Math.ceil(RGBPrice)},-</span>
+        </div>
       )}
     </div>
   );
