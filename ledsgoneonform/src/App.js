@@ -31,6 +31,7 @@ const App = () => {
   const [email, setEmail] = useState(null);
   const [notice, setNotice] = useState(null);
   const [priceEstimate, setPriceEstimate] = useState(null);
+  const [RGBPrice, setRGBPrice] = useState(null);
 
   const handleDragOver = () => {
     setIsDraggingOver(true);
@@ -57,18 +58,22 @@ const App = () => {
 
     if (length) {
       priceCalculation = 0.425 * length * aspectRatio + 200;
-      console.log(priceCalculation);
     }
 
-    console.log(ledType);
+    console.log("Ledtype: ", ledType);
+    console.log("Aspect ratio: ", aspectRatio);
+    console.log("Price calculation BEFORE multiplier: ", priceCalculation);
+    console.log("RGB Price increase: ", priceCalculation * 0.4);
+    setRGBPrice(priceCalculation * 0.4);
     if (ledType && ledType === "RGB") {
-      priceCalculation = priceCalculation * 1.4;
+      priceCalculation *= 1.4;
     }
     if (ledType && ledType === "Single color") {
-      priceCalculation = priceCalculation * 1;
+      priceCalculation *= 1;
     }
+    console.log("Price calculation AFTER multiplier: ", priceCalculation);
 
-    setPriceEstimate(Math.floor(priceCalculation));
+    setPriceEstimate(priceCalculation);
   }, [aspectRatio, ledType, longestSide]);
 
   return (
@@ -77,7 +82,13 @@ const App = () => {
       onClick={handleClickDefault}
       onDragOver={handleDragOver}
     >
-      {priceEstimate && <CurrentOverview priceEstimate={priceEstimate} />}
+      {priceEstimate && aspectRatio && (
+        <CurrentOverview
+          priceEstimate={priceEstimate}
+          ledType={ledType}
+          RGBPrice={RGBPrice}
+        />
+      )}
       {uploadedImg && !aspectRatio && progressState === 0 && (
         <ImageEditor
           uploadedImg={uploadedImg}
