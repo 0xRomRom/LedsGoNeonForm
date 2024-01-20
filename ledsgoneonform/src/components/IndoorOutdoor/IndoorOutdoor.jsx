@@ -36,7 +36,7 @@ const IndoorOutdoor = ({ setProgressState, setIndoorOutdoor }) => {
           <FaTree />
         </button>
       </div>
-      <span className={stl.gebruik}>Gebruik</span>
+      {selectedValue && <span className={stl.gebruik}>Gebruik</span>}
     </div>
   );
 };

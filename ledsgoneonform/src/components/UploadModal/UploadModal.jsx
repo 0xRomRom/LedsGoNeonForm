@@ -5,6 +5,7 @@ import { useDropzone } from "react-dropzone";
 import { useCallback, useState } from "react";
 import { FiPlusSquare } from "react-icons/fi";
 import { FaCheck } from "react-icons/fa";
+import Spinner from "../utils/spinner/Spinner";
 
 const UploadModal = ({
   handleDragLeave,
@@ -18,6 +19,7 @@ const UploadModal = ({
   setToggleIconBool,
 }) => {
   const [isHovered, setIsHovered] = useState(false);
+  const [loading, setLoading] = useState(false);
 
   const onDrop = useCallback(
     (acceptedFiles) => {
@@ -80,7 +82,14 @@ const UploadModal = ({
     <>
       <div className={`${stl.modal} ${uploadedImg ? stl.checked : ""}`}>
         <div className={stl.videoWrapper}>
-          <VideoPlayer videoID={"KSAwVuqlAT4"} />
+          {loading && (
+            <div className={stl.spinnerWrapper}>
+              <Spinner />
+            </div>
+          )}
+          {!loading && (
+            <VideoPlayer videoID={"KSAwVuqlAT4"} setLoading={setLoading} />
+          )}
         </div>
         <div className={stl.bottomBox}>
           <div className={stl.btnWrapper}>
