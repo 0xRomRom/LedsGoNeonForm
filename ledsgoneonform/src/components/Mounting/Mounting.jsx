@@ -7,7 +7,7 @@ const Mounting = ({ setMountType, setProgressState }) => {
 
   const handleSelectChange = (event) => {
     setSelectedValue(event.target.value);
-    setProgressState(7);
+    setProgressState(8);
     setMountType(selectedValue);
   };
 

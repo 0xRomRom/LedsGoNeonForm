@@ -28,6 +28,7 @@
 .paddWrapper {
   position: relative;
   margin: 0px 20px;
+  overflow-y: scroll;
 }
 
 .mainLogo {

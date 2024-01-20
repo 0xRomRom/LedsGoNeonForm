@@ -1,5 +1,6 @@
 import stl from "./App.module.css";
 import UploadModal from "./components/UploadModal/UploadModal";
+import React, { useEffect } from "react";
 
 import { useState } from "react";
 import ImageEditor from "./components/ImageEditor/ImageEditor";
@@ -9,6 +10,7 @@ import LedKind from "./components/LedKind/LedKind";
 import BackplateType from "./components/BackplateType/BackplateType";
 import BackplateShape from "./components/BackplateShape/BackplateShape";
 import Mounting from "./components/Mounting/Mounting";
+import IndoorOutdoor from "./components/IndoorOutdoor/IndoorOutdoor";
 
 const App = () => {
   const [isDraggingOver, setIsDraggingOver] = useState(false);
@@ -22,6 +24,7 @@ const App = () => {
   const [backplateType, setBackplateType] = useState(null);
   const [backplateShape, setBackplateShape] = useState(null);
   const [mountType, setMountType] = useState(null);
+  const [indoorOutdoor, setIndoorOutdoor] = useState(null);
 
   const handleDragOver = () => {
     setIsDraggingOver(true);
@@ -34,6 +37,12 @@ const App = () => {
   const handleClickDefault = (e) => {
     e.preventDefault();
   };
+
+  useEffect(() => {
+    if (progressState > 0) {
+      window.scrollTo(0, document.body.scrollHeight);
+    }
+  }, [progressState]);
 
   return (
     <div
@@ -128,6 +137,12 @@ const App = () => {
             <Mounting
               setProgressState={setProgressState}
               setMountType={setMountType}
+            />
+          )}
+          {progressState === 8 && (
+            <IndoorOutdoor
+              setIndoorOutdoor={setIndoorOutdoor}
+              setProgressState={setProgressState}
             />
           )}
         </main>
