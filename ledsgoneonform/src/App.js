@@ -28,6 +28,7 @@ const App = () => {
   const [indoorOutdoor, setIndoorOutdoor] = useState(null);
   const [name, setName] = useState(null);
   const [email, setEmail] = useState(null);
+  const [notice, setNotice] = useState(null);
 
   const handleDragOver = () => {
     setIsDraggingOver(true);
@@ -165,7 +166,7 @@ const App = () => {
           {progressState >= 8 && (
             <TiArrowLeftThick className={stl.activeArrow} />
           )}
-          {progressState === 8 && (
+          {progressState >= 8 && (
             <IndoorOutdoor
               setIndoorOutdoor={setIndoorOutdoor}
               setProgressState={setProgressState}
@@ -181,6 +182,8 @@ const App = () => {
               setEmail={setEmail}
               email={email}
               setProgressState={setProgressState}
+              setNotice={setNotice}
+              notice={notice}
             />
           )}
         </main>

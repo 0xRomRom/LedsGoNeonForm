@@ -23,6 +23,7 @@
   color: var(--green);
   font-size: 30px;
   user-select: none;
+  padding-top: 1rem;
 }
 
 .longestSelect {
@@ -126,7 +127,7 @@
 }
 
 .inputStl {
-  width: 14rem;
+  width: 17rem;
   height: 2.5rem;
   background-color: transparent;
   border: none;
@@ -144,4 +145,61 @@ input::placeholder {
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
+}
+
+.inputArea {
+  resize: none;
+  position: relative;
+  height: 10rem;
+  background-color: transparent;
+  border: none;
+  outline: none;
+  border: 1px solid purple;
+  font-size: 20px;
+  border-radius: 0.4rem;
+  color: white;
+  width: 17rem;
+  padding: 10px;
+}
+
+.ledsgo {
+  width: 13rem;
+  height: 3rem;
+  border-radius: 0.4rem;
+  background-color: var(--pink);
+  color: white;
+  outline: none;
+  border: none;
+  font-size: 18px;
+  font-weight: bold;
+  cursor: pointer;
+  position: relative;
+  top: -10px;
+  right: -5px;
+  transition: all 0.3s ease-in-out;
+  user-select: none;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 5px;
+  margin: 5px 0px;
+  pointer-events: initial;
+}
+
+.ledsgo:hover {
+  top: -5px;
+  right: 0px;
+  background-color: rgb(111, 1, 110);
+  box-shadow: 0px 0px 10px var(--pink);
+  transition: all 0.3s ease-in-out;
+}
+
+.btnBackground {
+  position: relative;
+  width: 13rem;
+  height: 3rem;
+  background-color: rgb(0, 255, 0);
+  border-radius: 0.4rem;
+  margin-top: 2rem;
+  margin-bottom: 1rem;
 }
