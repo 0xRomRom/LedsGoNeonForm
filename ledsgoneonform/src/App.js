@@ -1,8 +1,8 @@
 import stl from "./App.module.css";
-import UploadModal from "./components/UploadModal/UploadModal";
-import React, { useEffect } from "react";
+import { TiArrowLeftThick } from "react-icons/ti";
+import React, { useEffect, useState } from "react";
 
-import { useState } from "react";
+import UploadModal from "./components/UploadModal/UploadModal";
 import ImageEditor from "./components/ImageEditor/ImageEditor";
 import RequestCalculation from "./components/RequestCalculation/RequestCalculation";
 import LongestRow from "./components/LongestRow/LongestRow";
@@ -98,6 +98,7 @@ const App = () => {
             setLongestSide={setLongestSide}
             setToggleIconBool={setToggleIconBool}
           />
+          <TiArrowLeftThick className={stl.activeArrow} />
           {uploadedImg && progressState >= 1 && (
             <RequestCalculation
               aspectRatio={aspectRatio}

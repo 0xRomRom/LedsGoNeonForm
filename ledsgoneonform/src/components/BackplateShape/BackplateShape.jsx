@@ -16,7 +16,13 @@ const BackplateShape = ({ setProgressState, setBackplateShape }) => {
       <div className={stl.videoWrapper}>
         <VideoPlayer videoID={"KSAwVuqlAT4"} />
       </div>
-      <h3 className={stl.hero}>Achterplaat vorm</h3>
+      <h3
+        className={`${stl.hero} ${
+          selectedValue === "Contour" ? stl.contour : stl.corners
+        }`}
+      >
+        Achterplaat vorm
+      </h3>
       <select
         className={stl.longestSelect}
         value={selectedValue}
@@ -25,11 +31,8 @@ const BackplateShape = ({ setProgressState, setBackplateShape }) => {
         <option value="" default disabled>
           Kies vorm
         </option>
-        <option value="Afstandhouders">Afstandhouders</option>
-        <option value="Ketting">Ketting</option>
-        <option value="Rails (alleen bij gekleurde plaat)">
-          Rails (alleen bij gekleurde plaat)
-        </option>
+        <option value="Contour">Contour</option>
+        <option value="Rechthoekig">Rechhoekig</option>
       </select>
     </div>
   );

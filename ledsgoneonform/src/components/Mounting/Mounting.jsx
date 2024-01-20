@@ -23,10 +23,13 @@ const Mounting = ({ setMountType, setProgressState }) => {
         onChange={handleSelectChange}
       >
         <option value="" default disabled>
-          Kies systeemsoort
+          Kies methode
         </option>
-        <option value="Transparant">Transparant</option>
-        <option value="Gekleurd">Gekleurd (€ +25%) </option>
+        <option value="Afstandhouders">Afstandhouders</option>
+        <option value="Ketting">Ketting</option>
+        <option value="Rails (alleen bij gekleurde plaat)">
+          Rails (alleen bij gekleurde plaat)
+        </option>
       </select>
     </div>
   );

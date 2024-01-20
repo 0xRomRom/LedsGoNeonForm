@@ -16,9 +16,11 @@
 }
 
 .hero {
-  color: white;
+  color: black;
   font-size: 30px;
   user-select: none;
+  background-color: var(--green);
+  padding: 2px 9px;
 }
 
 .longestSelect {
@@ -69,4 +71,14 @@
 
 .videoWrapper div {
   height: 100%;
+}
+
+.contour {
+  border-top-left-radius: 15px;
+  border-bottom-left-radius: 35px;
+  border-top-right-radius: 90px;
+}
+
+.corners {
+  border-radius: 0.6rem;
 }
