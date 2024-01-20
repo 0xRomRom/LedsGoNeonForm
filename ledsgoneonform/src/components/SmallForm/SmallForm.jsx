@@ -53,7 +53,7 @@ const SmallForm = ({
         return;
       }, 1000);
     }
-  }, [name, setEmailEntered, emailEntered]);
+  }, [name, setEmailEntered, emailEntered, email]);
 
   const submitForm = () => {
     let postObject = {

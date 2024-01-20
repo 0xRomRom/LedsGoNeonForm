@@ -7,7 +7,7 @@ const LedKind = ({ setLedType, setProgressState }) => {
 
   const handleSelectChange = (event) => {
     setSelectedValue(event.target.value);
-    setLedType(selectedValue);
+    setLedType(event.target.value);
     setProgressState(5);
   };
 

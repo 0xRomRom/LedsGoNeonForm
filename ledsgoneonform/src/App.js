@@ -53,12 +53,23 @@ const App = () => {
 
   useEffect(() => {
     const length = longestSide?.slice(0, -2);
+    let priceCalculation = 0;
+
     if (length) {
-      const priceCalculation = 0.425 * length * aspectRatio + 200;
+      priceCalculation = 0.425 * length * aspectRatio + 200;
       console.log(priceCalculation);
-      setPriceEstimate(Math.floor(priceCalculation));
     }
-  });
+
+    console.log(ledType);
+    if (ledType && ledType === "RGB") {
+      priceCalculation = priceCalculation * 1.4;
+    }
+    if (ledType && ledType === "Single color") {
+      priceCalculation = priceCalculation * 1;
+    }
+
+    setPriceEstimate(Math.floor(priceCalculation));
+  }, [aspectRatio, ledType, longestSide]);
 
   return (
     <div
