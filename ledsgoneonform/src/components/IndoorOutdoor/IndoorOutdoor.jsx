@@ -9,7 +9,7 @@ const IndoorOutdoor = ({ setProgressState, setIndoorOutdoor }) => {
   const handleSelectChange = (event) => {
     const value = event.target.value;
     setSelectedValue(value);
-    setProgressState(8);
+    setProgressState(9);
     setIndoorOutdoor(value);
   };
 

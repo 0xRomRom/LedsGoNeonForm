@@ -11,6 +11,7 @@ import BackplateType from "./components/BackplateType/BackplateType";
 import BackplateShape from "./components/BackplateShape/BackplateShape";
 import Mounting from "./components/Mounting/Mounting";
 import IndoorOutdoor from "./components/IndoorOutdoor/IndoorOutdoor";
+import SmallForm from "./components/SmallForm/SmallForm";
 
 const App = () => {
   const [isDraggingOver, setIsDraggingOver] = useState(false);
@@ -25,6 +26,8 @@ const App = () => {
   const [backplateShape, setBackplateShape] = useState(null);
   const [mountType, setMountType] = useState(null);
   const [indoorOutdoor, setIndoorOutdoor] = useState(null);
+  const [name, setName] = useState(null);
+  const [email, setEmail] = useState(null);
 
   const handleDragOver = () => {
     setIsDraggingOver(true);
@@ -39,6 +42,7 @@ const App = () => {
   };
 
   useEffect(() => {
+    console.log("Progress state: ", progressState);
     if (progressState > 0) {
       window.scrollTo(0, document.body.scrollHeight);
     }
@@ -98,7 +102,9 @@ const App = () => {
             setLongestSide={setLongestSide}
             setToggleIconBool={setToggleIconBool}
           />
-          <TiArrowLeftThick className={stl.activeArrow} />
+          {progressState > 0 && (
+            <TiArrowLeftThick className={stl.activeArrow} />
+          )}
           {uploadedImg && progressState >= 1 && (
             <RequestCalculation
               aspectRatio={aspectRatio}
@@ -109,12 +115,19 @@ const App = () => {
               setLongestSide={setLongestSide}
             />
           )}
+          {progressState === 1 ||
+            (progressState >= 3 && (
+              <TiArrowLeftThick className={stl.activeArrow} />
+            ))}
           {progressState >= 3 && (
             <LongestRow
               setLongestSide={setLongestSide}
               setProgressState={setProgressState}
               longestSide={longestSide}
             />
+          )}
+          {progressState >= 4 && (
+            <TiArrowLeftThick className={stl.activeArrow} />
           )}
           {progressState >= 4 && longestSide && (
             <LedKind
@@ -123,10 +136,16 @@ const App = () => {
             />
           )}
           {progressState >= 5 && (
+            <TiArrowLeftThick className={stl.activeArrow} />
+          )}
+          {progressState >= 5 && (
             <BackplateType
               setProgressState={setProgressState}
               setBackplateType={setBackplateType}
             />
+          )}
+          {progressState >= 6 && (
+            <TiArrowLeftThick className={stl.activeArrow} />
           )}
           {progressState >= 6 && (
             <BackplateShape
@@ -135,14 +154,32 @@ const App = () => {
             />
           )}
           {progressState >= 7 && (
+            <TiArrowLeftThick className={stl.activeArrow} />
+          )}
+          {progressState >= 7 && (
             <Mounting
               setProgressState={setProgressState}
               setMountType={setMountType}
             />
           )}
+          {progressState >= 8 && (
+            <TiArrowLeftThick className={stl.activeArrow} />
+          )}
           {progressState === 8 && (
             <IndoorOutdoor
               setIndoorOutdoor={setIndoorOutdoor}
+              setProgressState={setProgressState}
+            />
+          )}
+          {progressState >= 9 && (
+            <TiArrowLeftThick className={stl.activeArrow} />
+          )}
+          {progressState === 0 && (
+            <SmallForm
+              setName={setName}
+              name={name}
+              setEmail={setEmail}
+              email={email}
               setProgressState={setProgressState}
             />
           )}

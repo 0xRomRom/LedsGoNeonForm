@@ -1,16 +1,6 @@
-import React, { useEffect, useState } from "react";
 import YouTube from "react-youtube";
 
-const VideoPlayer = ({ videoID, setLoading }) => {
-  const [ready, setReady] = useState(false);
-
-  useEffect(() => {
-    console.log("useEffect - ready:", ready);
-    if (ready) {
-      setLoading(false);
-    }
-  }, [ready, setLoading]);
-
+const VideoPlayer = ({ videoID }) => {
   return (
     <YouTube
       videoId={videoID}
@@ -23,7 +13,6 @@ const VideoPlayer = ({ videoID, setLoading }) => {
       }}
       onReady={() => {
         console.log("onReady");
-        setReady(true);
       }}
     />
   );
