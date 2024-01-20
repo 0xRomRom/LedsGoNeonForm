@@ -1,19 +1,38 @@
 import stl from "./CurrentOverview.module.css";
 
-const CurrentOverview = ({ priceEstimate, ledType, RGBPrice }) => {
+const CurrentOverview = ({
+  priceEstimate,
+  ledType,
+  RGBPrice,
+  backplateType,
+  backplatePrice,
+}) => {
   return (
     <div className={stl.currentOveriew}>
-      <span className={stl.estPrice}>
-        Geschatte Prijs:{" "}
-        <span className={stl.price}> €{Math.floor(priceEstimate)},-</span>
-      </span>
-      {ledType === "RGB" && (
-        <div className={stl.rgbFlex}>
-          <span className={stl.rgbExtra}>RGB</span>
-          <span className={stl.white}>:</span>
-          <span className={stl.boldWhite}>+€{Math.ceil(RGBPrice)},-</span>
-        </div>
-      )}
+      <div className={stl.nameList}>
+        <span className={stl.greenName}>Geschatte Prijs:</span>
+
+        {backplateType === "Gekleurd" && (
+          <div className={stl.rgbFlex}>
+            <span className={stl.achterPlaat}>Achterplaat:</span>
+          </div>
+        )}
+        {ledType === "RGB" && (
+          <div className={stl.rgbFlex}>
+            <span className={stl.rgbExtra}>RGB</span>
+            <span className={stl.white}>:</span>
+          </div>
+        )}
+      </div>
+      <div className={stl.priceList}>
+        <span className={stl.boldWhite}> €{Math.floor(priceEstimate)},-</span>
+        {backplateType === "Gekleurd" && (
+          <span className={stl.price}> €{Math.floor(backplatePrice)},-</span>
+        )}
+        {ledType === "RGB" && (
+          <span className={stl.price}>€{Math.ceil(RGBPrice)},-</span>
+        )}
+      </div>
     </div>
   );
 };

@@ -8,25 +8,20 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  flex-direction: column;
-}
-
-.estPrice {
-  color: var(--green);
-  font-weight: bold;
 }
 
 .price {
   color: white;
   font-size: 18px;
   padding-left: 5px;
+  font-weight: bold;
 }
 
 .boldWhite {
   color: white;
   font-weight: bold;
   font-size: 18px;
-  padding-left: 27px;
+  padding-left: 5px;
 }
 
 .rgbExtra {
@@ -38,8 +33,8 @@
   );
   -webkit-background-clip: text;
   color: transparent;
-  font-size: 18px;
-  padding-left: 3rem;
+  font-size: 15px;
+  font-weight: bold;
 }
 
 .rgbFlex {
@@ -50,4 +45,31 @@
 
 .white {
   color: white;
+  font-weight: bold;
+}
+
+.nameList {
+  display: flex;
+  justify-content: center;
+  align-items: flex-end;
+  flex-direction: column;
+}
+
+.priceList {
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  flex-direction: column;
+}
+
+.achterPlaat {
+  color: var(--green);
+  font-weight: bold;
+  font-size: 15px;
+}
+
+.greenName {
+  color: var(--green);
+  font-weight: bold;
+  font-size: 18px;
 }

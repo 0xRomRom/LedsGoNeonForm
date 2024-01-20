@@ -32,6 +32,7 @@ const App = () => {
   const [notice, setNotice] = useState(null);
   const [priceEstimate, setPriceEstimate] = useState(null);
   const [RGBPrice, setRGBPrice] = useState(null);
+  const [backplatePrice, setBackPlatePrice] = useState(null);
 
   const handleDragOver = () => {
     setIsDraggingOver(true);
@@ -46,7 +47,6 @@ const App = () => {
   };
 
   useEffect(() => {
-    console.log("Progress state: ", progressState);
     if (progressState > 0) {
       window.scrollTo(0, document.body.scrollHeight);
     }
@@ -59,12 +59,17 @@ const App = () => {
     if (length) {
       priceCalculation = 0.425 * length * aspectRatio + 200;
     }
-
-    console.log("Ledtype: ", ledType);
-    console.log("Aspect ratio: ", aspectRatio);
-    console.log("Price calculation BEFORE multiplier: ", priceCalculation);
-    console.log("RGB Price increase: ", priceCalculation * 0.4);
     setRGBPrice(priceCalculation * 0.4);
+    setBackPlatePrice(priceCalculation * 0.4 * 0.25);
+
+    if (backplateType === "Gekleurd") {
+      priceCalculation *= 1.25;
+    }
+    if (backplateType === "Transparant") {
+      priceCalculation *= 1;
+      setBackPlatePrice(null);
+    }
+
     if (ledType && ledType === "RGB") {
       priceCalculation *= 1.4;
     }
@@ -74,7 +79,7 @@ const App = () => {
     console.log("Price calculation AFTER multiplier: ", priceCalculation);
 
     setPriceEstimate(priceCalculation);
-  }, [aspectRatio, ledType, longestSide]);
+  }, [aspectRatio, ledType, longestSide, backplateType]);
 
   return (
     <div
@@ -87,6 +92,8 @@ const App = () => {
           priceEstimate={priceEstimate}
           ledType={ledType}
           RGBPrice={RGBPrice}
+          backplateType={backplateType}
+          backplatePrice={backplatePrice}
         />
       )}
       {uploadedImg && !aspectRatio && progressState === 0 && (
