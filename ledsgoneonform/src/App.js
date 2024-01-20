@@ -7,6 +7,7 @@ import RequestCalculation from "./components/RequestCalculation/RequestCalculati
 import LongestRow from "./components/LongestRow/LongestRow";
 import LedKind from "./components/LedKind/LedKind";
 import BackplateType from "./components/BackplateType/BackplateType";
+import BackplateShape from "./components/BackplateShape/BackplateShape";
 
 const App = () => {
   const [isDraggingOver, setIsDraggingOver] = useState(false);
@@ -17,6 +18,8 @@ const App = () => {
   const [progressState, setProgressState] = useState(0);
   const [toggleIconBool, setToggleIconBool] = useState(false);
   const [ledType, setLedType] = useState(null);
+  const [backplateType, setBackplateType] = useState(null);
+  const [backplateShape, setBackplateShape] = useState(null);
 
   const handleDragOver = () => {
     setIsDraggingOver(true);
@@ -107,7 +110,18 @@ const App = () => {
               setProgressState={setProgressState}
             />
           )}
-          {progressState === 5 && <BackplateType />}
+          {progressState >= 5 && (
+            <BackplateType
+              setProgressState={setProgressState}
+              setBackplateType={setBackplateType}
+            />
+          )}
+          {progressState >= 6 && (
+            <BackplateShape
+              setBackplateShape={setBackplateShape}
+              setProgressState={setProgressState}
+            />
+          )}
         </main>
       </div>
     </div>

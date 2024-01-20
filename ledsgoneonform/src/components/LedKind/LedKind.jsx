@@ -1,5 +1,6 @@
 import stl from "./LedKind.module.css";
 import { useState } from "react";
+import VideoPlayer from "../videoplayer/VideoPlayer";
 
 const LedKind = ({ setLedType, setProgressState }) => {
   const [selectedValue, setSelectedValue] = useState("");
@@ -12,6 +13,9 @@ const LedKind = ({ setLedType, setProgressState }) => {
 
   return (
     <div className={`${stl.longestRow} ${selectedValue ? stl.checked : ""}`}>
+      <div className={stl.videoWrapper}>
+        <VideoPlayer videoID={"KSAwVuqlAT4"} />
+      </div>
       <h3 className={stl.hero}>
         Led
         <span
