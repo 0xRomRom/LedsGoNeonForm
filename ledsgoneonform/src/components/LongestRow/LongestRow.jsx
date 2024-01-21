@@ -3,7 +3,7 @@ import stl from "./LongestRow.module.css";
 
 const LongestRow = ({ setLongestSide, setProgressState, longestSide }) => {
   // State to manage the selected value
-  const [selectedValue, setSelectedValue] = useState("");
+  const [selectedValue, setSelectedValue] = useState("Empty");
 
   // Function to handle select value change
   const handleSelectChange = (event) => {
@@ -23,10 +23,10 @@ const LongestRow = ({ setLongestSide, setProgressState, longestSide }) => {
       </h3>
       <select
         className={stl.longestSelect}
-        value={selectedValue || "Kies een waarde"}
+        value={selectedValue}
         onChange={handleSelectChange}
       >
-        <option value="Empty" default>
+        <option value="Empty" default disabled>
           Kies een waarde
         </option>
         <option value="60cm">60cm</option>
@@ -41,7 +41,7 @@ const LongestRow = ({ setLongestSide, setProgressState, longestSide }) => {
         <option value="200cm">200cm</option>
         <option value="220cm">220cm</option>
         <option value="240cm">240cm</option>
-        <option value="" disabled>
+        <option value="Groter" disabled>
           Groter? Geef aan bij opmerkingen
         </option>
       </select>

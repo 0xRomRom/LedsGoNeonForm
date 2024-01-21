@@ -11,9 +11,6 @@ const VideoPlayer = ({ videoID }) => {
           // autoplay: 1,
         },
       }}
-      onReady={() => {
-        console.log("onReady");
-      }}
     />
   );
 };

@@ -17,6 +17,7 @@ const ImageEditor = ({
   setAspectRatio,
   setProgressState,
   setToggleIconBool,
+  setLongestSide,
 }) => {
   const imgRef = useRef(null);
   const [imgSrc, setImgSrc] = useState("");
@@ -87,6 +88,7 @@ const ImageEditor = ({
     setAspectRatio(aspectRatio);
     setProgressState(3);
     setToggleIconBool(false);
+    setLongestSide(null);
   };
 
   const handleCancel = () => {

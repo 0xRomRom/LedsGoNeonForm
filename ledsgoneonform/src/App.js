@@ -56,7 +56,6 @@ const App = () => {
     const length = +longestSide?.slice(0, -2);
     let priceCalculation = 0;
     let dimensions = 0;
-    console.log("Aspect ratio: ", aspectRatio);
 
     if (aspectRatio >= 1) {
       const height = length / aspectRatio;
@@ -64,57 +63,57 @@ const App = () => {
 
       dimensions = height * width;
     }
+
     if (aspectRatio < 1) {
       const height = length;
       const width = aspectRatio * height;
 
-      console.log("Width: ", width);
-      console.log("Height: ", height);
-
       dimensions = width * height;
     }
-    console.log("Dimensions: ", Math.round(dimensions));
-    return;
-    const totalDimensionsPrice = 0.0425 * dimensions;
 
-    priceCalculation = totalDimensionsPrice + 200;
+    priceCalculation = 0.0425 * dimensions + 200;
     if (+length > 0) {
-      //Base Price
-      if (!backplateType || !ledType) {
-        setPriceEstimate(priceCalculation);
+      if (!backplateType && !ledType && !aspectRatio && !longestSide) {
+        setPriceEstimate(null);
         return;
       }
 
-      if (backplateType) {
-        if (backplateType === "Gekleurd") {
+      if (!ledType && !backplateType) {
+        setPriceEstimate(priceCalculation);
+      }
+      if (ledType) {
+        const ledMultiplied = priceCalculation * 1.4;
+
+        if (ledType === "RGB" && !backplateType) {
+          setRGBPrice(priceCalculation * 0.4);
+          priceCalculation *= 1.4;
         }
-        if (backplateType === "Transparant") {
+        if (ledType === "RGB" && backplateType === "Gekleurd") {
+          setRGBPrice(priceCalculation * 0.4);
+          setBackPlatePrice(ledMultiplied * 0.25);
+          priceCalculation = ledMultiplied * 1.25;
         }
-      }
-      // + Backplate color
+        if (ledType === "RGB" && backplateType === "Transparant") {
+          setRGBPrice(priceCalculation * 0.4);
+          setBackPlatePrice(null);
+          priceCalculation = priceCalculation * 1.4;
+        }
 
-      // + RGB
-
-      setRGBPrice(priceCalculation * 0.4);
-      setBackPlatePrice(priceCalculation * 1.4 * 0.25);
-
-      if (backplateType === "Gekleurd") {
-        priceCalculation *= 1.25;
+        if (ledType === "Single color" && !backplateType) {
+          priceCalculation *= 1;
+          setRGBPrice(null);
+        }
+        if (ledType === "Single color" && backplateType === "Gekleurd") {
+          setRGBPrice(null);
+          setBackPlatePrice(priceCalculation * 0.25);
+          priceCalculation *= 1.25;
+        }
+        if (ledType === "Single color" && backplateType === "Transparant") {
+          setRGBPrice(null);
+          setBackPlatePrice(null);
+        }
+        setPriceEstimate(priceCalculation);
       }
-      if (backplateType === "Transparant") {
-        priceCalculation *= 1;
-        setBackPlatePrice(null);
-      }
-
-      if (ledType === "RGB") {
-        priceCalculation *= 1.4;
-      }
-      if (ledType === "Single color") {
-        priceCalculation *= 1;
-      }
-      console.log("Price calculation AFTER multiplier: ", priceCalculation);
-
-      // setPriceEstimate(priceCalculation);
     }
   }, [aspectRatio, ledType, longestSide, backplateType]);
 
@@ -124,7 +123,7 @@ const App = () => {
       onClick={handleClickDefault}
       onDragOver={handleDragOver}
     >
-      {priceEstimate && aspectRatio && (
+      {priceEstimate && aspectRatio && longestSide && (
         <CurrentOverview
           priceEstimate={priceEstimate}
           ledType={ledType}
@@ -140,6 +139,7 @@ const App = () => {
           setAspectRatio={setAspectRatio}
           setProgressState={setProgressState}
           setToggleIconBool={setToggleIconBool}
+          setLongestSide={setLongestSide}
         />
       )}
       <div className={stl.brickBg}>

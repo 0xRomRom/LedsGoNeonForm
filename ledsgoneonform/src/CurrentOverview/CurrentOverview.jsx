@@ -13,7 +13,7 @@ const CurrentOverview = ({
         <span className={stl.greenName}>Geschatte Prijs:</span>
 
         {backplateType === "Gekleurd" && (
-          <div className={stl.rgbFlex}>
+          <div className={stl.plaatFlex}>
             <span className={stl.achterPlaat}>Achterplaat:</span>
           </div>
         )}
@@ -25,7 +25,7 @@ const CurrentOverview = ({
         )}
       </div>
       <div className={stl.priceList}>
-        <span className={stl.boldWhite}> €{Math.ceil(priceEstimate)},-</span>
+        <span className={stl.boldWhite}> €{Math.floor(priceEstimate)},-</span>
         {backplateType === "Gekleurd" && (
           <span className={stl.price}> €{Math.floor(backplatePrice)},-</span>
         )}

@@ -33,31 +33,43 @@
   );
   -webkit-background-clip: text;
   color: transparent;
-  font-size: 15px;
+  /* font-size: 15px; */
   font-weight: bold;
+}
+
+.plaatFlex {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  /* top: 2px; */
 }
 
 .rgbFlex {
   display: flex;
   justify-content: center;
   align-items: center;
+  position: relative;
+  top: 2px;
 }
 
 .white {
   color: white;
   font-weight: bold;
+  position: relative;
+  bottom: 2px;
 }
 
 .nameList {
   display: flex;
-  justify-content: center;
+  justify-content: space-between;
   align-items: flex-end;
   flex-direction: column;
 }
 
 .priceList {
   display: flex;
-  justify-content: center;
+  justify-content: space-between;
   align-items: flex-start;
   flex-direction: column;
 }
@@ -66,6 +78,8 @@
   color: var(--green);
   font-weight: bold;
   font-size: 15px;
+  position: relative;
+  top: 2px;
 }
 
 .greenName {
