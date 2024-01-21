@@ -8,11 +8,18 @@
   display: flex;
   justify-content: center;
   align-items: center;
+  padding: 5px 0px;
 }
 
 .price {
   color: white;
   font-size: 18px;
+  padding-left: 5px;
+  font-weight: bold;
+}
+.priceSm {
+  color: white;
+  font-size: 15px;
   padding-left: 5px;
   font-weight: bold;
 }
@@ -22,6 +29,7 @@
   font-weight: bold;
   font-size: 18px;
   padding-left: 5px;
+  border-bottom: 1px solid transparent;
 }
 
 .rgbExtra {
@@ -42,7 +50,6 @@
   justify-content: center;
   align-items: center;
   position: relative;
-  /* top: 2px; */
 }
 
 .rgbFlex {
@@ -50,14 +57,13 @@
   justify-content: center;
   align-items: center;
   position: relative;
-  top: 2px;
+  font-size: 15px;
 }
 
 .white {
   color: white;
   font-weight: bold;
   position: relative;
-  bottom: 2px;
 }
 
 .nameList {
@@ -67,6 +73,13 @@
   flex-direction: column;
 }
 
+.nameList span {
+  height: 33%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
 .priceList {
   display: flex;
   justify-content: space-between;
@@ -74,23 +87,23 @@
   flex-direction: column;
 }
 
+.priceList span {
+  height: 33%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
 .achterPlaat {
   color: var(--green);
   font-weight: bold;
   font-size: 15px;
   position: relative;
-  top: 2px;
 }
 
 .greenName {
   color: var(--green);
   font-weight: bold;
   font-size: 18px;
-}
-
-.nameList span {
-  height: 25px;
-}
-.priceList span {
-  height: 25px;
+  border-bottom: 1px solid var(--green);
 }
