@@ -47,9 +47,9 @@ const SmallForm = ({
         return;
       }, 1000);
     }
-    if (email) {
-      window.scrollTo(0, document.body.scrollHeight);
+    if (emailEntered) {
       setTimeout(() => {
+        window.scrollTo(0, document.body.scrollHeight);
         return;
       }, 1000);
     }

@@ -46,6 +46,7 @@
   position: absolute;
   position: fixed;
   top: 25px;
+  z-index: 100;
 }
 
 .burgerCta {
