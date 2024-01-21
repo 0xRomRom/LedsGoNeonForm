@@ -1,6 +1,10 @@
 import stl from "./NavOverlay.module.css";
+import { FaArrowRight } from "react-icons/fa6";
+import { useState } from "react";
 
 const NavOverlay = () => {
+  const [hoveredState, setHoveredState] = useState(null);
+
   return (
     <div className={stl.navOverlay}>
       <div className={stl.topbar}>
@@ -14,11 +18,33 @@ const NavOverlay = () => {
       </div>
       <div className={stl.innerLinks}>
         <ul className={stl.links}>
-          <li>
-            <a className={stl.navLink}>Home</a>
+          <li className={stl.navLink}>
+            <FaArrowRight className={stl.arrowright} />
+            <a
+              className={`${stl.anchor} ${stl.active}`}
+              href="https://ledsgoneon.nl/"
+              rel="noreferrer"
+              onClick={() => (window.location.href = "https://ledsgoneon.nl")}
+            >
+              Home
+            </a>
           </li>
-          <li>
-            <a className={stl.navLink}></a>
+          <li
+            className={stl.navLink}
+            onMouseOver={() => setHoveredState("Tekst Samenstellen")}
+            onMouseLeave={() => setHoveredState(null)}
+          >
+            <FaArrowRight className={stl.arrowright} />
+            <a
+              className={`${stl.anchor} ${
+                hoveredState === "Tekst Samenstellen" ? stl.active : ""
+              }`}
+              href="https://ledsgoneon.nl/"
+              rel="noreferrer"
+              onClick={() => (window.location.href = "https://ledsgoneon.nl")}
+            >
+              Home
+            </a>
           </li>
           <li>
             <a className={stl.navLink}></a>
