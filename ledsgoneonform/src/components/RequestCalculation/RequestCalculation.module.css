@@ -1,7 +1,7 @@
 .requestcalculation {
   background-color: rgba(0, 0, 0, 0.6);
-  width: 700px;
-  /* margin-top: 4rem; */
+  width: 100%;
+  max-width: 700px;
   height: 10rem;
   border-radius: 0.8rem;
   padding: 15px;
@@ -89,6 +89,7 @@
 .opgeslagen {
   color: rgb(0, 255, 0);
   font-size: 30px;
+  text-align: center;
 }
 
 .aspectFlex {
@@ -148,4 +149,55 @@
 
 .checked {
   box-shadow: 0px 0px 20px var(--green);
+}
+
+@media (max-width: 530px) {
+  .hero {
+    font-size: 5.5vw;
+  }
+  .green {
+    font-size: 5vw;
+  }
+  .btnBackground {
+    position: relative;
+    width: 8rem;
+    height: 3rem;
+    background-color: rgb(0, 255, 0);
+    border-radius: 0.4rem;
+  }
+
+  .cta {
+    width: 8rem;
+    height: 3rem;
+    border-radius: 0.4rem;
+    background-color: var(--pink);
+    color: white;
+    outline: none;
+    border: none;
+    font-size: 18px;
+    font-weight: bold;
+    cursor: pointer;
+    position: relative;
+    top: -10px;
+    right: -5px;
+    transition: all 0.3s ease-in-out;
+    user-select: none;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 5px;
+    padding: 0px 10px;
+    margin: 5px 0px;
+    pointer-events: initial;
+  }
+}
+
+@media (max-width: 410px) {
+  .opgeslagen {
+    font-size: 7vw;
+  }
+
+  .verhoudingenSpan {
+    font-size: 6vw;
+  }
 }

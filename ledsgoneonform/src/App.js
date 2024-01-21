@@ -53,7 +53,7 @@ const App = () => {
       const documentHeight = document.documentElement.scrollHeight;
 
       // Adjust the offset as needed
-      const offset = 100;
+      const offset = 0;
 
       // Check if scrolled to the bottom with an offset
       if (scrollPosition + windowHeight >= documentHeight - offset) {

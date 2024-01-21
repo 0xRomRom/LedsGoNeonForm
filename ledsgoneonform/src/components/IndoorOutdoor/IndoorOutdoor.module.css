@@ -1,6 +1,7 @@
 .longestRow {
   background-color: rgba(0, 0, 0, 0.6);
-  width: 700px;
+  width: 100%;
+  max-width: 700px;
   border-radius: 0.8rem;
   padding: 15px;
   box-shadow: 0px 0px 20px var(--purple);
@@ -117,4 +118,10 @@
 
 .selected {
   background-color: var(--pink);
+}
+
+@media (max-width: 420px) {
+  .cta {
+    width: 8.5rem;
+  }
 }

@@ -84,7 +84,6 @@ const ImageEditor = ({
       imgRef.current.height
     );
     const { width, height } = cropObject;
-    console.log(width, height);
     const aspectRatio = +(width / height).toFixed(4);
 
     setAspectRatio(aspectRatio);
