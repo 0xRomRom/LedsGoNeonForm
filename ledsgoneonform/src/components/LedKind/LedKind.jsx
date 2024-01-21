@@ -14,7 +14,7 @@ const LedKind = ({ setLedType, setProgressState }) => {
   return (
     <div className={`${stl.longestRow} ${selectedValue ? stl.checked : ""}`}>
       <div className={stl.videoWrapper}>
-        <VideoPlayer videoID={"KSAwVuqlAT4"} />
+        <VideoPlayer videoID={"Io194T5VC2w"} />
       </div>
       <h3 className={stl.hero}>
         Soort
@@ -33,8 +33,8 @@ const LedKind = ({ setLedType, setProgressState }) => {
         <option value="" default disabled>
           Kies kleurtype
         </option>
-        <option value="Single color">Single color</option>
-        <option value="RGB">RGB (€ +40%) </option>
+        <option value="Single color">Single color (Vaste kleur)</option>
+        <option value="RGB">RGB € +40% (Verstelbare kleur)</option>
       </select>
     </div>
   );

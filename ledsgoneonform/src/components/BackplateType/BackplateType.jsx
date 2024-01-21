@@ -14,7 +14,7 @@ const BackplateType = ({ setProgressState, setBackplateType }) => {
   return (
     <div className={`${stl.longestRow} ${selectedValue ? stl.checked : ""}`}>
       <div className={stl.videoWrapper}>
-        <VideoPlayer videoID={"KSAwVuqlAT4"} />
+        <VideoPlayer videoID={"bmMFjJ-g8jo"} />
       </div>
       <h3 className={stl.hero}>
         Soort
