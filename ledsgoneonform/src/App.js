@@ -10,7 +10,7 @@ import LedKind from "./components/LedKind/LedKind";
 import BackplateType from "./components/BackplateType/BackplateType";
 import BackplateShape from "./components/BackplateShape/BackplateShape";
 import Mounting from "./components/Mounting/Mounting";
-import IndoorOutdoor from "./components/IndoorOutdoor/IndoorOutdoor";
+import { FaWhatsapp } from "react-icons/fa";
 import SmallForm from "./components/SmallForm/SmallForm";
 import CurrentOverview from "./CurrentOverview/CurrentOverview";
 
@@ -25,7 +25,6 @@ const App = () => {
   const [backplateType, setBackplateType] = useState(null);
   const [backplateShape, setBackplateShape] = useState(null);
   const [mountType, setMountType] = useState(null);
-  const [indoorOutdoor, setIndoorOutdoor] = useState(null);
   const [name, setName] = useState(null);
   const [email, setEmail] = useState(null);
   const [notice, setNotice] = useState(null);
@@ -149,6 +148,21 @@ const App = () => {
       onClick={handleClickDefault}
       onDragOver={handleDragOver}
     >
+      <div className={stl.whatsAppButton}>
+        <a
+          className={stl.appAnchor}
+          href="https://wa.me/message/HLRIKBZBL4MRA1"
+          onClick={() =>
+            window.open("https://wa.me/message/HLRIKBZBL4MRA1", "_blank")
+          }
+          target="_blank"
+          rel="noreferrer"
+        >
+          <FaWhatsapp className={stl.appLogo} />
+
+          <span className={stl.appOns}>App ons</span>
+        </a>
+      </div>
       {priceEstimate && aspectRatio && longestSide && (
         <CurrentOverview
           priceEstimate={priceEstimate}
@@ -273,16 +287,8 @@ const App = () => {
           {progressState >= 8 && (
             <TiArrowLeftThick className={stl.activeArrow} />
           )}
-          {progressState >= 8 && (
-            <IndoorOutdoor
-              setIndoorOutdoor={setIndoorOutdoor}
-              setProgressState={setProgressState}
-            />
-          )}
-          {progressState >= 9 && (
-            <TiArrowLeftThick className={stl.activeArrow} />
-          )}
-          {progressState === 9 && (
+
+          {progressState === 8 && (
             <SmallForm
               setName={setName}
               name={name}
@@ -295,7 +301,6 @@ const App = () => {
               backplateType={backplateType}
               backplateShape={backplateShape}
               mountType={mountType}
-              indoorOutdoor={indoorOutdoor}
               uploadedImg={uploadedImg}
               longestSide={longestSide}
             />

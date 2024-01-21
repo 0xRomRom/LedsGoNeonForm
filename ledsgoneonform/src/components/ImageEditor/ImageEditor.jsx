@@ -20,9 +20,15 @@ const ImageEditor = ({
   setUploadedImg,
 }) => {
   const imgRef = useRef(null);
-  const [imgSrc, setImgSrc] = useState("");
+  const [imgSrc, setImgSrc] = useState();
   const [crop, setCrop] = useState(null);
   const [error, setError] = useState("");
+
+  useEffect(() => {
+    if (!imgSrc) {
+      setImgSrc(uploadedImg);
+    }
+  }, [uploadedImg, imgSrc]);
 
   const onImageLoad = (e) => {
     const { width, height } = e.currentTarget;
@@ -75,7 +81,7 @@ const ImageEditor = ({
     handleFileChange({ target: { files: [uploadedImg] } });
 
     // Add any dependencies if needed
-  }, [uploadedImg, error, setImgSrc]);
+  }, [uploadedImg, error, setImgSrc, setUploadedImg]);
 
   const handleCropSave = () => {
     const cropObject = convertToPixelCrop(
@@ -93,7 +99,7 @@ const ImageEditor = ({
   };
 
   const handleCancel = () => {
-    setProgressState(2);
+    setProgressState(1);
     setToggleIconBool(false);
   };
 
@@ -118,6 +124,7 @@ const ImageEditor = ({
               aspect={ASPECT_RATIO}
               minWidth={MIN_DIMENSION}
               className={stl.parent}
+              style={{ backgroundColor: "red" }}
             >
               <img
                 ref={imgRef}

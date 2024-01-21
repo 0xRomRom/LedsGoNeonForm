@@ -204,3 +204,18 @@ input::placeholder {
   margin-top: 2rem;
   margin-bottom: 1rem;
 }
+
+.binnengebruik {
+  color: gray;
+  display: flex;
+  justify-content: center;
+  align-content: center;
+  gap: 0.5rem;
+  position: relative;
+}
+
+.alert {
+  color: yellow;
+  position: relative;
+  bottom: -2px;
+}

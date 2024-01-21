@@ -1,5 +1,6 @@
 import stl from "./SmallForm.module.css";
 import { useEffect, useState } from "react";
+import { RiAlertLine } from "react-icons/ri";
 
 const SmallForm = ({
   setName,
@@ -108,6 +109,10 @@ const SmallForm = ({
               LED's Go!
             </button>
           </div>
+          <span className={stl.binnengebruik}>
+            <RiAlertLine className={stl.alert} /> Lampen alleen geschikt voor
+            binnengebruik!
+          </span>
         </>
       )}
     </div>

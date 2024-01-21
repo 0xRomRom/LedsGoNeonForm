@@ -42,7 +42,6 @@ const UploadModal = ({
         const newFile = {
           file,
         };
-        console.log(newFile);
         filetypes.forEach((type) => {
           if (type === newFile.file.name.split(".")[1].toLowerCase()) {
             newFiles.push(newFile);
