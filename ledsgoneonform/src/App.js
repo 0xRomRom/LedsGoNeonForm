@@ -13,6 +13,7 @@ import Mounting from "./components/Mounting/Mounting";
 import { FaWhatsapp } from "react-icons/fa";
 import SmallForm from "./components/SmallForm/SmallForm";
 import CurrentOverview from "./CurrentOverview/CurrentOverview";
+import NavOverlay from "./components/navoverlay/NavOverlay";
 
 const App = () => {
   const [isDraggingOver, setIsDraggingOver] = useState(false);
@@ -148,6 +149,7 @@ const App = () => {
       onClick={handleClickDefault}
       onDragOver={handleDragOver}
     >
+      <NavOverlay />
       <div className={stl.whatsAppButton}>
         <a
           className={stl.appAnchor}
