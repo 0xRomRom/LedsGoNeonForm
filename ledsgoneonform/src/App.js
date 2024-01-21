@@ -117,6 +117,10 @@ const App = () => {
     }
   }, [aspectRatio, ledType, longestSide, backplateType]);
 
+  useEffect(() => {
+    console.log(cutUploadedImg);
+  }, [cutUploadedImg]);
+
   return (
     <div
       className={stl.app}
@@ -140,6 +144,7 @@ const App = () => {
           setProgressState={setProgressState}
           setToggleIconBool={setToggleIconBool}
           setLongestSide={setLongestSide}
+          setCutUploadedImg={setCutUploadedImg}
         />
       )}
       <div className={stl.brickBg}>
@@ -168,6 +173,15 @@ const App = () => {
             Stel hier <span className={stl.green}>vrijblijvend</span> je eigen
             LED's Go Neon lamp samen
           </h2>
+          {cutUploadedImg && (
+            <img
+              src={cutUploadedImg}
+              alt=""
+              style={{
+                border: "1px solid red",
+              }}
+            />
+          )}
         </header>
         <main className={stl.mainApp}>
           <UploadModal

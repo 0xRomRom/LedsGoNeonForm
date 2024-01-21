@@ -49,6 +49,8 @@ const UploadModal = ({
         });
       });
 
+      if (newFiles.length === 0) return;
+
       setUploadedImg(newFiles[0]);
       handleDragLeave(false);
       setAspectRatio(null);
