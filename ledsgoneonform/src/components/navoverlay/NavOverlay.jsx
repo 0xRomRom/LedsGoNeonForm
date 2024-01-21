@@ -19,7 +19,7 @@ const NavOverlay = () => {
       <div className={stl.innerLinks}>
         <ul className={stl.links}>
           <li className={stl.navLink}>
-            <FaArrowRight className={stl.arrowright} />
+            <FaArrowRight className={`${stl.arrowright} ${stl.showArrow}`} />
             <a
               className={`${stl.anchor} ${stl.active}`}
               href="https://ledsgoneon.nl/"

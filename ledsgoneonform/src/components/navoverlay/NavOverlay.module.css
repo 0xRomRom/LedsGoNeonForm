@@ -83,21 +83,34 @@
   align-items: center;
   height: 68.8px;
   font-weight: 600;
+  border: 1px solid red;
 }
 
-.navLink:hover {
-  /* padding-left: 60px; */
+.navLink:hover .arrowright {
+  opacity: 1;
 }
 
 .active {
-  padding-left: 24px;
+  padding-left: 64px;
+  transition: all 0.3s ease-in-out;
 }
 
 .arrowright {
   color: rgb(255, 0, 184);
   font-size: 40px;
+  transition: all 0.3s ease-in;
+  position: absolute;
+  left: 0;
+  opacity: 0;
 }
 
 .anchor {
+  transition: all 0.3s ease-in;
   color: white;
+  position: relative;
+}
+
+.showArrow {
+  opacity: 1 !important;
+  pointer-events: none;
 }
