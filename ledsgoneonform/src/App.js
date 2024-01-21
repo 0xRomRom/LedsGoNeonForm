@@ -53,32 +53,64 @@ const App = () => {
   }, [progressState]);
 
   useEffect(() => {
-    const length = longestSide?.slice(0, -2);
+    const length = +longestSide?.slice(0, -2);
     let priceCalculation = 0;
+    let dimensions = 0;
+    console.log("Length: ", length);
+    console.log("Aspect ratio: ", aspectRatio);
+    const height = length / aspectRatio;
+    console.log("Height: ", height);
 
-    if (length) {
-      priceCalculation = 0.425 * length * aspectRatio + 200;
+    if (aspectRatio >= 1) {
+      dimensions = height * length;
     }
-    setRGBPrice(priceCalculation * 0.4);
-    setBackPlatePrice(priceCalculation * 0.4 * 0.25);
+    if (aspectRatio < 1) {
+      const width = height * aspectRatio;
+      dimensions = width * height;
+    }
+    console.log("Dimensions: ", Math.round(dimensions));
+    return;
+    const totalDimensionsPrice = 0.0425 * dimensions;
 
-    if (backplateType === "Gekleurd") {
-      priceCalculation *= 1.25;
-    }
-    if (backplateType === "Transparant") {
-      priceCalculation *= 1;
-      setBackPlatePrice(null);
-    }
+    priceCalculation = totalDimensionsPrice + 200;
+    if (+length > 0) {
+      //Base Price
+      if (!backplateType || !ledType) {
+        setPriceEstimate(priceCalculation);
+        return;
+      }
 
-    if (ledType && ledType === "RGB") {
-      priceCalculation *= 1.4;
-    }
-    if (ledType && ledType === "Single color") {
-      priceCalculation *= 1;
-    }
-    console.log("Price calculation AFTER multiplier: ", priceCalculation);
+      if (backplateType) {
+        if (backplateType === "Gekleurd") {
+        }
+        if (backplateType === "Transparant") {
+        }
+      }
+      // + Backplate color
 
-    setPriceEstimate(priceCalculation);
+      // + RGB
+
+      setRGBPrice(priceCalculation * 0.4);
+      setBackPlatePrice(priceCalculation * 1.4 * 0.25);
+
+      if (backplateType === "Gekleurd") {
+        priceCalculation *= 1.25;
+      }
+      if (backplateType === "Transparant") {
+        priceCalculation *= 1;
+        setBackPlatePrice(null);
+      }
+
+      if (ledType === "RGB") {
+        priceCalculation *= 1.4;
+      }
+      if (ledType === "Single color") {
+        priceCalculation *= 1;
+      }
+      console.log("Price calculation AFTER multiplier: ", priceCalculation);
+
+      // setPriceEstimate(priceCalculation);
+    }
   }, [aspectRatio, ledType, longestSide, backplateType]);
 
   return (

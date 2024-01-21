@@ -73,3 +73,10 @@
   font-weight: bold;
   font-size: 18px;
 }
+
+.nameList span {
+  height: 25px;
+}
+.priceList span {
+  height: 25px;
+}
