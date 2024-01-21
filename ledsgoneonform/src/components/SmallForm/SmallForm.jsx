@@ -15,7 +15,6 @@ const SmallForm = ({
   mountType,
   indoorOutdoor,
   uploadedImg,
-  cutUploadedImg,
 }) => {
   const [nameEntered, setNameEntered] = useState(false);
   const [emailEntered, setEmailEntered] = useState(false);
@@ -58,7 +57,6 @@ const SmallForm = ({
   const submitForm = () => {
     let postObject = {
       originalImg: uploadedImg,
-      cutImg: cutUploadedImg,
       prijsSchatting: 0,
       langsteZijde: longestSide,
       soortLed: ledType,

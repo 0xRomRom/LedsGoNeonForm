@@ -17,7 +17,6 @@ import CurrentOverview from "./CurrentOverview/CurrentOverview";
 const App = () => {
   const [isDraggingOver, setIsDraggingOver] = useState(false);
   const [uploadedImg, setUploadedImg] = useState(null);
-  const [cutUploadedImg, setCutUploadedImg] = useState(null);
   const [aspectRatio, setAspectRatio] = useState(null);
   const [longestSide, setLongestSide] = useState(null);
   const [progressState, setProgressState] = useState(0);
@@ -33,6 +32,7 @@ const App = () => {
   const [priceEstimate, setPriceEstimate] = useState(null);
   const [RGBPrice, setRGBPrice] = useState(null);
   const [backplatePrice, setBackPlatePrice] = useState(null);
+  const [showFooter, setShowFooter] = useState(false);
 
   const handleDragOver = () => {
     setIsDraggingOver(true);
@@ -45,6 +45,32 @@ const App = () => {
   const handleClickDefault = (e) => {
     e.preventDefault();
   };
+
+  useEffect(() => {
+    const handleScroll = () => {
+      const scrollPosition = window.scrollY;
+      const windowHeight = window.innerHeight;
+      const documentHeight = document.documentElement.scrollHeight;
+
+      // Adjust the offset as needed
+      const offset = 100;
+
+      // Check if scrolled to the bottom with an offset
+      if (scrollPosition + windowHeight >= documentHeight - offset) {
+        setShowFooter(true);
+      } else {
+        setShowFooter(false);
+      }
+    };
+
+    // Attach the event listener when the component mounts
+    window.addEventListener("scroll", handleScroll);
+
+    // Clean up the event listener when the component unmounts
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+    };
+  }, []);
 
   useEffect(() => {
     if (progressState > 0) {
@@ -117,10 +143,6 @@ const App = () => {
     }
   }, [aspectRatio, ledType, longestSide, backplateType]);
 
-  useEffect(() => {
-    console.log(cutUploadedImg);
-  }, [cutUploadedImg]);
-
   return (
     <div
       className={stl.app}
@@ -144,10 +166,16 @@ const App = () => {
           setProgressState={setProgressState}
           setToggleIconBool={setToggleIconBool}
           setLongestSide={setLongestSide}
-          setCutUploadedImg={setCutUploadedImg}
         />
       )}
       <div className={stl.brickBg}>
+        <a href="https://ledsgoneon.nl">
+          <img
+            src="./images/Mainlogo.png"
+            alt="Led's Go Neon logo"
+            className={stl.mainLogo}
+          />
+        </a>
         <div className={stl.transition}></div>
       </div>
       <div className={stl.paddWrapper}>
@@ -158,13 +186,7 @@ const App = () => {
             className={stl.hamburger}
           />
         </button>
-        <a href="https://ledsgoneon.nl">
-          <img
-            src="./images/Mainlogo.png"
-            alt="Led's Go Neon logo"
-            className={stl.mainLogo}
-          />
-        </a>
+
         <header className={stl.header}>
           <h1 className={stl.pageHero}>
             <span className={stl.pink}>Logo</span> samenstellen
@@ -173,15 +195,6 @@ const App = () => {
             Stel hier <span className={stl.green}>vrijblijvend</span> je eigen
             LED's Go Neon lamp samen
           </h2>
-          {cutUploadedImg && (
-            <img
-              src={cutUploadedImg}
-              alt=""
-              style={{
-                border: "1px solid red",
-              }}
-            />
-          )}
         </header>
         <main className={stl.mainApp}>
           <UploadModal
@@ -284,12 +297,22 @@ const App = () => {
               mountType={mountType}
               indoorOutdoor={indoorOutdoor}
               uploadedImg={uploadedImg}
-              cutUploadedImg={cutUploadedImg}
               longestSide={longestSide}
             />
           )}
         </main>
       </div>
+      {showFooter && email && (
+        <div
+          className={`${stl.footerBlock} ${showFooter ? stl.show : ""}`}
+          onClick={() => window.open("https://0xWebDev.com/", "_blank")}
+        >
+          By <br />
+          <a href="https://0xWebDev.com" target="_blank" rel="noreferrer">
+            0<span className={stl.blueSpan}>x</span>WebDev
+          </a>
+        </div>
+      )}
     </div>
   );
 };
