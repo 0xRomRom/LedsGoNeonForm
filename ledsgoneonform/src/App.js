@@ -56,16 +56,21 @@ const App = () => {
     const length = +longestSide?.slice(0, -2);
     let priceCalculation = 0;
     let dimensions = 0;
-    console.log("Length: ", length);
     console.log("Aspect ratio: ", aspectRatio);
-    const height = length / aspectRatio;
-    console.log("Height: ", height);
 
     if (aspectRatio >= 1) {
-      dimensions = height * length;
+      const height = length / aspectRatio;
+      const width = length;
+
+      dimensions = height * width;
     }
     if (aspectRatio < 1) {
-      const width = height * aspectRatio;
+      const height = length;
+      const width = aspectRatio * height;
+
+      console.log("Width: ", width);
+      console.log("Height: ", height);
+
       dimensions = width * height;
     }
     console.log("Dimensions: ", Math.round(dimensions));
