@@ -185,8 +185,8 @@ a {
   }
   .mainApp {
     padding-top: 3rem;
-    padding-left: 25px;
-    padding-right: 25px;
+    padding-left: 15px;
+    padding-right: 15px;
     padding-bottom: 6rem;
   }
 
@@ -197,5 +197,10 @@ a {
 @media (max-width: 480px) {
   .subHero {
     font-size: 5vw;
+  }
+  .footerBlock {
+    transform: scale(0.8);
+    left: 5px;
+    bottom: 5px;
   }
 }
