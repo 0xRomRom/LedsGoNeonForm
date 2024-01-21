@@ -42,6 +42,7 @@ const UploadModal = ({
         const newFile = {
           file,
         };
+        console.log(newFile);
         filetypes.forEach((type) => {
           if (type === newFile.file.name.split(".")[1].toLowerCase()) {
             newFiles.push(newFile);
@@ -49,7 +50,10 @@ const UploadModal = ({
         });
       });
 
-      if (newFiles.length === 0) return;
+      if (newFiles.length === 0) {
+        handleDragLeave(true);
+        return;
+      }
 
       setUploadedImg(newFiles[0]);
       handleDragLeave(false);
@@ -75,13 +79,13 @@ const UploadModal = ({
 
   const { getRootProps, getInputProps } = useDropzone({
     onDrop,
-    accept: { "image/*": [] },
+    accept: "image/*",
   });
 
   return (
     <>
       <div className={`${stl.modal} ${uploadedImg ? stl.checked : ""}`}>
-        <div className={stl.videoWrapper}>
+        <div className={`${stl.videoWrapper} ${isHovered ? stl.pointers : ""}`}>
           <VideoPlayer videoID={"G8p6vr0Of4I"} />
         </div>
         <div className={stl.bottomBox}>

@@ -10,6 +10,7 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  pointer-events: none;
   z-index: 20;
 }
 
@@ -19,6 +20,10 @@
   background-color: rgba(255, 0, 0, 0.079);
   border-radius: 0.4rem;
   z-index: 200;
+}
+
+.pointers {
+  pointer-events: initial;
 }
 
 .uploadFileCta {
