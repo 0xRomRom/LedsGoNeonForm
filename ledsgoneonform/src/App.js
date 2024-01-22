@@ -266,6 +266,7 @@ const App = () => {
               setProgressState={setProgressState}
               selectedColor={selectedColor}
               setSelectedColor={setSelectedColor}
+              progressState={progressState}
             />
           )}
           {progressState >= 5 && (

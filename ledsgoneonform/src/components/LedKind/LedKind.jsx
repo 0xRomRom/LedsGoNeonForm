@@ -8,19 +8,33 @@ const LedKind = ({
   setProgressState,
   selectedColor,
   setSelectedColor,
+  progressState,
 }) => {
   const [selectedValue, setSelectedValue] = useState("");
 
   const handleSelectChange = (event) => {
     setSelectedValue(event.target.value);
     setLedType(event.target.value);
+    window.scrollTo(0, document.body.scrollHeight);
   };
 
   useEffect(() => {
-    if (selectedColor) {
+    if (progressState === 4) {
+      window.scrollTo(0, document.body.scrollHeight);
+      if (selectedColor) {
+        setProgressState(5);
+      }
+    }
+
+    if (selectedValue === "Single color" && !selectedColor) {
+      setProgressState(4);
+      return;
+    }
+
+    if (selectedValue === "RGB") {
       setProgressState(5);
     }
-  }, [selectedColor]);
+  }, [selectedColor, selectedValue]);
 
   const colors = [
     { name: "Wit", bgColor: "white", boxShadowColor: "white" },
@@ -73,7 +87,7 @@ const LedKind = ({
   ];
 
   return (
-    <div className={`${stl.longestRow} ${selectedValue ? stl.checked : ""}`}>
+    <div className={`${stl.longestRow} ${selectedColor ? stl.checked : ""}`}>
       {selectedValue === "RGB" && (
         <div className={stl.videoWrapper}>
           <VideoPlayer videoID={"Io194T5VC2w"} />
