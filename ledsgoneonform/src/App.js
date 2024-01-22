@@ -33,6 +33,7 @@ const App = () => {
   const [RGBPrice, setRGBPrice] = useState(null);
   const [backplatePrice, setBackPlatePrice] = useState(null);
   const [showFooter, setShowFooter] = useState(false);
+  const [showNav, setShowNav] = useState(false);
 
   const handleDragOver = () => {
     setIsDraggingOver(true);
@@ -52,10 +53,8 @@ const App = () => {
       const windowHeight = window.innerHeight;
       const documentHeight = document.documentElement.scrollHeight;
 
-      // Adjust the offset as needed
       const offset = 0;
 
-      // Check if scrolled to the bottom with an offset
       if (scrollPosition + windowHeight >= documentHeight - offset) {
         setShowFooter(true);
       } else {
@@ -63,10 +62,8 @@ const App = () => {
       }
     };
 
-    // Attach the event listener when the component mounts
     window.addEventListener("scroll", handleScroll);
 
-    // Clean up the event listener when the component unmounts
     return () => {
       window.removeEventListener("scroll", handleScroll);
     };
@@ -149,7 +146,7 @@ const App = () => {
       onClick={handleClickDefault}
       onDragOver={handleDragOver}
     >
-      <NavOverlay />
+      <NavOverlay setShowNav={setShowNav} showNav={showNav} />
       <div className={stl.whatsAppButton}>
         <a
           className={stl.appAnchor}
@@ -195,7 +192,7 @@ const App = () => {
         <div className={stl.transition}></div>
       </div>
       <div className={stl.paddWrapper}>
-        <button className={stl.burgerCta}>
+        <button className={stl.burgerCta} onClick={() => setShowNav(!showNav)}>
           <img
             src="./images/Hamburger.svg"
             alt="Hamburger menu"

@@ -6,14 +6,18 @@ import { FaLinkedinIn } from "react-icons/fa6";
 import { FaInstagram } from "react-icons/fa";
 import { GrYoutube } from "react-icons/gr";
 
-const NavOverlay = () => {
+const NavOverlay = ({ showNav, setShowNav }) => {
   const [hoveredState, setHoveredState] = useState(null);
   const [showDroplist, setShowDroplist] = useState(false);
 
+  const handleCloseButtonClick = () => {
+    setShowNav(!showNav); // Slide to the right
+  };
+
   return (
-    <div className={stl.navOverlay}>
+    <div className={`${stl.navOverlay} ${showNav ? stl.slideIn : stl.hidden}`}>
       <div className={stl.topbar}>
-        <button className={stl.closeCta}>
+        <button className={stl.closeCta} onClick={handleCloseButtonClick}>
           <img
             src="./images/Close.svg"
             atl="Close modal"
@@ -23,10 +27,16 @@ const NavOverlay = () => {
       </div>
       <div className={stl.innerLinks}>
         <ul className={stl.links}>
-          <li className={stl.navLink}>
-            <FaArrowRight className={`${stl.arrowright} ${stl.showArrow}`} />
+          <li
+            className={stl.navLink}
+            onMouseOver={() => setHoveredState("Home")}
+            onMouseLeave={() => setHoveredState(null)}
+          >
+            <FaArrowRight className={stl.arrowright} />
             <a
-              className={`${stl.anchor} ${stl.active}`}
+              className={`${stl.anchor} ${
+                hoveredState === "Home" ? stl.active : ""
+              }`}
               href="https://ledsgoneon.nl/"
               rel="noreferrer"
               onClick={() => (window.location.href = "https://ledsgoneon.nl")}
@@ -56,25 +66,9 @@ const NavOverlay = () => {
             </a>
           </li>
 
-          <li
-            className={stl.navLink}
-            onMouseOver={() => setHoveredState("Logo Samenstellen")}
-            onMouseLeave={() => setHoveredState(null)}
-          >
-            <FaArrowRight className={stl.arrowright} />
-            <a
-              className={`${stl.anchor} ${
-                hoveredState === "Logo Samenstellen" ? stl.active : ""
-              }`}
-              href="https://ledsgoneon.nl/logo-samenstellen/"
-              rel="noreferrer"
-              onClick={() =>
-                (window.location.href =
-                  "https://ledsgoneon.nl/logo-samenstellen/")
-              }
-            >
-              Logo Samenstellen
-            </a>
+          <li className={stl.navLink}>
+            <FaArrowRight className={`${stl.arrowright} ${stl.showArrow}`} />
+            <a className={`${stl.anchor} ${stl.active}`}>Logo Samenstellen</a>
           </li>
 
           <li
