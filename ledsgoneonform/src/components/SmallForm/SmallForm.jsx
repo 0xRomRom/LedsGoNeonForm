@@ -1,6 +1,7 @@
 import stl from "./SmallForm.module.css";
 import { useEffect, useState } from "react";
 import { RiAlertLine } from "react-icons/ri";
+import supabase from "../utils/supabase";
 
 const SmallForm = ({
   setName,
@@ -14,7 +15,6 @@ const SmallForm = ({
   backplateType,
   backplateShape,
   mountType,
-  indoorOutdoor,
   uploadedImg,
   selectedColor,
 }) => {
@@ -56,23 +56,23 @@ const SmallForm = ({
     }
   }, [name, setEmailEntered, emailEntered, email]);
 
-  const submitForm = () => {
-    let postObject = {
-      originalImg: uploadedImg,
-      prijsSchatting: 0,
-      langsteZijde: longestSide,
-      soortLed: ledType,
-      ledKleur: selectedColor,
-      achterplaat: backplateType,
-      plaatVorm: backplateShape,
+  const submitForm = async () => {
+    const postObject = {
+      datum: new Date().toISOString().toLocaleString("nl-NL"),
+      afbeelding: uploadedImg,
+      prijs_schatting: 0,
+      langste_zijde: longestSide,
+      soort_led: ledType,
+      kleur_led: selectedColor,
+      achterplaat_type: backplateType,
+      achterplaat_vorm: backplateShape,
       montage: mountType,
-      indoorOutdoor: indoorOutdoor,
       naam: name,
-      emai: email,
+      email: email,
       beschrijving: notice,
     };
-
-    window.location.href = "https://ledsgoneon.nl/bedankt-pagina/";
+    await supabase.from("logo_samenstellen").insert([postObject]);
+    // window.location.href = "https://ledsgoneon.nl/bedankt-pagina/";
   };
 
   return (

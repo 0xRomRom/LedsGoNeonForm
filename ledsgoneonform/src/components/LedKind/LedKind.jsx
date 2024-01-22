@@ -34,7 +34,7 @@ const LedKind = ({
     if (selectedValue === "RGB") {
       setProgressState(5);
     }
-  }, [selectedColor, selectedValue]);
+  }, [selectedColor, selectedValue, progressState, setProgressState]);
 
   const colors = [
     { name: "Wit", bgColor: "white", boxShadowColor: "white" },

@@ -20,7 +20,7 @@ const App = () => {
   const [uploadedImg, setUploadedImg] = useState(null);
   const [aspectRatio, setAspectRatio] = useState(null);
   const [longestSide, setLongestSide] = useState(null);
-  const [progressState, setProgressState] = useState(0);
+  const [progressState, setProgressState] = useState(8);
   const [toggleIconBool, setToggleIconBool] = useState(false);
   const [ledType, setLedType] = useState(null);
   const [backplateType, setBackplateType] = useState(null);

@@ -20,7 +20,7 @@ const NavOverlay = ({ showNav, setShowNav }) => {
         <button className={stl.closeCta} onClick={handleCloseButtonClick}>
           <img
             src="./images/Close.svg"
-            atl="Close modal"
+            alt="Close modal"
             className={stl.closeX}
           />
         </button>
@@ -68,7 +68,9 @@ const NavOverlay = ({ showNav, setShowNav }) => {
 
           <li className={stl.navLink}>
             <FaArrowRight className={`${stl.arrowright} ${stl.showArrow}`} />
-            <a className={`${stl.anchor} ${stl.active}`}>Logo Samenstellen</a>
+            <a href className={`${stl.anchor} ${stl.active}`}>
+              Logo Samenstellen
+            </a>
           </li>
 
           <li
@@ -120,6 +122,7 @@ const NavOverlay = ({ showNav, setShowNav }) => {
           >
             <FaArrowRight className={stl.arrowright} />
             <a
+              href
               className={`${stl.anchor} ${
                 hoveredState === "Over ons" ? stl.active : ""
               }`}
