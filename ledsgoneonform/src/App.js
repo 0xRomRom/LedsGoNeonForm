@@ -343,6 +343,7 @@ const App = () => {
               longestSide={longestSide}
               selectedColor={selectedColor}
               priceEstimate={priceEstimate}
+              aspectRatio={aspectRatio}
             />
           )}
         </main>

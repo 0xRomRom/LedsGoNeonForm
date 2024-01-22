@@ -18,6 +18,7 @@ const SmallForm = ({
   base64img,
   selectedColor,
   priceEstimate,
+  aspectRatio,
 }) => {
   const [nameEntered, setNameEntered] = useState(false);
   const [emailEntered, setEmailEntered] = useState(false);
@@ -73,6 +74,7 @@ const SmallForm = ({
         naam: name,
         email: email,
         beschrijving: notice,
+        verhouding: aspectRatio,
       };
 
       // Attempt to insert data into Supabase
