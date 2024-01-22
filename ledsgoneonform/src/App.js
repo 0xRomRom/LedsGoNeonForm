@@ -35,6 +35,28 @@ const App = () => {
   const [showFooter, setShowFooter] = useState(false);
   const [showNav, setShowNav] = useState(false);
   const [selectedColor, setSelectedColor] = useState("");
+  const [base64img, setBase64img] = useState(null);
+
+  useEffect(() => {
+    console.log(uploadedImg);
+    if (uploadedImg) {
+      const convertImageToBase64 = () => {
+        const file = uploadedImg.file;
+
+        if (file) {
+          const reader = new FileReader();
+
+          reader.onload = function (e) {
+            const base64String = e.target.result.split(",")[1];
+            setBase64img(base64String);
+          };
+
+          reader.readAsDataURL(file);
+        }
+      };
+      convertImageToBase64();
+    }
+  }, [uploadedImg]);
 
   useEffect(() => {
     if (!showNav) {
@@ -314,7 +336,7 @@ const App = () => {
               backplateType={backplateType}
               backplateShape={backplateShape}
               mountType={mountType}
-              uploadedImg={uploadedImg}
+              base64img={base64img}
               longestSide={longestSide}
               selectedColor={selectedColor}
             />

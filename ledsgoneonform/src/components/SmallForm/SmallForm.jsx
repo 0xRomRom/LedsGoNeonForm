@@ -2,6 +2,7 @@ import stl from "./SmallForm.module.css";
 import { useEffect, useState } from "react";
 import { RiAlertLine } from "react-icons/ri";
 import supabase from "../utils/supabase";
+import { decode } from "base64-arraybuffer";
 
 const SmallForm = ({
   setName,
@@ -15,7 +16,7 @@ const SmallForm = ({
   backplateType,
   backplateShape,
   mountType,
-  uploadedImg,
+  base64img,
   selectedColor,
 }) => {
   const [nameEntered, setNameEntered] = useState(false);
@@ -57,22 +58,41 @@ const SmallForm = ({
   }, [name, setEmailEntered, emailEntered, email]);
 
   const submitForm = async () => {
-    const postObject = {
-      datum: new Date().toISOString().toLocaleString("nl-NL"),
-      afbeelding: uploadedImg,
-      prijs_schatting: 0,
-      langste_zijde: longestSide,
-      soort_led: ledType,
-      kleur_led: selectedColor,
-      achterplaat_type: backplateType,
-      achterplaat_vorm: backplateShape,
-      montage: mountType,
-      naam: name,
-      email: email,
-      beschrijving: notice,
-    };
-    await supabase.from("logo_samenstellen").insert([postObject]);
-    // window.location.href = "https://ledsgoneon.nl/bedankt-pagina/";
+    // Additional form submission logic
+    try {
+      const postObject = {
+        datum: new Date().toISOString().toLocaleString("nl-NL"),
+        afbeelding: base64img,
+        prijs_schatting: 0,
+        langste_zijde: longestSide,
+        soort_led: ledType,
+        kleur_led: selectedColor,
+        achterplaat_type: backplateType,
+        achterplaat_vorm: backplateShape,
+        montage: mountType,
+        naam: name,
+        email: email,
+        beschrijving: notice,
+      };
+
+      // Attempt to insert data into Supabase
+      const { error } = await supabase
+        .from("logo_samenstellen")
+        .insert([postObject]);
+
+      if (error) {
+        // Handle Supabase API error
+        console.error("Supabase API error:", error.message);
+        // You can display an error message to the user or handle it as needed
+      } else {
+        // Successful submission
+        // window.location.href = "https://ledsgoneon.nl/bedankt-pagina/";
+      }
+    } catch (error) {
+      // Handle any unexpected errors
+      console.error("Unexpected error:", error);
+      // You can display an error message to the user or handle it as needed
+    }
   };
 
   return (

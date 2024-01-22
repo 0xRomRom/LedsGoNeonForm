@@ -134,27 +134,25 @@ const NavOverlay = ({ showNav, setShowNav }) => {
                   showDroplist ? stl.showDrop : ""
                 }`}
               >
-                <a
+                <span
                   className={stl.innerDropItem}
-                  href="https://ledsgoneon.nl/over-ons/"
-                  rel="noreferrer"
                   onClick={() =>
-                    (window.location.href = "https://ledsgoneon.nl/over-ons/")
+                    window.open("https://ledsgoneon.nl/over-ons/", "_self")
                   }
                 >
                   Over ons
-                </a>
-                <a
+                </span>
+                <span
                   className={stl.innerDropItem}
-                  href="https://ledsgoneon.nl/productieproces/"
-                  rel="noreferrer"
                   onClick={() =>
-                    (window.location.href =
-                      "https://ledsgoneon.nl/productieproces/")
+                    window.open(
+                      "https://ledsgoneon.nl/productieproces/",
+                      "_self"
+                    )
                   }
                 >
                   Productieproces
-                </a>
+                </span>
               </div>
             </a>
           </li>
