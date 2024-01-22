@@ -34,6 +34,7 @@ const App = () => {
   const [backplatePrice, setBackPlatePrice] = useState(null);
   const [showFooter, setShowFooter] = useState(false);
   const [showNav, setShowNav] = useState(false);
+  const [selectedColor, setSelectedColor] = useState("");
 
   useEffect(() => {
     if (!showNav) {
@@ -263,6 +264,8 @@ const App = () => {
             <LedKind
               setLedType={setLedType}
               setProgressState={setProgressState}
+              selectedColor={selectedColor}
+              setSelectedColor={setSelectedColor}
             />
           )}
           {progressState >= 5 && (

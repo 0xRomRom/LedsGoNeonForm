@@ -124,7 +124,11 @@ const ImageEditor = ({
               aspect={ASPECT_RATIO}
               minWidth={MIN_DIMENSION}
               className={stl.parent}
-              style={{ backgroundColor: "red" }}
+              style={{
+                backgroundImage: "url(./images/Grid.webp)",
+                backgroundSize: "contain",
+                backgroundRepeat: "repeat",
+              }}
             >
               <img
                 ref={imgRef}
