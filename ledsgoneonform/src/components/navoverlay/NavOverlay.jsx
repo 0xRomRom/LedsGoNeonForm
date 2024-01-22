@@ -1,6 +1,10 @@
 import stl from "./NavOverlay.module.css";
 import { FaArrowRight } from "react-icons/fa6";
 import { useState } from "react";
+import { BiLogoFacebookCircle } from "react-icons/bi";
+import { FaLinkedinIn } from "react-icons/fa6";
+import { FaInstagram } from "react-icons/fa";
+import { GrYoutube } from "react-icons/gr";
 
 const NavOverlay = () => {
   const [hoveredState, setHoveredState] = useState(null);
@@ -157,7 +161,82 @@ const NavOverlay = () => {
               </div>
             </a>
           </li>
+
+          <li
+            className={stl.navLink}
+            onMouseOver={() => setHoveredState("Contact")}
+            onMouseLeave={() => setHoveredState(null)}
+          >
+            <FaArrowRight className={stl.arrowright} />
+            <a
+              className={`${stl.anchor} ${
+                hoveredState === "Contact" ? stl.active : ""
+              }`}
+              href="https://ledsgoneon.nl/contact/"
+              rel="noreferrer"
+              onClick={() =>
+                (window.location.href = "https://ledsgoneon.nl/contact/")
+              }
+            >
+              Contact
+            </a>
+          </li>
         </ul>
+      </div>
+      <div className={stl.bottomBox}>
+        <a
+          className={stl.phoneanchor}
+          href="tel:0521700234"
+          onClick={() => window.open("tel:0521700234", "_blank")}
+        >
+          {" "}
+          0521 700234
+        </a>
+
+        <a
+          className={stl.emailanchor}
+          href="mailto:info@ledsgoneon.nl"
+          onClick={() => window.open("mailto:info@ledsgoneon.nl", "_blank")}
+        >
+          info@ledsgoneon.nl
+        </a>
+        <div className={stl.socialicons}>
+          <a
+            href="https://www.facebook.com/LedsGoNeonNL"
+            onClick={() =>
+              window.open("https://www.facebook.com/LedsGoNeonNL", "_blank")
+            }
+          >
+            <BiLogoFacebookCircle className={stl.inIcon} />
+          </a>
+          <a
+            href="https://www.linkedin.com/company/leds-go/"
+            onClick={() =>
+              window.open("https://www.linkedin.com/company/leds-go/", "_blank")
+            }
+          >
+            <FaLinkedinIn className={stl.inIcon} />
+          </a>
+          <a
+            href="https://www.instagram.com/leds.go.neon/"
+            onClick={() =>
+              window.open("https://www.instagram.com/leds.go.neon/", "_blank")
+            }
+          >
+            <FaInstagram className={stl.inIcon} />
+          </a>
+          <a
+            href="https://www.youtube.com/channel/UCOWfn-_6exD3VlEmNnRDzvA"
+            onClick={() =>
+              window.open(
+                "https://www.youtube.com/channel/UCOWfn-_6exD3VlEmNnRDzvA",
+                "_blank"
+              )
+            }
+          >
+            <GrYoutube className={stl.inIcon} />
+          </a>
+        </div>
       </div>
       <div className={stl.backdrop}></div>
     </div>
