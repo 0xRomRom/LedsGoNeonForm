@@ -18,6 +18,7 @@ const SmallForm = ({
   mountType,
   base64img,
   selectedColor,
+  priceEstimate,
 }) => {
   const [nameEntered, setNameEntered] = useState(false);
   const [emailEntered, setEmailEntered] = useState(false);
@@ -63,7 +64,7 @@ const SmallForm = ({
       const postObject = {
         datum: new Date().toISOString().toLocaleString("nl-NL"),
         afbeelding: base64img,
-        prijs_schatting: 0,
+        prijs_schatting: Math.floor(priceEstimate),
         langste_zijde: longestSide,
         soort_led: ledType,
         kleur_led: selectedColor,

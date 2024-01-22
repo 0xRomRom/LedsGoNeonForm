@@ -6,9 +6,10 @@ const Mounting = ({ setMountType, setProgressState, backplateType }) => {
   const [selectedValue, setSelectedValue] = useState("");
 
   const handleSelectChange = (event) => {
-    setSelectedValue(event.target.value);
+    const value = event.target.value;
+    setSelectedValue(value);
     setProgressState(8);
-    setMountType(selectedValue);
+    setMountType(value);
   };
 
   return (

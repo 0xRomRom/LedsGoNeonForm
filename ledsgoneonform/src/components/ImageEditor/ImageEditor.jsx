@@ -47,42 +47,42 @@ const ImageEditor = ({
     setCrop(centeredCrop);
   };
 
-  // useEffect(() => {
-  //   const handleFileChange = () => {
-  //     const file = uploadedImg.file;
-  //     if (!file) {
-  //       return;
-  //     }
-  //     const reader = new FileReader();
+  useEffect(() => {
+    const handleFileChange = () => {
+      const file = uploadedImg.file;
+      if (!file) {
+        return;
+      }
+      const reader = new FileReader();
 
-  //     reader.addEventListener("load", () => {
-  //       const imageElement = new Image();
-  //       const imageUrl = reader.result; // use reader.result to get the data URL
-  //       imageElement.src = imageUrl;
-  //       console.log(imageUrl);
+      reader.addEventListener("load", () => {
+        const imageElement = new Image();
+        const imageUrl = reader.result; // use reader.result to get the data URL
+        imageElement.src = imageUrl;
+        console.log(imageUrl);
 
-  //       imageElement.addEventListener("load", (e) => {
-  //         if (error) setError("");
-  //         setUploadedImg(imageUrl);
-  //         const { naturalWidth, naturalHeight } = e.currentTarget;
-  //         if (naturalWidth < MIN_DIMENSION || naturalHeight < MIN_DIMENSION) {
-  //           setError("Image must be at least 150 x 150 pixels.");
-  //           setImgSrc("");
-  //         } else {
-  //           setImgSrc(imageUrl);
-  //         }
-  //       });
-  //     });
+        imageElement.addEventListener("load", (e) => {
+          if (error) setError("");
+          setUploadedImg(imageUrl);
+          const { naturalWidth, naturalHeight } = e.currentTarget;
+          if (naturalWidth < MIN_DIMENSION || naturalHeight < MIN_DIMENSION) {
+            setError("Image must be at least 150 x 150 pixels.");
+            setImgSrc("");
+          } else {
+            setImgSrc(imageUrl);
+          }
+        });
+      });
 
-  //     if (file) {
-  //       reader.readAsDataURL(file);
-  //     }
-  //   };
+      if (file) {
+        reader.readAsDataURL(file);
+      }
+    };
 
-  //   handleFileChange({ target: { files: [uploadedImg] } });
+    handleFileChange({ target: { files: [uploadedImg] } });
 
-  //   // Add any dependencies if needed
-  // }, [uploadedImg, error, setImgSrc, setUploadedImg]);
+    // Add any dependencies if needed
+  }, [uploadedImg, error, setImgSrc, setUploadedImg]);
 
   const handleCropSave = () => {
     const cropObject = convertToPixelCrop(
