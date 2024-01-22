@@ -38,6 +38,10 @@ const App = () => {
   const [base64img, setBase64img] = useState(null);
 
   useEffect(() => {
+    console.log(progressState);
+  }, [progressState]);
+
+  useEffect(() => {
     if (uploadedImg) {
       const convertImageToBase64 = () => {
         const file = uploadedImg.file;

@@ -2,7 +2,6 @@ import stl from "./SmallForm.module.css";
 import { useEffect, useState } from "react";
 import { RiAlertLine } from "react-icons/ri";
 import supabase from "../utils/supabase";
-import { decode } from "base64-arraybuffer";
 
 const SmallForm = ({
   setName,

@@ -1,6 +1,7 @@
 {
   "name": "ledsgoneonform",
   "version": "0.1.0",
+  "homepage": "https://ledsgoneon.nl/logo-samensteller/",
   "private": true,
   "dependencies": {
     "@supabase/supabase-js": "^2.39.3",
