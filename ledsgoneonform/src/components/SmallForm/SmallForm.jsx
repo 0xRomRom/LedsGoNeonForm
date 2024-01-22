@@ -83,16 +83,13 @@ const SmallForm = ({
 
       if (error) {
         // Handle Supabase API error
+        alert("Versturen mislukt, probeer het later opnieuw.");
         console.error("Supabase API error:", error.message);
-        // You can display an error message to the user or handle it as needed
       } else {
-        // Successful submission
-        // window.location.href = "https://ledsgoneon.nl/bedankt-pagina/";
+        window.location.href = "https://ledsgoneon.nl/bedankt-pagina/";
       }
     } catch (error) {
-      // Handle any unexpected errors
       console.error("Unexpected error:", error);
-      // You can display an error message to the user or handle it as needed
     }
   };
 
