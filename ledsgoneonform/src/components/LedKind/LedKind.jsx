@@ -13,9 +13,20 @@ const LedKind = ({ setLedType, setProgressState }) => {
 
   return (
     <div className={`${stl.longestRow} ${selectedValue ? stl.checked : ""}`}>
-      <div className={stl.videoWrapper}>
-        <VideoPlayer videoID={"Io194T5VC2w"} />
-      </div>
+      {selectedValue === "RGB" && (
+        <div className={stl.videoWrapper}>
+          <VideoPlayer videoID={"Io194T5VC2w"} />
+        </div>
+      )}
+      {selectedValue === "Single color" && (
+        <button className={stl.colorBox}>
+          <div
+            className={stl.kleurPreview}
+            style={{ backgroundColor: "white" }}
+          ></div>
+          <span className={stl.kleurTitle}>Wit</span>
+        </button>
+      )}
       <h3 className={stl.hero}>
         Soort
         <span

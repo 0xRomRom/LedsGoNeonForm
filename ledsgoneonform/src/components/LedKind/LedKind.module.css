@@ -71,3 +71,26 @@
 .videoWrapper div {
   height: 100%;
 }
+
+.colorBox {
+  height: 22.5rem;
+  width: 100%;
+  background-color: rgba(255, 0, 0, 0.079);
+  border-radius: 0.4rem;
+  border: 1px solid red;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.kleurPreview {
+  width: 40px;
+  height: 40px;
+  border-radius: 0.4rem;
+}
+
+.kleurTitle {
+  color: white;
+  font-size: 25px;
+}
