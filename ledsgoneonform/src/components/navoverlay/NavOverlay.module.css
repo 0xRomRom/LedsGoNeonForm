@@ -6,13 +6,14 @@
   height: 100vh;
   background-color: #000;
   transition: left 0.5s ease-in-out;
+  overflow: hidden !important;
 }
 
 .navOverlay {
   width: 750px;
   height: 100%;
   background-color: rgb(3, 14, 38);
-  position: absolute;
+  position: fixed;
   right: 100%;
   top: 0;
   z-index: 500;
@@ -158,6 +159,10 @@
   transition: all 0.3s ease;
 }
 
+.innerDropItem:nth-child(2) {
+  margin-bottom: 0px;
+}
+
 .bottomBox {
   padding-top: 4rem;
   padding-left: 80px;
@@ -237,5 +242,43 @@
   }
   to {
     right: -100%;
+  }
+}
+
+@media (max-width: 700px) {
+  .navOverlay {
+    width: 100vw;
+    height: 100%;
+    background-color: rgb(3, 14, 38);
+    position: absolute;
+    right: 100%;
+    top: 0;
+    z-index: 500;
+    padding: 0px 12px;
+    background: radial-gradient(circle, rgb(82, 10, 84) 0%, rgb(3, 14, 38) 50%);
+  }
+  .innerLinks {
+    padding-left: 2rem;
+  }
+  .bottomBox {
+    padding-left: 2rem;
+  }
+  .closeCta {
+    padding-right: 24px;
+  }
+}
+
+@media (max-width: 470px) {
+  .innerLinks {
+    padding-left: 0.75rem;
+  }
+  .bottomBox {
+    padding-left: 0.75rem;
+  }
+  .anchor {
+    font-size: 26px;
+  }
+  .navLink {
+    min-height: 56px;
   }
 }

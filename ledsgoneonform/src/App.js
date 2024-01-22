@@ -35,6 +35,15 @@ const App = () => {
   const [showFooter, setShowFooter] = useState(false);
   const [showNav, setShowNav] = useState(false);
 
+  useEffect(() => {
+    if (!showNav) {
+      document.body.style.overflow = "";
+      return;
+    }
+
+    document.body.style.overflow = "hidden"; // Disable scrolling on the body
+  }, [showNav]);
+
   const handleDragOver = () => {
     setIsDraggingOver(true);
   };
