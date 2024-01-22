@@ -87,7 +87,11 @@ const LedKind = ({
   ];
 
   return (
-    <div className={`${stl.longestRow} ${selectedColor ? stl.checked : ""}`}>
+    <div
+      className={`${stl.longestRow} ${
+        selectedColor || selectedValue === "RGB" ? stl.checked : ""
+      }`}
+    >
       {selectedValue === "RGB" && (
         <div className={stl.videoWrapper}>
           <VideoPlayer videoID={"Io194T5VC2w"} />

@@ -316,6 +316,7 @@ const App = () => {
               mountType={mountType}
               uploadedImg={uploadedImg}
               longestSide={longestSide}
+              selectedColor={selectedColor}
             />
           )}
         </main>

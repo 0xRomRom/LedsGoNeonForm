@@ -59,6 +59,8 @@
 
 .checked {
   box-shadow: 0px 0px 20px var(--green);
+  padding-left: 0px;
+  padding-right: 0px;
 }
 
 .videoWrapper {
@@ -120,4 +122,31 @@
 
 .colorBox:hover {
   border: 1px solid rgba(255, 5, 255, 0.3);
+}
+
+@media (max-width: 500px) {
+  .colorboxWrapper {
+    align-items: flex-start;
+  }
+}
+
+@media (max-width: 450px) {
+  .colorboxWrapper {
+    align-items: flex-start;
+  }
+
+  .colorBox {
+    gap: 0.25rem;
+    height: 5rem;
+    width: 30%;
+    justify-content: center;
+  }
+  .kleurPreview {
+    width: 80px;
+    min-height: 30px;
+    border-radius: 0.4rem;
+  }
+  .kleurTitle {
+    font-size: 18px;
+  }
 }

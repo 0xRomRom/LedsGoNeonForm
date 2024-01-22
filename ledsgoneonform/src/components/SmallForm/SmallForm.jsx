@@ -16,6 +16,7 @@ const SmallForm = ({
   mountType,
   indoorOutdoor,
   uploadedImg,
+  selectedColor,
 }) => {
   const [nameEntered, setNameEntered] = useState(false);
   const [emailEntered, setEmailEntered] = useState(false);
@@ -61,6 +62,7 @@ const SmallForm = ({
       prijsSchatting: 0,
       langsteZijde: longestSide,
       soortLed: ledType,
+      ledKleur: selectedColor,
       achterplaat: backplateType,
       plaatVorm: backplateShape,
       montage: mountType,
