@@ -200,7 +200,7 @@ a {
   }
   .footerBlock {
     transform: scale(0.8);
-    left: 5px;
+    left: 0px;
     bottom: 5px;
   }
 }
@@ -254,5 +254,6 @@ a {
 @media (max-width: 580px) {
   .hamburger {
     right: 8px;
+    top: 5px;
   }
 }

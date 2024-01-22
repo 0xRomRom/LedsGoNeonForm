@@ -290,6 +290,7 @@ const App = () => {
             <Mounting
               setProgressState={setProgressState}
               setMountType={setMountType}
+              backplateType={backplateType}
             />
           )}
           {progressState >= 8 && (

@@ -2,7 +2,7 @@ import stl from "./Mounting.module.css";
 import { useState } from "react";
 import VideoPlayer from "../videoplayer/VideoPlayer";
 
-const Mounting = ({ setMountType, setProgressState }) => {
+const Mounting = ({ setMountType, setProgressState, backplateType }) => {
   const [selectedValue, setSelectedValue] = useState("");
 
   const handleSelectChange = (event) => {
@@ -29,9 +29,7 @@ const Mounting = ({ setMountType, setProgressState }) => {
         </option>
         <option value="Afstandhouders">Afstandhouders</option>
         <option value="Ketting">Ketting</option>
-        <option value="Rails (alleen bij gekleurde plaat)">
-          Rails (alleen bij gekleurde plaat)
-        </option>
+        {backplateType === "Gekleurd" && <option value="Rails">Rails</option>}
       </select>
     </div>
   );
