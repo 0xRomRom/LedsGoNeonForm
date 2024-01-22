@@ -121,7 +121,7 @@ const LedKind = ({
                   className={stl.kleurPreview}
                   style={{
                     backgroundColor: color.bgColor,
-                    boxShadow: `0px 0px 10px ${color.boxShadowColor}`,
+                    boxShadow: `0px 0px 20px ${color.boxShadowColor}`,
                   }}
                 ></div>
                 <span
