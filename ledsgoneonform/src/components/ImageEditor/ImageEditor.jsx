@@ -59,7 +59,6 @@ const ImageEditor = ({
         const imageElement = new Image();
         const imageUrl = reader.result; // use reader.result to get the data URL
         imageElement.src = imageUrl;
-        console.log(imageUrl);
 
         imageElement.addEventListener("load", (e) => {
           if (error) setError("");
