@@ -26,7 +26,6 @@
   width: 15rem;
   height: 2rem;
   border-radius: 0.4rem;
-  margin-top: 0.5rem;
   background-color: transparent;
   color: white;
   background-color: rgba(0, 0, 0, 0.6);
@@ -75,7 +74,6 @@
 }
 
 .colorboxWrapper {
-  height: 22.5rem;
   width: 100%;
   border-radius: 0.4rem;
   display: flex;
@@ -115,6 +113,7 @@
   padding-top: 5px;
   padding-bottom: 5px;
   cursor: pointer;
+  min-height: 5rem;
 }
 
 .kiesKleur {
@@ -132,15 +131,10 @@
   }
 }
 
-@media (max-width: 500px) {
+@media (max-width: 550px) {
   .colorboxWrapper {
     align-items: flex-start;
-  }
-}
-
-@media (max-width: 450px) {
-  .colorboxWrapper {
-    align-items: flex-start;
+    padding-bottom: 0px;
   }
 
   .colorBox {
@@ -151,10 +145,15 @@
   }
   .kleurPreview {
     width: 80px;
-    min-height: 30px;
+    min-height: 42px;
     border-radius: 0.4rem;
   }
   .kleurTitle {
-    font-size: 18px;
+    font-size: 15px;
+  }
+}
+@media (max-width: 500px) {
+  .videoWrapper {
+    height: 13.5rem;
   }
 }

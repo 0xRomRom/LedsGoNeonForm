@@ -82,3 +82,9 @@
 .corners {
   border-radius: 0.6rem;
 }
+
+@media (max-width: 500px) {
+  .videoWrapper {
+    height: 13.5rem;
+  }
+}

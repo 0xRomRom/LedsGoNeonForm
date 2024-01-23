@@ -28,13 +28,15 @@ const UploadModal = ({
         "jpeg",
         "bmp",
         "tiff",
-        "gif",
+        // "gif",
+        // "webp",
         "PNG",
         "JPG",
         "JPEG",
         "BMP",
         "TIFF",
-        "GIF",
+        // "GIF",
+        // "WEBP",
       ];
       acceptedFiles.forEach((file) => {
         const newFile = {
@@ -49,6 +51,7 @@ const UploadModal = ({
 
       if (newFiles.length === 0) {
         handleDragLeave(true);
+        alert("Bestandsformaat niet ondersteund. \n Probeer: .png .jpg .jpeg");
         return;
       }
 
@@ -118,7 +121,7 @@ const UploadModal = ({
               </button>
             </div>
             <span className={stl.sleepBestanden}>
-              Sleep uw bestand hierheen
+              {window.innerWidth > 1000 && <>Sleep uw bestand hierheen</>}
             </span>
           </div>
         </div>

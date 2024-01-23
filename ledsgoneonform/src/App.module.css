@@ -191,7 +191,7 @@ a {
   }
 
   .pageHero {
-    font-size: 8vw;
+    font-size: 8.7vw;
   }
 }
 @media (max-width: 480px) {
@@ -245,6 +245,7 @@ a {
   }
   .appAnchor {
     padding: 0.6rem 0.5rem;
+    padding-top: 0.5rem;
   }
   .appOns {
     display: none;
@@ -255,5 +256,8 @@ a {
   .hamburger {
     right: 8px;
     top: 5px;
+  }
+  .activeArrow {
+    margin: 1.5rem 0rem;
   }
 }

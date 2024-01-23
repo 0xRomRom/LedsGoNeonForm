@@ -76,7 +76,8 @@ const SmallForm = ({
         beschrijving: notice || "Geen",
         verhouding: aspectRatio,
       };
-
+      console.log(dbObject);
+      return;
       const recipientBody = `
       <p>Wij hebben uw order ontvangen!</p>
       <p>Order details:</p>

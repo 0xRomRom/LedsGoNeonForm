@@ -12,13 +12,13 @@ const CurrentOverview = ({
       <div className={stl.nameList}>
         <span className={stl.greenName}>Geschatte Prijs:</span>
 
-        {ledType === "RGB" && (
+        {ledType === "RGB" && 1 > 2 && (
           <span className={stl.rgbFlex}>
             <span className={stl.rgbExtra}>RGB</span>
             <span className={stl.white}>:</span>
           </span>
         )}
-        {backplateType === "Gekleurd" && (
+        {backplateType === "Gekleurd" && 1 > 2 && (
           <span className={stl.plaatFlex}>
             <span className={stl.achterPlaat}>Achterplaat:</span>
           </span>
@@ -30,10 +30,10 @@ const CurrentOverview = ({
           €{Math.floor(priceEstimate)},- Excl. BTW
         </span>
 
-        {ledType === "RGB" && (
+        {ledType === "RGB" && 1 > 2 && (
           <span className={stl.priceSm}>€{Math.floor(RGBPrice)},-</span>
         )}
-        {backplateType === "Gekleurd" && (
+        {backplateType === "Gekleurd" && 1 > 2 && (
           <span className={stl.priceSm}> €{Math.floor(backplatePrice)},-</span>
         )}
       </div>

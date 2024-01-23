@@ -12,6 +12,7 @@
   align-items: center;
   gap: 0.5rem;
   z-index: 20;
+  padding-top: 10px;
 }
 
 .hero {

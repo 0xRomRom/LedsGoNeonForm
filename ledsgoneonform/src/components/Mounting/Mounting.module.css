@@ -83,3 +83,9 @@
 .videoWrapper div {
   height: 100%;
 }
+
+@media (max-width: 500px) {
+  .videoWrapper {
+    height: 13.5rem;
+  }
+}
