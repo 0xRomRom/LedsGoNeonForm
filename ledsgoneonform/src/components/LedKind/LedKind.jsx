@@ -43,7 +43,7 @@ const LedKind = ({
   };
 
   useEffect(() => {
-    if (selectedValue === "Single color" && !selectedColor) {
+    if (selectedValue === "Single color" && selectedColor.length === 0) {
       setProgressState(4);
       window.scrollTo(0, document.body.scrollHeight);
       return;
@@ -53,12 +53,13 @@ const LedKind = ({
     }
     if (selectedValue === "RGB") {
       setProgressState(5);
+      window.scrollTo(0, document.body.scrollHeight);
       return;
     }
 
     if (progressState === 4) {
       window.scrollTo(0, document.body.scrollHeight);
-      if (selectedColor) {
+      if (selectedColor.length > 0) {
         setProgressState(5);
       }
     }
@@ -122,17 +123,17 @@ const LedKind = ({
   return (
     <div
       className={`${stl.longestRow} ${
-        selectedColor || selectedValue === "RGB" ? stl.checked : ""
+        selectedColor.length > 0 || selectedValue === "RGB" ? stl.checked : ""
       }`}
     >
-      {selectedValue === "RGB" && (
+      {!selectedValue !== "RGB" && (
         <div className={stl.videoWrapper}>
           <VideoPlayer videoID={"Io194T5VC2w"} />
         </div>
       )}
       {selectedValue === "Single color" && (
         <>
-          <h2 className={stl.kiesKleur}>Kies een kleur(en)</h2>
+          <h2 className={stl.kiesKleur}>Kies kleur(en)</h2>
           <div className={stl.colorboxWrapper}>
             {colors.map((color, index) => (
               <button

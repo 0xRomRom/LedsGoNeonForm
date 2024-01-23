@@ -20,7 +20,7 @@ const App = () => {
   const [uploadedImg, setUploadedImg] = useState(null);
   const [aspectRatio, setAspectRatio] = useState(null);
   const [longestSide, setLongestSide] = useState(null);
-  const [progressState, setProgressState] = useState(4);
+  const [progressState, setProgressState] = useState(0);
   const [toggleIconBool, setToggleIconBool] = useState(false);
   const [ledType, setLedType] = useState(null);
   const [backplateType, setBackplateType] = useState(null);
@@ -37,9 +37,6 @@ const App = () => {
   const [selectedColor, setSelectedColor] = useState([]);
   const [base64img, setBase64img] = useState(null);
 
-  useEffect(() => {
-    console.log(selectedColor);
-  }, [selectedColor]);
   useEffect(() => {
     if (uploadedImg) {
       const convertImageToBase64 = () => {
@@ -105,6 +102,7 @@ const App = () => {
 
   useEffect(() => {
     if (progressState > 0) {
+      if (progressState === 5) return;
       window.scrollTo(0, document.body.scrollHeight);
     }
   }, [progressState]);
