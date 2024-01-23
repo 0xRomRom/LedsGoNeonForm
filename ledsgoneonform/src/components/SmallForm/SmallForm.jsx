@@ -67,13 +67,13 @@ const SmallForm = ({
         prijs_schatting: Math.floor(priceEstimate),
         langste_zijde: longestSide,
         soort_led: ledType,
-        kleur_led: selectedColor,
+        kleur_led: selectedColor || "N.v.t.",
         achterplaat_type: backplateType,
         achterplaat_vorm: backplateShape,
         montage: mountType,
         naam: name,
         email: email,
-        beschrijving: notice,
+        beschrijving: notice || "Geen",
         verhouding: aspectRatio,
       };
 
@@ -82,12 +82,11 @@ const SmallForm = ({
       <p>Order details:</p>
       <ul>
         <li>Datum: ${new Date().toLocaleString()}</li>
-        <li>Prijs schatting: €${Math.floor(dbObject.prijs_schatting)},-</li>
+        <li>Prijsschatting: €${Math.floor(dbObject.prijs_schatting)},-</li>
         <li>Langste zijde: ${dbObject.langste_zijde}</li>
-        </br>
+        <br/>
         <span>Wij gaan er mee aan de slag, en u ontvangt binnen 2 dagen de kostprijs</span>
       </ul>
-      
     `;
 
       // <img src="data:image/png;base64,${uploadedImg.split(",")[1]}" alt="Uploaded Image" />
@@ -99,7 +98,7 @@ const SmallForm = ({
         <li>Datum: ${new Date().toLocaleString()}</li>
         <li>Naam: ${dbObject.naam}</li>
         <li>Email: ${dbObject.email}</li>
-        <li>Prijs schatting: €${dbObject.prijs_schatting || "Geen"},-</li>
+        <li>Prijsschatting: €${dbObject.prijs_schatting || "Geen"},-</li>
         <li>Langste zijde: ${dbObject.langste_zijde}</li>
         <li>Soort LED: ${dbObject.soort_led}</li>
         <li>Kleur LED: ${
@@ -114,23 +113,22 @@ const SmallForm = ({
       const { error } = await supabase
         .from("logo_samenstellen")
         .insert([dbObject]);
-
       if (error) {
         alert("Versturen mislukt, probeer het later opnieuw.");
         console.error("Supabase API error:", error.message);
       } else {
         try {
           window.Email.send({
-            SecureToken: "667cbc73-71ba-42e9-b8b7-5ff29d86666b",
+            SecureToken: "4892afdd-4fb9-4392-bbf4-b40ce7dc116a",
             To: email,
-            From: "vandersarroman@gmail.com",
+            From: "roman0811@live.nl",
             Subject: "Order ontvangen",
             Body: recipientBody,
-          }).then((item) => {
+          }).then((send) => {
             window.Email.send({
-              SecureToken: "667cbc73-71ba-42e9-b8b7-5ff29d86666b",
-              To: "vandersarroman@gmail.com",
-              From: "vandersarroman@gmail.com",
+              SecureToken: "4892afdd-4fb9-4392-bbf4-b40ce7dc116a",
+              To: "roman0811@live.nl",
+              From: "roman0811@live.nl",
               Subject: "Nieuwe order",
               Body: orderBody,
               Attachments: [
@@ -141,11 +139,12 @@ const SmallForm = ({
                 },
               ],
             });
+            window.location.href = "https://ledsgoneon.nl/bedankt-pagina/";
           });
         } catch (err) {
+          alert("Fout bij verzenden. Neem contact met ons op!");
           console.error(err);
         }
-        window.location.href = "https://ledsgoneon.nl/bedankt-pagina/";
       }
     } catch (error) {
       console.error("Unexpected error:", error);
