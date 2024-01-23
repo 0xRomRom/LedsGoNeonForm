@@ -87,10 +87,10 @@ const SmallForm = ({
         try {
           window.Email.send({
             SecureToken: "667cbc73-71ba-42e9-b8b7-5ff29d86666b",
-            To: email,
+            To: "vandersarroman@gmail.com",
             From: "vandersarroman@gmail.com",
             Subject: "This is the subject",
-            Body: "And this is the bodyy",
+            Body: "Wij hebben uw order ontvangen! Wij gaan er mee aan de slag, en u ontvangt binnen 2 dagen de kostprijs.",
           });
         } catch (err) {
           console.error(err);
