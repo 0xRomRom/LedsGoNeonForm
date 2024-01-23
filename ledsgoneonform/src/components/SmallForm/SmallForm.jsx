@@ -2,10 +2,7 @@ import stl from "./SmallForm.module.css";
 import { useEffect, useState } from "react";
 import { RiAlertLine } from "react-icons/ri";
 import supabase from "../utils/supabase";
-import { Resend } from "resend";
-import Confirmation from "../../emails/Confirmation";
 
-const resend = new Resend(process.env.REACT_APP_RESEND);
 const SmallForm = ({
   setName,
   setEmail,
@@ -62,7 +59,6 @@ const SmallForm = ({
   }, [name, setEmailEntered, emailEntered, email]);
 
   const submitForm = async () => {
-    // Additional form submission logic
     try {
       const postObject = {
         datum: new Date().toISOString().toLocaleString("nl-NL"),
@@ -80,27 +76,25 @@ const SmallForm = ({
         verhouding: aspectRatio,
       };
 
-      // Attempt to insert data into Supabase
       const { error } = await supabase
         .from("logo_samenstellen")
         .insert([postObject]);
 
       if (error) {
-        // Handle Supabase API error
         alert("Versturen mislukt, probeer het later opnieuw.");
         console.error("Supabase API error:", error.message);
       } else {
         try {
-          await resend.emails.send({
-            from: "confirmation@ledsgoneon.nl",
-            to: "vandersarroman@gmail.com",
-            subject: "hello world",
-            react: <Confirmation gebruiker={name} />,
+          window.Email.send({
+            SecureToken: "667cbc73-71ba-42e9-b8b7-5ff29d86666b",
+            To: email,
+            From: "vandersarroman@gmail.com",
+            Subject: "This is the subject",
+            Body: "And this is the bodyy",
           });
         } catch (err) {
           console.error(err);
         }
-
         // window.location.href = "https://ledsgoneon.nl/bedankt-pagina/";
       }
     } catch (error) {

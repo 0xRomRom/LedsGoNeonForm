@@ -1,7 +1,6 @@
 {
   "name": "ledsgoneonform",
   "version": "0.1.0",
-  "homepage": "https://ledsgoneon.nl/logo-samensteller/",
   "private": true,
   "dependencies": {
     "@react-email/components": "0.0.14",
