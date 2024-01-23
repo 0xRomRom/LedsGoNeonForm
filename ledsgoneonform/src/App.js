@@ -340,6 +340,7 @@ const App = () => {
               selectedColor={selectedColor}
               priceEstimate={priceEstimate}
               aspectRatio={aspectRatio}
+              uploadedImg={uploadedImg}
             />
           )}
         </main>
