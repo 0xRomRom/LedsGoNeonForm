@@ -77,10 +77,16 @@
   border-top-left-radius: 15px;
   border-bottom-left-radius: 35px;
   border-top-right-radius: 90px;
+  margin-top: 5px;
+  height: 2.45rem;
+  line-height: 31px;
 }
 
 .corners {
   border-radius: 0.6rem;
+  margin-top: 5px;
+  height: 2.45rem;
+  line-height: 31px;
 }
 
 @media (max-width: 500px) {

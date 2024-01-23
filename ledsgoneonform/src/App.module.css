@@ -14,7 +14,7 @@
   background-repeat: no-repeat;
   position: absolute;
   inset: 0;
-  height: 600px;
+  height: 900px;
 }
 
 .header {
@@ -131,7 +131,7 @@
 }
 
 .footerBlock {
-  bottom: 10px;
+  bottom: 15px;
   color: #d8d5d5;
   cursor: pointer;
   font-size: 14px;

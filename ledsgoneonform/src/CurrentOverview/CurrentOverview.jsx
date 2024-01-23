@@ -26,8 +26,7 @@ const CurrentOverview = ({
       </div>
       <div className={stl.priceList}>
         <span className={stl.boldWhite}>
-          {" "}
-          €{Math.floor(priceEstimate)},- Excl. BTW
+          <br />€{Math.floor(priceEstimate)},- Excl. BTW
         </span>
 
         {ledType === "RGB" && 1 > 2 && (

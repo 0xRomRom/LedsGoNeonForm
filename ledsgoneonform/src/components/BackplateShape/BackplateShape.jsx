@@ -32,7 +32,7 @@ const BackplateShape = ({ setProgressState, setBackplateShape }) => {
           Kies vorm
         </option>
         <option value="Contour">Contour</option>
-        <option value="Rechthoekig">Rechhoekig</option>
+        <option value="Rechthoekig">Rechthoekig</option>
       </select>
     </div>
   );

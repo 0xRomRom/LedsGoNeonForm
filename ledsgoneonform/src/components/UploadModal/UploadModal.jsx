@@ -85,46 +85,58 @@ const UploadModal = ({
   return (
     <>
       <div className={`${stl.modal} ${uploadedImg ? stl.checked : ""}`}>
-        <div className={`${stl.videoWrapper} ${isHovered ? stl.pointers : ""}`}>
+        <div
+          className={`${stl.videoWrapper} ${
+            isDraggingOver ? stl.pointers : ""
+          }`}
+        >
           <VideoPlayer videoID={"G8p6vr0Of4I"} />
         </div>
-        <div className={stl.bottomBox}>
-          <div className={stl.btnWrapper}>
-            <div
-              className={`${stl.btnBackground} ${
-                uploadedImg ? stl.activeBackground : ""
-              }`}
-            >
-              <button
-                className={`${stl.uploadFileCta} ${
-                  uploadedImg ? stl.activeCta : ""
-                }`}
-                {...getRootProps()}
-                onMouseEnter={() => setIsHovered(true)}
-                onMouseLeave={() => setIsHovered(false)}
-              >
-                {uploadedImg ? (
-                  <span className={stl.uploadSpan}>
-                    {isHovered ? "Upload bestand" : "Bestand Geupload"}{" "}
-                    {isHovered && (
-                      <HiOutlineUpload className={stl.uploadIcon} />
+        {!isDraggingOver && (
+          <>
+            <div className={stl.bottomBox}>
+              <div className={stl.btnWrapper}>
+                <div
+                  className={`${stl.btnBackground} ${
+                    uploadedImg ? stl.activeBackground : ""
+                  }`}
+                >
+                  <button
+                    className={`${stl.uploadFileCta} ${
+                      uploadedImg ? stl.activeCta : ""
+                    }`}
+                    {...getRootProps()}
+                    onMouseEnter={() => setIsHovered(true)}
+                    onMouseLeave={() => setIsHovered(false)}
+                  >
+                    {uploadedImg ? (
+                      <span className={stl.uploadSpan}>
+                        {isHovered ? "Upload bestand" : "Bestand Geupload"}{" "}
+                        {isHovered && (
+                          <HiOutlineUpload className={stl.uploadIcon} />
+                        )}
+                        {!isHovered && <FaCheck />}
+                      </span>
+                    ) : (
+                      <span className={stl.uploadSpan}>
+                        Upload bestand
+                        <HiOutlineUpload className={stl.uploadIcon} />
+                      </span>
                     )}
-                    {!isHovered && <FaCheck />}
-                  </span>
-                ) : (
-                  <span className={stl.uploadSpan}>
-                    Upload bestand
-                    <HiOutlineUpload className={stl.uploadIcon} />
-                  </span>
-                )}
-                <input {...getInputProps()} name="Fileinput" accept="image/*" />
-              </button>
+                    <input
+                      {...getInputProps()}
+                      name="Fileinput"
+                      accept="image/*"
+                    />
+                  </button>
+                </div>
+                <span className={stl.sleepBestanden}>
+                  {window.innerWidth > 1000 && <>Sleep uw bestand hierheen</>}
+                </span>
+              </div>
             </div>
-            <span className={stl.sleepBestanden}>
-              {window.innerWidth > 1000 && <>Sleep uw bestand hierheen</>}
-            </span>
-          </div>
-        </div>
+          </>
+        )}
       </div>
       {isDraggingOver && (
         <div

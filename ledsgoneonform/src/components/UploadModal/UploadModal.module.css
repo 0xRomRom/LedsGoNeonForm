@@ -11,7 +11,7 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  pointer-events: none;
+
   z-index: 20;
 }
 
@@ -24,7 +24,7 @@
 }
 
 .pointers {
-  pointer-events: initial;
+  pointer-events: none;
 }
 
 .uploadFileCta {
