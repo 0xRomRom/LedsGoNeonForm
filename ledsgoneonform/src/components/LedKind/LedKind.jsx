@@ -18,6 +18,30 @@ const LedKind = ({
     window.scrollTo(0, document.body.scrollHeight);
   };
 
+  const setSelectedColors = (newColor) => {
+    if (selectedColor.includes(newColor)) {
+      setSelectedColor((prevValues) =>
+        prevValues.filter((value) => value !== newColor)
+      );
+      return;
+    }
+
+    if (selectedColor.includes("Naar ontwerp")) {
+      // Remove "Naar ontwerp" from the array
+      setSelectedColor((prevValues) =>
+        prevValues.filter((value) => value !== "Naar ontwerp")
+      );
+    }
+
+    if (newColor === "Naar ontwerp" || selectedColor.includes(newColor)) {
+      // If "Naar ontwerp" is selected or the new color is already in the array, set it as the only selected color
+      setSelectedColor([newColor]);
+    } else {
+      // Add the new color to the array
+      setSelectedColor((prevValues) => [...prevValues, newColor]);
+    }
+  };
+
   useEffect(() => {
     if (selectedValue === "Single color" && !selectedColor) {
       setProgressState(4);
@@ -41,6 +65,11 @@ const LedKind = ({
   }, [selectedColor, selectedValue, progressState, setProgressState]);
 
   const colors = [
+    {
+      name: "Naar ontwerp",
+      bgColor: "rgb(197, 197, 197)",
+      boxShadowColor: "rgb(197, 197, 197)",
+    },
     { name: "Wit", bgColor: "white", boxShadowColor: "white" },
     {
       name: "Warm wit",
@@ -103,22 +132,20 @@ const LedKind = ({
       )}
       {selectedValue === "Single color" && (
         <>
-          <h2 className={stl.kiesKleur}>Kies een kleur</h2>
+          <h2 className={stl.kiesKleur}>Kies een kleur(en)</h2>
           <div className={stl.colorboxWrapper}>
             {colors.map((color, index) => (
               <button
                 key={index}
                 className={stl.colorBox}
-                onClick={() => setSelectedColor(color.name)}
+                onClick={() => setSelectedColors(color.name)}
                 style={{
-                  border:
-                    selectedColor === color.name
-                      ? "2px solid rgba(255, 5, 255, 0.3)"
-                      : "",
-                  backgroundColor:
-                    selectedColor === color.name
-                      ? "rgba(255, 5, 255, 0.15)"
-                      : "",
+                  border: selectedColor.includes(color.name)
+                    ? "2px solid rgba(255, 5, 255, 0.3)"
+                    : "2px solid transparent",
+                  backgroundColor: selectedColor.includes(color.name)
+                    ? "rgba(255, 5, 255, 0.15)"
+                    : "",
                 }}
               >
                 <div

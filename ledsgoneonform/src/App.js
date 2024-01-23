@@ -20,7 +20,7 @@ const App = () => {
   const [uploadedImg, setUploadedImg] = useState(null);
   const [aspectRatio, setAspectRatio] = useState(null);
   const [longestSide, setLongestSide] = useState(null);
-  const [progressState, setProgressState] = useState(0);
+  const [progressState, setProgressState] = useState(4);
   const [toggleIconBool, setToggleIconBool] = useState(false);
   const [ledType, setLedType] = useState(null);
   const [backplateType, setBackplateType] = useState(null);
@@ -34,9 +34,12 @@ const App = () => {
   const [backplatePrice, setBackPlatePrice] = useState(null);
   const [showFooter, setShowFooter] = useState(false);
   const [showNav, setShowNav] = useState(false);
-  const [selectedColor, setSelectedColor] = useState("");
+  const [selectedColor, setSelectedColor] = useState([]);
   const [base64img, setBase64img] = useState(null);
 
+  useEffect(() => {
+    console.log(selectedColor);
+  }, [selectedColor]);
   useEffect(() => {
     if (uploadedImg) {
       const convertImageToBase64 = () => {

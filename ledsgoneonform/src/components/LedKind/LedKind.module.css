@@ -112,7 +112,8 @@
   width: 22%;
   /* width: 10%; */
   border-radius: 0.4rem;
-  padding: 5px;
+  padding-top: 5px;
+  padding-bottom: 5px;
   cursor: pointer;
 }
 

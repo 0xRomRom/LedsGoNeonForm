@@ -67,7 +67,7 @@ const SmallForm = ({
         prijs_schatting: Math.floor(priceEstimate),
         langste_zijde: longestSide,
         soort_led: ledType,
-        kleur_led: selectedColor || "N.v.t.",
+        kleur_led: ledType === "RGB" ? "N.v.t." : selectedColor.join(", "),
         achterplaat_type: backplateType,
         achterplaat_vorm: backplateShape,
         montage: mountType,
@@ -121,14 +121,14 @@ const SmallForm = ({
           window.Email.send({
             SecureToken: "4892afdd-4fb9-4392-bbf4-b40ce7dc116a",
             To: email,
-            From: "roman0811@live.nl",
+            From: "aanvraag@ledsgoneon.nl",
             Subject: "Order ontvangen",
             Body: recipientBody,
           }).then((send) => {
             window.Email.send({
               SecureToken: "4892afdd-4fb9-4392-bbf4-b40ce7dc116a",
-              To: "roman0811@live.nl",
-              From: "roman0811@live.nl",
+              To: "aanvraag@ledsgoneon.nl",
+              From: "aanvraag@ledsgoneon.nl",
               Subject: "Nieuwe order",
               Body: orderBody,
               Attachments: [
