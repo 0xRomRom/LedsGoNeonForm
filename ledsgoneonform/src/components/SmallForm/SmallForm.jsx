@@ -145,7 +145,7 @@ const SmallForm = ({
         } catch (err) {
           console.error(err);
         }
-        // window.location.href = "https://ledsgoneon.nl/bedankt-pagina/";
+        window.location.href = "https://ledsgoneon.nl/bedankt-pagina/";
       }
     } catch (error) {
       console.error("Unexpected error:", error);
