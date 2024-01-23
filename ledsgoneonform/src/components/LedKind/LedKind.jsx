@@ -19,6 +19,11 @@ const LedKind = ({
   };
 
   useEffect(() => {
+    if (selectedValue === "Single color" && !selectedColor) {
+      setProgressState(4);
+      window.scrollTo(0, document.body.scrollHeight);
+      return;
+    }
     if (progressState >= 6) {
       return;
     }
@@ -32,11 +37,6 @@ const LedKind = ({
       if (selectedColor) {
         setProgressState(5);
       }
-    }
-
-    if (selectedValue === "Single color" && !selectedColor) {
-      setProgressState(4);
-      return;
     }
   }, [selectedColor, selectedValue, progressState, setProgressState]);
 

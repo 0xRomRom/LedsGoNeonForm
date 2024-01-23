@@ -2,7 +2,10 @@ import stl from "./SmallForm.module.css";
 import { useEffect, useState } from "react";
 import { RiAlertLine } from "react-icons/ri";
 import supabase from "../utils/supabase";
+import { Resend } from "resend";
+import Confirmation from "../../emails/Confirmation";
 
+const resend = new Resend(process.env.REACT_APP_RESEND);
 const SmallForm = ({
   setName,
   setEmail,
@@ -87,7 +90,18 @@ const SmallForm = ({
         alert("Versturen mislukt, probeer het later opnieuw.");
         console.error("Supabase API error:", error.message);
       } else {
-        window.location.href = "https://ledsgoneon.nl/bedankt-pagina/";
+        try {
+          await resend.emails.send({
+            from: "confirmation@ledsgoneon.nl",
+            to: "vandersarroman@gmail.com",
+            subject: "hello world",
+            react: <Confirmation gebruiker={name} />,
+          });
+        } catch (err) {
+          console.error(err);
+        }
+
+        // window.location.href = "https://ledsgoneon.nl/bedankt-pagina/";
       }
     } catch (error) {
       console.error("Unexpected error:", error);
