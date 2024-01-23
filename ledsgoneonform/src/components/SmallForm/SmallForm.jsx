@@ -77,32 +77,39 @@ const SmallForm = ({
         verhouding: aspectRatio,
       };
 
-      const orderObject = {
-        Datum: new Date().toISOString().toLocaleString("nl-NL"),
-        Prijs_Schatting: Math.floor(priceEstimate),
-        Langste_Zijde: longestSide,
-        Soort_Led: ledType,
-        Kleur_Led: selectedColor,
-        Achterplaat_Type: backplateType,
-        Achterplaat_Vorm: backplateShape,
-        Montage: mountType,
-        Naam: name,
-        Email: email,
-        Beschrijving: notice,
-        Verhouding: aspectRatio,
-        afbeelding: uploadedImg,
-      };
-
-      const emailBody = `
-      <p>Wij hebben uw order ontvangen! Wij gaan er mee aan de slag, en u ontvangt binnen 2 dagen de kostprijs.</p>
+      const recipientBody = `
+      <p>Wij hebben uw order ontvangen!</p>
       <p>Order details:</p>
       <ul>
-        <li>Datum: ${orderObject.Datum}</li>
-        <li>Prijs Schatting: ${orderObject.Prijs_Schatting}</li>
-        <li>Langste Zijde: ${orderObject.Langste_Zijde}</li>
-        <!-- Add other order details here -->
+        <li>Datum: ${new Date().toLocaleString()}</li>
+        <li>Prijs Schatting: €${Math.floor(dbObject.prijs_schatting)},-</li>
+        <li>Langste Zijde: ${dbObject.langste_zijde}</li>
+        </br>
+        <span>Wij gaan er mee aan de slag, en u ontvangt binnen 2 dagen de kostprijs</span>
       </ul>
-      <img src=${uploadedImg} alt="Uploaded Image" />
+      
+    `;
+
+      // <img src="data:image/png;base64,${uploadedImg.split(",")[1]}" alt="Uploaded Image" />
+
+      const orderBody = `
+      <p>Nieuwe order</p>
+      <br/>
+      <ul>
+        <li>Datum: ${new Date().toLocaleString()}</li>
+        <li>Naam: ${dbObject.naam}</li>
+        <li>Email: ${dbObject.email}</li>
+        <li>Prijs Schatting: €${dbObject.prijs_schatting || "Geen"},-</li>
+        <li>Langste Zijde: ${dbObject.langste_zijde}</li>
+        <li>Soort led: ${dbObject.soort_led}</li>
+        <li>Kleur led: ${
+          dbObject.soort_led === "RGB" ? "N.v.t." : dbObject.kleur_led
+        }</li>
+        <li>Achterplaat type: ${dbObject.achterplaat_type}</li>
+        <li>Achterplaat vorm: ${dbObject.achterplaat_vorm}</li>
+        <li>Montage: ${dbObject.montage}</li>
+        <li>Verhouding: ${dbObject.verhouding}</li>
+      </ul>
     `;
       const { error } = await supabase
         .from("logo_samenstellen")
@@ -118,21 +125,21 @@ const SmallForm = ({
             To: email,
             From: "vandersarroman@gmail.com",
             Subject: "Order ontvangen",
-            Body: emailBody,
-            Attachments: [
-              {
-                name: "Image.png",
-                data: uploadedImg,
-                type: "image/png",
-              },
-            ],
+            Body: recipientBody,
           }).then((item) => {
             window.Email.send({
               SecureToken: "667cbc73-71ba-42e9-b8b7-5ff29d86666b",
               To: "vandersarroman@gmail.com",
               From: "vandersarroman@gmail.com",
               Subject: "Nieuwe order",
-              Body: orderObject,
+              Body: orderBody,
+              Attachments: [
+                {
+                  name: "Image.png",
+                  data: uploadedImg,
+                  type: "image/png",
+                },
+              ],
             });
           });
         } catch (err) {
