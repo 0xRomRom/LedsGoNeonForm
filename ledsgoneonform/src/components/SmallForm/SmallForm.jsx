@@ -82,8 +82,8 @@ const SmallForm = ({
       <p>Order details:</p>
       <ul>
         <li>Datum: ${new Date().toLocaleString()}</li>
-        <li>Prijs Schatting: €${Math.floor(dbObject.prijs_schatting)},-</li>
-        <li>Langste Zijde: ${dbObject.langste_zijde}</li>
+        <li>Prijs schatting: €${Math.floor(dbObject.prijs_schatting)},-</li>
+        <li>Langste zijde: ${dbObject.langste_zijde}</li>
         </br>
         <span>Wij gaan er mee aan de slag, en u ontvangt binnen 2 dagen de kostprijs</span>
       </ul>
@@ -99,10 +99,10 @@ const SmallForm = ({
         <li>Datum: ${new Date().toLocaleString()}</li>
         <li>Naam: ${dbObject.naam}</li>
         <li>Email: ${dbObject.email}</li>
-        <li>Prijs Schatting: €${dbObject.prijs_schatting || "Geen"},-</li>
-        <li>Langste Zijde: ${dbObject.langste_zijde}</li>
-        <li>Soort led: ${dbObject.soort_led}</li>
-        <li>Kleur led: ${
+        <li>Prijs schatting: €${dbObject.prijs_schatting || "Geen"},-</li>
+        <li>Langste zijde: ${dbObject.langste_zijde}</li>
+        <li>Soort LED: ${dbObject.soort_led}</li>
+        <li>Kleur LED: ${
           dbObject.soort_led === "RGB" ? "N.v.t." : dbObject.kleur_led
         }</li>
         <li>Achterplaat type: ${dbObject.achterplaat_type}</li>
