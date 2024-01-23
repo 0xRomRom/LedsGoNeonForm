@@ -54,6 +54,17 @@ const App = () => {
         }
       };
       convertImageToBase64();
+
+      setTimeout(() => {
+        const clickEvent = new MouseEvent("click", {
+          bubbles: true,
+          cancelable: true,
+          view: window,
+        });
+
+        // Trigger the click on the body element
+        document.body.dispatchEvent(clickEvent);
+      }, 1000);
     }
   }, [uploadedImg]);
 

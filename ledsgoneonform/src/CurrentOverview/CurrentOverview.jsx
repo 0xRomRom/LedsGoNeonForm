@@ -1,41 +1,15 @@
 import stl from "./CurrentOverview.module.css";
 
-const CurrentOverview = ({
-  priceEstimate,
-  ledType,
-  RGBPrice,
-  backplateType,
-  backplatePrice,
-}) => {
+const CurrentOverview = ({ priceEstimate }) => {
   return (
     <div className={stl.currentOveriew}>
       <div className={stl.nameList}>
         <span className={stl.greenName}>Geschatte Prijs:</span>
-
-        {ledType === "RGB" && 1 > 2 && (
-          <span className={stl.rgbFlex}>
-            <span className={stl.rgbExtra}>RGB</span>
-            <span className={stl.white}>:</span>
-          </span>
-        )}
-        {backplateType === "Gekleurd" && 1 > 2 && (
-          <span className={stl.plaatFlex}>
-            <span className={stl.achterPlaat}>Achterplaat:</span>
-          </span>
-        )}
-      </div>
-      <div className={stl.priceList}>
-        <span className={stl.boldWhite}>
-          <br />€{Math.floor(priceEstimate)},- Excl. BTW
+        <span className={stl.priceSm}>
+          €{Math.floor(priceEstimate)},- Excl. BTW
         </span>
-
-        {ledType === "RGB" && 1 > 2 && (
-          <span className={stl.priceSm}>€{Math.floor(RGBPrice)},-</span>
-        )}
-        {backplateType === "Gekleurd" && 1 > 2 && (
-          <span className={stl.priceSm}> €{Math.floor(backplatePrice)},-</span>
-        )}
       </div>
+      <div className={stl.priceList}></div>
     </div>
   );
 };
