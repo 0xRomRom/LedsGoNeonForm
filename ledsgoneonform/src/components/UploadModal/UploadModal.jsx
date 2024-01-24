@@ -21,6 +21,7 @@ const UploadModal = ({
 
   const onDrop = useCallback(
     (acceptedFiles) => {
+      console.log(acceptedFiles);
       let newFiles = [];
       const filetypes = [
         "png",
@@ -28,15 +29,15 @@ const UploadModal = ({
         "jpeg",
         "bmp",
         "tiff",
-        // "gif",
-        // "webp",
+        "svg",
+        "webp",
         "PNG",
         "JPG",
         "JPEG",
         "BMP",
         "TIFF",
-        // "GIF",
-        // "WEBP",
+        "SVG",
+        "WEBP",
       ];
       acceptedFiles.forEach((file) => {
         const newFile = {
@@ -51,10 +52,11 @@ const UploadModal = ({
 
       if (newFiles.length === 0) {
         handleDragLeave(true);
-        alert("Bestandsformaat niet ondersteund. \n Probeer: .png .jpg .jpeg");
+        alert(
+          "Bestandsformaat niet ondersteund. \n Probeer: .png .jpg .jpeg .bmp .tiff .svg .webp"
+        );
         return;
       }
-
       setUploadedImg(newFiles[0]);
       handleDragLeave(false);
       setAspectRatio(null);

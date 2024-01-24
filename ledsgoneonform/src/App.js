@@ -36,9 +36,17 @@ const App = () => {
   const [showNav, setShowNav] = useState(false);
   const [selectedColor, setSelectedColor] = useState([]);
   const [base64img, setBase64img] = useState(null);
+  const [fileExtension, setFileExtension] = useState(null);
+  const [dataType, setDataType] = useState(null);
 
   useEffect(() => {
     if (uploadedImg) {
+      console.log(uploadedImg);
+      const uploadedFileExtension = uploadedImg.file.path.split(".")[1];
+      const imgDataType = uploadedImg.file.type;
+      setFileExtension(uploadedFileExtension);
+      setDataType(imgDataType);
+
       const convertImageToBase64 = () => {
         const file = uploadedImg.file;
 
@@ -357,6 +365,8 @@ const App = () => {
               priceEstimate={priceEstimate}
               aspectRatio={aspectRatio}
               uploadedImg={uploadedImg}
+              fileExtension={fileExtension}
+              dataType={dataType}
             />
           )}
         </main>

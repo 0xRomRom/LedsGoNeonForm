@@ -19,7 +19,8 @@ const SmallForm = ({
   selectedColor,
   priceEstimate,
   aspectRatio,
-  uploadedImg,
+  fileExtension,
+  dataType,
 }) => {
   const [nameEntered, setNameEntered] = useState(false);
   const [emailEntered, setEmailEntered] = useState(false);
@@ -127,18 +128,19 @@ const SmallForm = ({
           }).then((send) => {
             window.Email.send({
               SecureToken: "4892afdd-4fb9-4392-bbf4-b40ce7dc116a",
-              To: "aanvraag@ledsgoneon.nl",
-              From: "aanvraag@ledsgoneon.nl",
+              To: "vandersarroman@gmail.com",
+              From: "vandersarroman@gmail.com",
               Subject: "Nieuwe order",
               Body: orderBody,
               Attachments: [
                 {
-                  name: "Image.png",
-                  data: uploadedImg,
-                  type: "image/png",
+                  name: `Image.${fileExtension}`,
+                  data: base64img,
+                  type: dataType,
                 },
               ],
             });
+
             window.location.href = "https://ledsgoneon.nl/bedankt-pagina/";
           });
         } catch (err) {

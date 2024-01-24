@@ -59,10 +59,8 @@ const ImageEditor = ({
         const imageElement = new Image();
         const imageUrl = reader.result; // use reader.result to get the data URL
         imageElement.src = imageUrl;
-
         imageElement.addEventListener("load", (e) => {
           if (error) setError("");
-          setUploadedImg(imageUrl);
           const { naturalWidth, naturalHeight } = e.currentTarget;
           if (naturalWidth < MIN_DIMENSION || naturalHeight < MIN_DIMENSION) {
             setError("Image must be at least 150 x 150 pixels.");
@@ -73,9 +71,7 @@ const ImageEditor = ({
         });
       });
 
-      if (file) {
-        reader.readAsDataURL(file);
-      }
+      reader.readAsDataURL(file);
     };
 
     handleFileChange({ target: { files: [uploadedImg] } });
@@ -110,7 +106,6 @@ const ImageEditor = ({
           <h2 className={stl.logoBijSnijden}>Oppervlakte Berekenen</h2>
           <span className={stl.subSpan}>Selecteer de gewenste omtrek</span>
           <div className={stl.workSpaceInner}>
-            <span>{}</span>
             <GrTopCorner className={stl.cornerLeftTop} />
             <GrTopCorner className={stl.cornerRightTop} />
             <GrTopCorner className={stl.cornerBottomLeft} />
