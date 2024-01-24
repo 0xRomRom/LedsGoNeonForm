@@ -31,7 +31,7 @@
 .paddWrapper {
   position: relative;
   /* margin: 0px 20px; */
-  overflow-y: hidden;
+  overflow: hidden;
 }
 
 .mainLogo {
@@ -305,5 +305,4 @@ a {
   top: 280rem;
   right: 30%;
   /* display: none; */
-  border: 1px solid red;
 }
