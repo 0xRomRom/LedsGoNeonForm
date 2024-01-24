@@ -90,8 +90,6 @@ const SmallForm = ({
       </ul>
     `;
 
-      // <img src="data:image/png;base64,${uploadedImg.split(",")[1]}" alt="Uploaded Image" />
-
       const orderBody = `
       <p>Nieuwe order</p>
       <br/>
@@ -128,8 +126,8 @@ const SmallForm = ({
           }).then((send) => {
             window.Email.send({
               SecureToken: "4892afdd-4fb9-4392-bbf4-b40ce7dc116a",
-              To: "vandersarroman@gmail.com",
-              From: "vandersarroman@gmail.com",
+              To: "aanvraag@ledsgoneon.nl",
+              From: "aanvraag@ledsgoneon.nl",
               Subject: "Nieuwe order",
               Body: orderBody,
               Attachments: [
@@ -140,7 +138,6 @@ const SmallForm = ({
                 },
               ],
             });
-            return;
             window.location.href = "https://ledsgoneon.nl/bedankt-pagina/";
           });
         } catch (err) {
