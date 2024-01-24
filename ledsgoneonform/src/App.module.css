@@ -39,6 +39,8 @@
   left: 0rem;
   top: 0rem;
   max-width: 325px;
+  cursor: pointer;
+  z-index: 300;
 }
 
 .hamburger {

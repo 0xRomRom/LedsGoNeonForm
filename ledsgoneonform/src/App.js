@@ -239,6 +239,7 @@ const App = () => {
             src="./images/Mainlogo.png"
             alt="Led's Go Neon logo"
             className={stl.mainLogo}
+            onClick={() => window.open("https://ledsgoneon.nl", "_self")}
           />
         </a>
         <div className={stl.transition}></div>

@@ -101,6 +101,7 @@ const UploadModal = ({
       setLongestSide,
       setProgressState,
       setToggleIconBool,
+      setUnsupportedFormat,
     ]
   );
 
