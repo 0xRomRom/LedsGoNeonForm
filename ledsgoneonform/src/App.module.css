@@ -266,7 +266,7 @@ a {
   position: absolute;
   width: 800px;
   height: 800px;
-  background-color: rgba(45, 0, 128, 0.25);
+  background-color: rgba(45, 0, 128, 0.85);
   border-radius: 50%;
   filter: blur(50rem);
   top: 30rem;
@@ -274,9 +274,9 @@ a {
 
 .purpleSphere2 {
   position: absolute;
-  width: 800px;
-  height: 800px;
-  background-color: rgba(75, 0, 128, 0.2);
+  width: 1200px;
+  height: 1200px;
+  background-color: rgba(75, 0, 128, 0.45);
   border-radius: 50%;
   filter: blur(50rem);
   top: 90rem;
@@ -285,9 +285,9 @@ a {
 
 .purpleSphere3 {
   position: absolute;
-  width: 800px;
-  height: 800px;
-  background-color: rgba(79, 0, 128, 0.161);
+  width: 1200px;
+  height: 1200px;
+  background-color: rgba(79, 0, 128, 0.45);
   border-radius: 50%;
   filter: blur(50rem);
   top: 190rem;
@@ -305,4 +305,11 @@ a {
   top: 280rem;
   right: 30%;
   /* display: none; */
+}
+
+@media (max-width: 500px) {
+  .purpleSphere4 {
+    top: 245rem;
+    right: 20%;
+  }
 }

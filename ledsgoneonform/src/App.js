@@ -38,12 +38,13 @@ const App = () => {
   const [base64img, setBase64img] = useState(null);
   const [fileExtension, setFileExtension] = useState(null);
   const [dataType, setDataType] = useState(null);
+  const [unsupportedFormat, setUnsupportedFormat] = useState(false);
 
   useEffect(() => {
     if (uploadedImg) {
-      console.log(uploadedImg);
       const uploadedFileExtension = uploadedImg.file.path.split(".")[1];
       const imgDataType = uploadedImg.file.type;
+
       setFileExtension(uploadedFileExtension);
       setDataType(imgDataType);
 
@@ -275,11 +276,12 @@ const App = () => {
             setAspectRatio={setAspectRatio}
             setLongestSide={setLongestSide}
             setToggleIconBool={setToggleIconBool}
+            setUnsupportedFormat={setUnsupportedFormat}
           />
-          {progressState > 0 && (
+          {progressState > 0 && !unsupportedFormat && (
             <TiArrowLeftThick className={stl.activeArrow} />
           )}
-          {uploadedImg && progressState >= 1 && (
+          {uploadedImg && progressState >= 1 && !unsupportedFormat && (
             <RequestCalculation
               aspectRatio={aspectRatio}
               setAspectRatio={setAspectRatio}

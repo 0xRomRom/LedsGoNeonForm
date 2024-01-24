@@ -16,12 +16,12 @@ const UploadModal = ({
   setAspectRatio,
   setLongestSide,
   setToggleIconBool,
+  setUnsupportedFormat,
 }) => {
   const [isHovered, setIsHovered] = useState(false);
 
   const onDrop = useCallback(
     (acceptedFiles) => {
-      console.log(acceptedFiles);
       let newFiles = [];
       const filetypes = [
         "png",
@@ -31,13 +31,17 @@ const UploadModal = ({
         "tiff",
         "svg",
         "webp",
+        "ai",
+        "pdf",
         "PNG",
         "JPG",
         "JPEG",
         "BMP",
         "TIFF",
         "SVG",
+        "AI",
         "WEBP",
+        "PDF",
       ];
       acceptedFiles.forEach((file) => {
         const newFile = {
@@ -53,20 +57,41 @@ const UploadModal = ({
       if (newFiles.length === 0) {
         handleDragLeave(true);
         alert(
-          "Bestandsformaat niet ondersteund. \n Probeer: .png .jpg .jpeg .bmp .tiff .svg .webp"
+          "Bestandsformaat niet ondersteund. Probeer: .png .jpg .jpeg .bmp .tiff .svg .webp"
         );
         return;
       }
+
+      const uploadedFileExtension = newFiles[0].file.path.split(".")[1];
+      let tempbool = false;
+      if (
+        uploadedFileExtension === "ai" ||
+        uploadedFileExtension === "Ai" ||
+        uploadedFileExtension === "pdf" ||
+        uploadedFileExtension === "PDF"
+      ) {
+        alert(
+          "Geen prijs schatting mogelijk voor .ai en & .pdf bestanden. Probeer een ander bestandsformaat of vervolg."
+        );
+        setUnsupportedFormat(true);
+        tempbool = true;
+      } else {
+        setUnsupportedFormat(false);
+      }
+
       setUploadedImg(newFiles[0]);
       handleDragLeave(false);
       setAspectRatio(null);
       setLongestSide(null);
       setToggleIconBool(false);
-      if (progressState === 0) {
+      if (progressState === 0 && !tempbool) {
         setProgressState(1);
         return;
       }
-      setProgressState(2);
+      if (tempbool) {
+        setProgressState(3);
+      }
+      setProgressState(3);
     },
     [
       handleDragLeave,

@@ -75,7 +75,7 @@ const SmallForm = ({
         naam: name,
         email: email,
         beschrijving: notice || "Geen",
-        verhouding: aspectRatio,
+        verhouding: aspectRatio || "Geen",
       };
 
       const recipientBody = `
@@ -140,7 +140,7 @@ const SmallForm = ({
                 },
               ],
             });
-
+            return;
             window.location.href = "https://ledsgoneon.nl/bedankt-pagina/";
           });
         } catch (err) {
