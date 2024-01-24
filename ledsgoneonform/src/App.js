@@ -235,6 +235,10 @@ const App = () => {
         <div className={stl.transition}></div>
       </div>
       <div className={stl.paddWrapper}>
+        <div className={stl.purpleSphere}></div>
+        <div className={stl.purpleSphere2}></div>
+        <div className={stl.purpleSphere3}></div>
+        <div className={stl.purpleSphere4}></div>
         <button className={stl.burgerCta} onClick={() => setShowNav(!showNav)}>
           <img
             src="./images/Hamburger.svg"

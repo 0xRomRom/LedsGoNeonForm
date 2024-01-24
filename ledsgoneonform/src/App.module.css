@@ -1,6 +1,7 @@
 .app {
   /* background-color: #030e26; */
   background-color: #030e26;
+  background: linear-gradient(#030e26, #030e26, #030e26, #120326);
   position: relative;
   display: flex;
   flex-direction: column;
@@ -30,7 +31,7 @@
 .paddWrapper {
   position: relative;
   /* margin: 0px 20px; */
-  overflow-y: scroll;
+  overflow-y: hidden;
 }
 
 .mainLogo {
@@ -259,4 +260,50 @@ a {
   .activeArrow {
     margin: 1.5rem 0rem;
   }
+}
+
+.purpleSphere {
+  position: absolute;
+  width: 800px;
+  height: 800px;
+  background-color: rgba(45, 0, 128, 0.25);
+  border-radius: 50%;
+  filter: blur(50rem);
+  top: 30rem;
+}
+
+.purpleSphere2 {
+  position: absolute;
+  width: 800px;
+  height: 800px;
+  background-color: rgba(75, 0, 128, 0.2);
+  border-radius: 50%;
+  filter: blur(50rem);
+  top: 90rem;
+  right: 5rem;
+}
+
+.purpleSphere3 {
+  position: absolute;
+  width: 800px;
+  height: 800px;
+  background-color: rgba(79, 0, 128, 0.161);
+  border-radius: 50%;
+  filter: blur(50rem);
+  top: 190rem;
+  left: 5rem;
+  /* display: none; */
+}
+
+.purpleSphere4 {
+  position: absolute;
+  width: 800px;
+  height: 800px;
+  background-color: rgba(45, 0, 128, 0.961);
+  border-radius: 50%;
+  filter: blur(50rem);
+  top: 280rem;
+  right: 30%;
+  /* display: none; */
+  border: 1px solid red;
 }
