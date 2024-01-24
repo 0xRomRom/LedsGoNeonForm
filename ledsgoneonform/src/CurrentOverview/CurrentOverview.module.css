@@ -69,8 +69,9 @@
 .nameList {
   display: flex;
   justify-content: space-between;
-  align-items: flex-end;
+  align-items: center;
   flex-direction: column;
+  user-select: none;
 }
 
 .nameList span {

@@ -234,6 +234,7 @@
 
 @media (max-width: 500px) {
   .videoWrapper {
-    height: 13.5rem;
+    height: 18.5rem;
+    overflow: hidden;
   }
 }
