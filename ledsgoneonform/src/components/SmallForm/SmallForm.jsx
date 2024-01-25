@@ -24,6 +24,7 @@ const SmallForm = ({
 }) => {
   const [nameEntered, setNameEntered] = useState(false);
   const [emailEntered, setEmailEntered] = useState(false);
+  const [submitting, setSubmitting] = useState(false);
 
   const updateName = (e) => {
     setName(e.target.value);
@@ -61,6 +62,7 @@ const SmallForm = ({
   }, [name, setEmailEntered, emailEntered, email]);
 
   const submitForm = async () => {
+    setSubmitting(true);
     try {
       const dbObject = {
         datum: new Date().toISOString().toLocaleString("nl-NL"),
@@ -182,7 +184,11 @@ const SmallForm = ({
           ></textarea>
 
           <div className={stl.btnBackground}>
-            <button className={stl.ledsgo} onClick={submitForm}>
+            <button
+              className={stl.ledsgo}
+              onClick={submitForm}
+              disabled={submitting ? true : false}
+            >
               LED's Go!
             </button>
           </div>
