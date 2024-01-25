@@ -1,7 +1,7 @@
 .overlay {
   position: sticky;
   inset: 0;
-  z-index: 2040;
+  z-index: 5000;
   width: 100vw;
   height: 100vh;
   background-color: #000;

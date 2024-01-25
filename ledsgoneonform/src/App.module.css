@@ -51,7 +51,7 @@
   position: fixed;
   top: 25px;
   right: 2.75rem;
-  z-index: 800;
+  z-index: 400;
 }
 
 .burgerCta {
