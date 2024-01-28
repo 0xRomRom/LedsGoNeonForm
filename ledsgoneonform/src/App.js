@@ -44,6 +44,7 @@ const App = () => {
     if (uploadedImg) {
       const uploadedFileExtension = uploadedImg.file.path.split(".")[1];
       const imgDataType = uploadedImg.file.type;
+      console.log(imgDataType);
 
       setFileExtension(uploadedFileExtension);
       setDataType(imgDataType);

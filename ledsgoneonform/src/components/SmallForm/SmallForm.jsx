@@ -19,7 +19,6 @@ const SmallForm = ({
   selectedColor,
   priceEstimate,
   aspectRatio,
-  fileExtension,
   dataType,
 }) => {
   const [nameEntered, setNameEntered] = useState(false);
@@ -76,8 +75,9 @@ const SmallForm = ({
         montage: mountType,
         naam: name,
         email: email,
-        beschrijving: notice || "Geen",
-        verhouding: aspectRatio || "Geen",
+        beschrijving: notice,
+        verhouding: aspectRatio,
+        file_format: dataType,
       };
 
       const recipientBody = `
@@ -92,25 +92,24 @@ const SmallForm = ({
       </ul>
     `;
 
-      const orderBody = `
-      <p>Nieuwe order</p>
-      <br/>
-      <ul>
-        <li>Datum: ${new Date().toLocaleString()}</li>
-        <li>Naam: ${dbObject.naam}</li>
-        <li>Email: ${dbObject.email}</li>
-        <li>Prijsschatting: €${dbObject.prijs_schatting || "Geen"},-</li>
-        <li>Langste zijde: ${dbObject.langste_zijde}</li>
-        <li>Soort LED: ${dbObject.soort_led}</li>
-        <li>Kleur LED: ${
-          dbObject.soort_led === "RGB" ? "N.v.t." : dbObject.kleur_led
-        }</li>
-        <li>Achterplaat type: ${dbObject.achterplaat_type}</li>
-        <li>Achterplaat vorm: ${dbObject.achterplaat_vorm}</li>
-        <li>Montage: ${dbObject.montage}</li>
-        <li>Verhouding: ${dbObject.verhouding}</li>
-      </ul>
-    `;
+      //   const orderBody = `
+      //   <p>Nieuwe order</p>
+      //   <br/>
+      //   <ul>
+      //     <li>Datum: ${new Date().toLocaleString()}</li>
+      //     <li>Naam: ${dbObject.naam}</li>
+      //     <li>Email: ${dbObject.email}</li>
+      //     <li>Prijsschatting: €${dbObject.prijs_schatting},-</li>
+      //     <li>Langste zijde: ${dbObject.langste_zijde}</li>
+      //     <li>Soort LED: ${dbObject.soort_led}</li>
+      //     <li>Kleur LED: ${dbObject.kleur_led}</li>
+      //     <li>Achterplaat type: ${dbObject.achterplaat_type}</li>
+      //     <li>Achterplaat vorm: ${dbObject.achterplaat_vorm}</li>
+      //     <li>Montage: ${dbObject.montage}</li>
+      //     <li>Verhouding: ${dbObject.verhouding}</li>
+      //   </ul>
+      // `;
+
       const { error } = await supabase
         .from("logo_samenstellen")
         .insert([dbObject]);
@@ -118,6 +117,7 @@ const SmallForm = ({
         alert("Versturen mislukt, probeer het later opnieuw.");
         console.error("Supabase API error:", error.message);
       } else {
+        console.log(dbObject);
         try {
           window.Email.send({
             SecureToken: "4892afdd-4fb9-4392-bbf4-b40ce7dc116a",
@@ -125,24 +125,26 @@ const SmallForm = ({
             From: "aanvraag@ledsgoneon.nl",
             Subject: "Order ontvangen",
             Body: recipientBody,
-          }).then((send) => {
-            window.Email.send({
-              SecureToken: "4892afdd-4fb9-4392-bbf4-b40ce7dc116a",
-              To: "aanvraag@ledsgoneon.nl",
-              From: "aanvraag@ledsgoneon.nl",
-              Subject: "Nieuwe order",
-              Body: orderBody,
-              Attachments: [
-                {
-                  name: `Image.${fileExtension}`,
-                  data: base64img,
-                  type: dataType,
-                },
-              ],
-            });
-            window.location.href = "https://ledsgoneon.nl/bedankt-pagina/";
           });
+
+          // window.Email.send({
+          //   SecureToken: "4892afdd-4fb9-4392-bbf4-b40ce7dc116a",
+          //   To: "aanvraag@ledsgoneon.nl",
+          //   From: "aanvraag@ledsgoneon.nl",
+          //   Subject: "Nieuwe order",
+          //   Body: orderBody,
+          //   Attachments: [
+          //     {
+          //       name: `Image.${fileExtension}`,
+          //       data: base64img,
+          //       type: dataType,
+          //     },
+          //   ],
+          // });
+
+          window.location.href = "https://ledsgoneon.nl/bedankt-pagina/";
         } catch (err) {
+          setSubmitting(false);
           alert("Fout bij verzenden. Neem contact met ons op!");
           console.error(err);
         }
