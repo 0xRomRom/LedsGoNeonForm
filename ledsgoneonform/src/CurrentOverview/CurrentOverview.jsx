@@ -4,7 +4,7 @@ const CurrentOverview = ({ priceEstimate }) => {
   return (
     <div className={stl.currentOveriew}>
       <div className={stl.nameList}>
-        <span className={stl.greenName}>Geschatte Prijs:</span>
+        <span className={stl.greenName}>Indicatieprijs:</span>
         <span className={stl.priceSm}>
           €{Math.floor(priceEstimate)},- Excl. BTW
         </span>

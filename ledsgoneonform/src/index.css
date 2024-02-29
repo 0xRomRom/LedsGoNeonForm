@@ -17,8 +17,10 @@ body {
 
 :root {
   --hero-font: "Outfit", sans-serif;
-  --pink: rgb(255, 0, 184);
+  --pink: rgb(251, 0, 169);
   --purple: rgb(179, 0, 255);
-  --green: rgb(0, 255, 0);
+  --green: rgb(0, 251, 0);
   --red: red;
+  --blue: rgb(79, 182, 247);
+  --dblue: rgb(2, 12, 60);
 }

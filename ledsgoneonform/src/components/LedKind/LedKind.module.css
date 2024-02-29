@@ -49,6 +49,11 @@
   font-size: 30px;
 }
 
+.pink {
+  color: rgb(251, 0, 169);
+  font-size: 30px;
+}
+
 .rgb {
   background: linear-gradient(
     90deg,
@@ -121,7 +126,7 @@
 }
 
 .kiesKleur {
-  color: var(--green);
+  color: white;;
   font-size: 30px;
 }
 

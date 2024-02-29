@@ -22,6 +22,11 @@ const UploadModal = ({
 
   const onDrop = useCallback(
     (acceptedFiles) => {
+      const imgKBSize = acceptedFiles[0].size;
+      if (imgKBSize > 2500000) {
+        alert("Bestandsgrootte overschreden. Maximaal 2.5MB");
+        return;
+      }
       let newFiles = [];
       const filetypes = [
         "png",
@@ -71,7 +76,7 @@ const UploadModal = ({
         uploadedFileExtension === "PDF"
       ) {
         alert(
-          "Geen prijs schatting mogelijk voor .ai en & .pdf bestanden. Probeer een ander bestandsformaat of vervolg."
+          "Voor dit type bestand is geen indicatieprijs beschikbaar. Upload een SVG, JPEG, JPG of PNG als je een indicatieprijs wilt generenen."
         );
         setUnsupportedFormat(true);
         tempbool = true;

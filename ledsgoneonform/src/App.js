@@ -44,7 +44,6 @@ const App = () => {
     if (uploadedImg) {
       const uploadedFileExtension = uploadedImg.file.path.split(".")[1];
       const imgDataType = uploadedImg.file.type;
-      console.log(imgDataType);
 
       setFileExtension(uploadedFileExtension);
       setDataType(imgDataType);
@@ -262,7 +261,7 @@ const App = () => {
             <span className={stl.pink}>Logo</span> samenstellen
           </h1>
           <h2 className={stl.subHero}>
-            Stel hier <span className={stl.green}>vrijblijvend</span> je eigen
+            Stel hier <span className={stl.pink}>vrijblijvend</span> je eigen
             LED's Go Neon lamp samen
           </h2>
         </header>

@@ -103,8 +103,8 @@ const ImageEditor = ({
     <div className={stl.imageEditor}>
       {imgSrc && (
         <div className={stl.workSpace}>
-          <h2 className={stl.logoBijSnijden}>Oppervlakte Berekenen</h2>
-          <span className={stl.subSpan}>Selecteer de gewenste omtrek</span>
+          <h2 className={stl.logoBijSnijden}>Verhouding bepalen</h2>
+          <span className={stl.subSpan}>Sleep een rechthoek passend om je logo</span>
           <div className={stl.workSpaceInner}>
             <GrTopCorner className={stl.cornerLeftTop} />
             <GrTopCorner className={stl.cornerRightTop} />

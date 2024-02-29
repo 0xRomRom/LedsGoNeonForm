@@ -15,7 +15,7 @@ const LongestRow = ({ setLongestSide, setProgressState, longestSide }) => {
   return (
     <div className={`${stl.longestRow} ${longestSide ? stl.checked : ""}`}>
       <h3 className={stl.hero}>
-        Lengte <span className={stl.green}>langste</span> zijde
+        Lengte <span className={stl.pink}>langste</span> zijde
       </h3>
       <select
         className={stl.longestSelect}

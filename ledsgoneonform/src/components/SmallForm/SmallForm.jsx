@@ -81,34 +81,22 @@ const SmallForm = ({
       };
 
       const recipientBody = `
-      <p>Wij hebben uw order ontvangen!</p>
-      <p>Order details:</p>
+      <p>Wij hebben uw aanvraag ontvangen!</p>
+      <p>Aanvraag details:</p>
       <ul>
         <li>Datum: ${new Date().toLocaleString()}</li>
         <li>Prijsschatting: €${Math.floor(dbObject.prijs_schatting)},-</li>
         <li>Langste zijde: ${dbObject.langste_zijde}</li>
+        <li>Soort LED: ${dbObject.soort_led}</li>
+        <li>Kleur LED: ${dbObject.kleur_led}</li>
+        <li>Soort achterplaat: ${dbObject.achterplaat_type}</li>
+        <li>Vorm achterplaat: ${dbObject.achterplaat_vorm}</li>
+        <li>Montage systeem: ${dbObject.montage}</li>
+
         <br/>
-        <span>Wij gaan er mee aan de slag, en u ontvangt binnen 2 dagen de kostprijs</span>
+        <span>We gaan er mee aan de slag, u ontvangt binnen 2 dagen uw ontwerp.</span>
       </ul>
     `;
-
-      //   const orderBody = `
-      //   <p>Nieuwe order</p>
-      //   <br/>
-      //   <ul>
-      //     <li>Datum: ${new Date().toLocaleString()}</li>
-      //     <li>Naam: ${dbObject.naam}</li>
-      //     <li>Email: ${dbObject.email}</li>
-      //     <li>Prijsschatting: €${dbObject.prijs_schatting},-</li>
-      //     <li>Langste zijde: ${dbObject.langste_zijde}</li>
-      //     <li>Soort LED: ${dbObject.soort_led}</li>
-      //     <li>Kleur LED: ${dbObject.kleur_led}</li>
-      //     <li>Achterplaat type: ${dbObject.achterplaat_type}</li>
-      //     <li>Achterplaat vorm: ${dbObject.achterplaat_vorm}</li>
-      //     <li>Montage: ${dbObject.montage}</li>
-      //     <li>Verhouding: ${dbObject.verhouding}</li>
-      //   </ul>
-      // `;
 
       const { error } = await supabase
         .from("logo_samenstellen")
@@ -123,24 +111,9 @@ const SmallForm = ({
             SecureToken: "4892afdd-4fb9-4392-bbf4-b40ce7dc116a",
             To: email,
             From: "aanvraag@ledsgoneon.nl",
-            Subject: "Order ontvangen",
+            Subject: "Aanvraag ontvangen",
             Body: recipientBody,
           });
-
-          // window.Email.send({
-          //   SecureToken: "4892afdd-4fb9-4392-bbf4-b40ce7dc116a",
-          //   To: "aanvraag@ledsgoneon.nl",
-          //   From: "aanvraag@ledsgoneon.nl",
-          //   Subject: "Nieuwe order",
-          //   Body: orderBody,
-          //   Attachments: [
-          //     {
-          //       name: `Image.${fileExtension}`,
-          //       data: base64img,
-          //       type: dataType,
-          //     },
-          //   ],
-          // });
 
           window.location.href = "https://ledsgoneon.nl/bedankt-pagina/";
         } catch (err) {
@@ -156,7 +129,7 @@ const SmallForm = ({
 
   return (
     <div className={`${stl.longestRow} ${emailEntered ? stl.checked : ""}`}>
-      <h3 className={stl.hero}>Wat is uw naam?</h3>
+      <h3 className={stl.hero}>Wat is je naam?</h3>
       <input
         type="text"
         className={stl.inputStl}
@@ -165,7 +138,7 @@ const SmallForm = ({
       />
       {nameEntered && (
         <>
-          <h3 className={stl.hero2}>Wat is uw E-Mail?</h3>
+          <h3 className={stl.hero2}>Wat is je E-Mail?</h3>
           <input
             type="email"
             className={stl.inputStl}
@@ -196,7 +169,7 @@ const SmallForm = ({
           </div>
           <span className={stl.binnengebruik}>
             <RiAlertLine className={stl.alert} /> Lampen alleen geschikt voor
-            binnengebruik!
+            binnengebruik
           </span>
         </>
       )}

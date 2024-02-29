@@ -281,3 +281,8 @@
     min-height: 56px;
   }
 }
+
+.noevents {
+  pointer-events: none;
+  user-select: none;
+}

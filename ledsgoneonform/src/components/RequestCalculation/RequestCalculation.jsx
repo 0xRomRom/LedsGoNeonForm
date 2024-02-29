@@ -34,14 +34,14 @@ const RequestCalculation = ({
       <h3 className={stl.hero}>
         {!aspectRatio && (
           <>
-            Wilt u een <span className={stl.green}>prijsschatting</span> maken?
+            Wil je een <span className={stl.pink}>indicatieprijs</span> generenen?
           </>
         )}
         {aspectRatio && !toggleIconBool && (
           <div className={stl.aspectFlex}>
-            <span className={stl.opgeslagen}>Afmetingen opgeslagen</span>
+            <span className={stl.opgeslagen}>Verhouding opgeslagen</span>
             <span className={stl.verhoudingenSpan}>
-              Verhouding {aspectRatio.toFixed(2)}{" "}
+               {aspectRatio.toFixed(2)}{" "}
               <BsAspectRatio className={stl.aspectIcon} />
             </span>
             <span
@@ -52,7 +52,7 @@ const RequestCalculation = ({
                 setPriceEstimate(null);
               }}
             >
-              Bereken opnieuw
+              Bepaal opnieuw
             </span>
           </div>
         )}

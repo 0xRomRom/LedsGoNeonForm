@@ -26,15 +26,15 @@ const LedKind = ({
       return;
     }
 
-    if (selectedColor.includes("Naar ontwerp")) {
-      // Remove "Naar ontwerp" from the array
+    if (selectedColor.includes("Kleuren zoals je logo")) {
+      // Remove "Kleuren zoals je logo" from the array
       setSelectedColor((prevValues) =>
-        prevValues.filter((value) => value !== "Naar ontwerp")
+        prevValues.filter((value) => value !== "Kleuren zoals je logo")
       );
     }
 
-    if (newColor === "Naar ontwerp" || selectedColor.includes(newColor)) {
-      // If "Naar ontwerp" is selected or the new color is already in the array, set it as the only selected color
+    if (newColor === "Kleuren zoals je logo" || selectedColor.includes(newColor)) {
+      // If "Kleuren zoals je logo" is selected or the new color is already in the array, set it as the only selected color
       setSelectedColor([newColor]);
     } else {
       // Add the new color to the array
@@ -67,7 +67,7 @@ const LedKind = ({
 
   const colors = [
     {
-      name: "Naar ontwerp",
+      name: "Kleuren zoals je logo",
       bgColor: "rgb(197, 197, 197)",
       boxShadowColor: "rgb(197, 197, 197)",
     },
@@ -133,7 +133,7 @@ const LedKind = ({
       )}
       {selectedValue === "Single color" && (
         <>
-          <h2 className={stl.kiesKleur}>Kies kleur(en)</h2>
+          <h2 className={stl.kiesKleur}>Kies de kleur(en)</h2>
           <div className={stl.colorboxWrapper}>
             {colors.map((color, index) => (
               <button
@@ -173,7 +173,7 @@ const LedKind = ({
       <h3 className={stl.hero}>
         Soort
         <span
-          className={`${stl.green} ${selectedValue === "RGB" ? stl.rgb : ""}`}
+          className={`${stl.pink} ${selectedValue === "RGB" ? stl.rgb : ""}`}
         >
           {" "}
           LED
@@ -187,7 +187,7 @@ const LedKind = ({
         <option value="" default disabled>
           Kies kleurtype
         </option>
-        <option value="Single color">Single color (Vaste kleur)</option>
+        <option value="Single color">Single color (Vaste kleuren)</option>
         <option value="RGB">RGB € +40% (Verstelbare kleur)</option>
       </select>
     </div>

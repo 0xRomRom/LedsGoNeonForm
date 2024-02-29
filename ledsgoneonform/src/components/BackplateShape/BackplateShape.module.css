@@ -23,7 +23,7 @@
   color: black;
   font-size: 30px;
   user-select: none;
-  background-color: var(--green);
+  background-color: var(--pink);
   padding: 2px 9px;
 }
 
@@ -48,7 +48,7 @@
 }
 
 .green {
-  color: rgb(0, 255, 0);
+  color: rgb(251, 0, 169);
 }
 
 .rgb {

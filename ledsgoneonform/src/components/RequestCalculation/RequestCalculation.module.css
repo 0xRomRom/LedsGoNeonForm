@@ -33,6 +33,11 @@
   color: rgb(0, 255, 0);
 }
 
+.pink {
+  font-size: 30px;
+  color: rgb(251, 0, 169);
+}
+
 .ctaWrap {
   display: flex;
   justify-content: center;
@@ -78,7 +83,7 @@
   position: relative;
   width: 13rem;
   height: 3rem;
-  background-color: rgb(0, 255, 0);
+  background-color: rgb(79, 182, 247);
   border-radius: 0.4rem;
 }
 
@@ -91,7 +96,7 @@
 }
 
 .opgeslagen {
-  color: rgb(0, 255, 0);
+  color: white;
   font-size: 30px;
   text-align: center;
 }
@@ -115,7 +120,7 @@
 }
 
 .berekenOpnieuw:hover {
-  color: white;
+  color: rgb(251, 0, 169);
 }
 
 .verhoudingenSpan {
@@ -127,7 +132,7 @@
 }
 
 .aspectIcon {
-  color: gray;
+  color: rgb(251, 0, 169);
   font-size: 30px;
 }
 
@@ -180,7 +185,7 @@
     height: 3rem;
     border-radius: 0.4rem;
     background-color: var(--pink);
-    color: white;
+    color: rgb(255, 255, 255);
     outline: none;
     border: none;
     font-size: 18px;

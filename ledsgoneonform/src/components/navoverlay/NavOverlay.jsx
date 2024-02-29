@@ -67,8 +67,13 @@ const NavOverlay = ({ showNav, setShowNav }) => {
           </li>
 
           <li className={stl.navLink}>
-            <FaArrowRight className={`${stl.arrowright} ${stl.showArrow}`} />
-            <a href className={`${stl.anchor} ${stl.active}`}>
+            <FaArrowRight
+              className={`${stl.arrowright} ${stl.showArrow} ${stl.noevents}`}
+            />
+            <a
+              href="https://ledsgoneon.nl/logosamensteller/"
+              className={`${stl.anchor} ${stl.active}`}
+            >
               Logo Samenstellen
             </a>
           </li>
@@ -121,8 +126,7 @@ const NavOverlay = ({ showNav, setShowNav }) => {
             onMouseLeave={() => setHoveredState(null)}
           >
             <FaArrowRight className={stl.arrowright} />
-            <a
-              href
+            <span
               className={`${stl.anchor} ${
                 hoveredState === "Over ons" ? stl.active : ""
               }`}
@@ -154,7 +158,7 @@ const NavOverlay = ({ showNav, setShowNav }) => {
                   Productieproces
                 </span>
               </div>
-            </a>
+            </span>
           </li>
 
           <li

@@ -3,7 +3,7 @@
   bottom: 0rem;
   min-height: 4rem;
   width: 100%;
-  background-color: black;
+  background-color: rgb(2, 12, 60);
   z-index: 100;
   display: flex;
   justify-content: center;
@@ -19,7 +19,7 @@
 }
 .priceSm {
   color: white;
-  font-size: 15px;
+  font-size: 22px;
   padding-left: 5px;
   font-weight: bold;
 }
@@ -103,8 +103,8 @@
 }
 
 .greenName {
-  color: var(--green);
+  color: var(--pink);
   font-weight: bold;
   font-size: 18px;
-  border-bottom: 1px solid var(--green);
+  border-bottom: 1px solid var(--pink);
 }
